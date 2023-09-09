@@ -1,0 +1,64 @@
+$primary-color: #3498db;
+$font-size: 16px;
+$background-color: #f1f1f1;
+$hover-color: #{$background-color};
+$primary-color: #3498db !default;
+$colors: (primary: #3498db, secondary: #e74c3c, accent: #f39c12);
+$font-family: "Helvetica, Arial, sans-serif";
+$font-stack: $font-family + ", sans-serif";
+$base-padding: 10px;
+:root {
+	$element-padding: $base-padding * 2;
+
+	// user-select: none;
+	// font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	// font-weight: 400;
+	// line-height: 1.5;
+	// color: rgb(255 255 255 / 87%);
+	// text-size-adjust: 100%;
+	// text-rendering: optimizelegibility;
+	// color-scheme: light dark;
+	// background-color: #524a4f;
+	// -webkit-font-smoothing: antialiased;
+	// font-synthesis: none;
+}
+.button {
+  $button-color: #27ae60;
+  background-color: $button-color;
+  color:color(srgb red green blue);
+  padding: $element-padding;
+}
+
+@custom-media --viewport-medium (width <= 50rem);
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:--heading {
+	margin: rfs(2rem);
+	padding: rfs(3rem);
+	font-size: rfs(4rem);
+	// @include font-size(4rem);
+	background-image: image-set(url("img/heading.png") 1x, url("img/heading@2x.png") 2x);
+
+	@media (--viewport-medium) {
+		margin-block: 0;
+	}
+}
+
+:root {
+	--mainColor: #12345678;
+}
+
+body {
+	font-family: system-ui;
+	color: var(--mainColor);
+	overflow-wrap: break-word;
+}
+
+a {
+	color: rgb(0 0 100% / 90%);
+
+	&:hover {
+		color: rebeccapurple;
+	}
+}
