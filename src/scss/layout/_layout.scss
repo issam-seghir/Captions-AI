@@ -1,4 +1,6 @@
 // stylelint-disable-next-line selector-max-type
+
+@use "../abstracts" as * ;
 body {
   display: flex;
   flex-direction: column;

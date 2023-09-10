@@ -13,6 +13,8 @@
 		"dev": "vite  --open",
 		"build": "vite build --minify",
 		"build:watch": "vite build --watch",
+		"clean": "rm -rf dist test",
+		"sass:watch": "sass src/scss/main.scss test/main.css --watch",
 		"preview": "vite preview --open",
 		"lint:js": "npx eslint \"**/*.{html,js,ts,jsx,tsx}\"",
 		"lint:js:fix": "npm run lint:js -- --fix",

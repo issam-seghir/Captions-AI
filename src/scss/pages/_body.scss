@@ -7,23 +7,26 @@ $colors: (primary: #3498db, secondary: #e74c3c, accent: #f39c12);
 $font-family: "Helvetica, Arial, sans-serif";
 $font-stack: $font-family + ", sans-serif";
 $base-padding: 10px;
+$element-padding: $base-padding * 2;
 :root {
-	$element-padding: $base-padding * 2;
 
-	// user-select: none;
-	// font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	// font-weight: 400;
-	// line-height: 1.5;
-	// color: rgb(255 255 255 / 87%);
-	// text-size-adjust: 100%;
-	// text-rendering: optimizelegibility;
-	// color-scheme: light dark;
-	// background-color: #524a4f;
-	// -webkit-font-smoothing: antialiased;
-	// font-synthesis: none;
+	user-select: none;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgb(255 255 255 / 87%);
+	text-size-adjust: 100%;
+	text-rendering: optimizelegibility;
+	color-scheme: light dark;
+	background-color: #524a4f;
+	-webkit-font-smoothing: antialiased;
+	font-synthesis: none;
 }
+
+
+
 .button {
-  $button-color: #27ae60;
+  $button-color: #33ff8f;
   background-color: $button-color;
   color:color(srgb red green blue);
   padding: $element-padding;

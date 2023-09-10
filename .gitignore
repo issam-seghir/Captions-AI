@@ -1,8 +1,12 @@
+#* ---- Basics ------
+
 .DS_Store
 node_modules/
 *.log
 haters/
 .idea/
+dist/
+test/
 
 #* ---- Windows ------
 # Windows thumbnail cache files

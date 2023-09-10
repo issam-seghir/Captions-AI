@@ -1,4 +1,4 @@
-import "../scss/style.scss";
+import "../scss/main.scss";
 
 import viteLogo from "../javascript.svg";
 import javascriptLogo from "../vite.svg";
