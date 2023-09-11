@@ -2,21 +2,13 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-
-
-
 /// Regular font family
 /// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+$text-font-stack: "Open Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
-
-
+$code-font-stack: "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Monaco", monospace !default;
 
 /// Copy text color
 /// @type Color
@@ -38,34 +30,313 @@ $mid-grey: rgb(153, 153, 153) !default;
 /// @type Color
 $dark-grey: rgb(68, 68, 68) !default;
 
-
-
-
-
 /// Container's maximum width
 /// @type Length
 $max-width: 1180px !default;
-
-
-
-
 
 /// Breakpoints map
 /// @prop {String} keys - Keys are identifiers mapped to a given length
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 $breakpoints-vars: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
+	"small": 320px,
+	"medium": 768px,
+	"large": 1024px,
 ) !default;
-
-
-
-
-
 
 /// Relative or absolute URL where all assets are served from
 /// @type String
-/// @example scss - When using a CDN
-///   $base-url: 'https://cdn.example.com/assets/';
-$base-url: '/assets/' !default;
+/// @example  - When using  a CDN
+//* $base-url: 'https://cdn.example.com/assets/';
+$base-url: "/assets/" !default;
+
+// ------------------------ Variables Systeme ----------------------------------------
+
+// Colors
+$blue: #1565c0;
+$blue-light: #3b83d5;
+$gray: #333;
+$white: #fff;
+
+// Font Colors
+$font-color--base: $gray;
+$action-color: $blue;
+$action-color--alt: $blue-light;
+$action-color--contrast: $white;
+
+// Background Colors
+$viewport-background-color: $white;
+
+:root {
+	// Typography
+	--font-family: system-ui, sans-serif;
+	--font-family--heading: var(--font-family);
+
+	--font-weight--thin: 100;
+	--font-weight--extra-light: 200;
+	--font-weight--light: 300;
+	--font-weight--normal: 400;
+	--font-weight--medium: 500;
+	--font-weight--semi-bold: 600;
+	--font-weight--bold: 700;
+	--font-weight--extra-bold: 800;
+	--font-weight--black: 900;
+
+	// Line heights
+	--line-height: 1.5;
+	--line-height--heading: 1.2;
+
+	// Other Sizes
+	--border-radius: 0.1875rem;
+	--spacing: 1.5rem;
+	--spacing--small: 0.75rem;
+
+	// Borders
+	--border-width: 0.0625rem;
+	--border: var(--border-width) solid currentColor;
+
+	// Focus
+	--focus-outline-width: 0.1875rem;
+	--focus-outline-offset: 0.125rem;
+	--focus-outline: var(--focus-outline-width) solid #{$action-color};
+
+	// Animations
+	--duration: 150ms;
+	--timing: ease;
+}
+
+//* *********************** TYPOGRAPHY *******************************
+html {
+	color: $font-color--base;
+	font-family: var(--font-family);
+	font-size: 100%;
+	line-height: var(--line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-family--heading);
+	font-size: 1.25rem;
+	line-height: var(--line-height--heading);
+	margin: 0 0 var(--spacing--small);
+}
+
+p {
+	margin: 0 0 var(--spacing--small);
+}
+
+a {
+	color: $action-color;
+	text-decoration-skip-ink: auto;
+	transition: color var(--duration) var(--timing);
+
+	&:hover {
+		color: $action-color--alt;
+	}
+
+	&:focus {
+		outline: var(--focus-outline);
+		outline-offset: var(--focus-outline-offset);
+	}
+}
+
+hr {
+	border-bottom: var(--border);
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	margin: var(--spacing) 0;
+}
+
+//* *********************** TABLES *******************************
+
+table {
+	border-collapse: collapse;
+	margin: var(--spacing) 0;
+	table-layout: fixed;
+	text-align: left;
+	width: 100%;
+}
+
+thead {
+	line-height: var(--line-height--heading);
+	vertical-align: bottom;
+}
+
+tbody {
+	vertical-align: top;
+}
+
+tr {
+	border-bottom: var(--border);
+}
+
+th {
+	font-weight: 600;
+}
+
+th,
+td {
+	padding: var(--spacing--small) var(--spacing--small) var(--spacing--small) 0;
+}
+
+//* *********************** FORMS *******************************
+
+:root {
+	--form-box-shadow: inset 0 --border-width 0.1875rem rgba(#000, 0.06);
+	--form-box-shadow-focus: var(--form-box-shadow), 0 0 0.3125rem #{$action-color};
+}
+
+fieldset {
+	background-color: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+legend {
+	font-weight: 600;
+	margin-bottom: var(--spacing--small);
+	padding: 0;
+}
+
+label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: var(--spacing--small);
+}
+
+input,
+select,
+textarea {
+	display: block;
+	font-family: var(--font-family);
+	font-size: 1rem;
+}
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+input:not([type]),
+textarea {
+	appearance: none;
+	background-color: transparent;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	box-shadow: var(--form-box-shadow);
+	box-sizing: border-box;
+	margin-bottom: var(--spacing--small);
+	padding: calc(var(--spacing) / 3);
+	transition: border-color var(--duration) var(--timing);
+	width: 100%;
+
+	&:focus {
+		box-shadow: var(--form-box-shadow-focus);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+
+		&:hover {
+			border: var(--border);
+		}
+	}
+
+	&::placeholder {
+		color: $font-color--base;
+		opacity: 0.25;
+	}
+}
+
+[type="search"] {
+	-webkit-appearance: textfield;
+}
+
+textarea {
+	resize: vertical;
+}
+
+[type="checkbox"],
+[type="radio"] {
+	display: inline;
+	margin-right: var(--spacing--small);
+}
+
+[type="file"] {
+	margin-bottom: var(--spacing--small);
+	width: 100%;
+}
+
+select {
+	margin-bottom: var(--spacing--small);
+	width: 100%;
+}
+
+[type="checkbox"],
+[type="radio"],
+[type="file"],
+select {
+	&:focus {
+		outline: var(--focus-outline);
+		outline-offset: var(--focus-outline-offset);
+	}
+}
+
+
+
+
+//* *********************** BUTTONS *******************************
+
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  appearance: none;
+  background-color: $action-color;
+  border: 0;
+  border-radius: var(--border-radius);
+  color: $action-color--contrast;
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  padding: var(--spacing--small) var(--spacing);
+  text-align: center;
+  text-decoration: none;
+  transition: background-color var(--duration) var(--timing);
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $action-color--alt;
+  }
+
+  &:focus {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
