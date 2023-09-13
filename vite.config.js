@@ -21,6 +21,12 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 			},
 		},
 	},
+
+	resolve: {
+		alias: {
+			"gerillass": path.resolve(__dirname, "../../node_modules/gerillass/scss/gerillass.scss"),
+		},
+	},
 	plugins: [
 		webfontDownload([], {
 			injectAsStyleTag: true,

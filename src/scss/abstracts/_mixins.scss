@@ -1,6 +1,8 @@
 @use "sass:math";
 @use "sass:string";
 @use "sass:list";
+@use "breakpoints" as *;
+
 
 @mixin on-event($self: false) {
 	@if $self {
@@ -40,6 +42,108 @@
 	display: grid;
 	place-items: center;
 }
+
+//* -------------- Custom Mixins ---------------------
+
+///?  Mixin: pseudo
+///? Create a CSS pseudo-element with custom properties.
+///
+/// This mixin simplifies the creation of CSS pseudo-elements like `::before` or
+/// `::after` with customizable properties such as content, position, and placement.
+///
+/// @param {string} [$content: ''] - The content property value for the pseudo-element.
+/// @param {length} [$top: 0] - The top property value for positioning.
+/// @param {length} [$bottom: 0] - The bottom property value for positioning.
+/// @param {length} [$left: 0] - The left property value for positioning.
+/// @param {length} [$right: 0] - The right property value for positioning.
+/// @param {string} [$loc: 'before'] - The pseudo-element location (e.g., 'before' or 'after').
+/// @param {string} [$pos: 'absolute'] - The position property value for the pseudo-element.
+///
+/// @example
+///  /* Create a custom 'before' pseudo-element with content and custom positioning. */
+///   .custom-element {
+///     @include pseudo('Hello, World!', 10px, 'auto', 'auto', 20px, 'before', 'absolute') {
+///       background-color: #f00;
+///     }
+///   }
+///
+/// @access public
+@mixin pseudo(
+  $content: '',
+  $top: 0,
+  $bottom: 0,
+  $left: 0,
+  $right: 0,
+  $loc: 'before',
+  $pos: 'absolute'
+) {
+  position: relative;
+
+  &::#{$loc} {
+    content: $content;
+    position: $pos;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+
+    @content; // Additional CSS properties can be added here.
+  }
+}
+
+
+
+/// ------------------------------------------------------------------
+///?  Mixin: mq
+///? Apply styles based on responsive breakpoints.
+///
+/// This mixin simplifies the creation of responsive designs by allowing you to
+/// apply styles specific to different breakpoints.
+///
+/// @param {string} $breakpoint - The target breakpoint (e.g., 'sm', 'md', 'lg', 'xl', '2xl').
+///
+/// @example
+///   /* Apply different widths to an element based on breakpoints. */
+///   .element {
+///     width: 100%;
+///
+///     @include mq(sm) {
+///       width: 50%;
+///     }
+///
+///     @include mq(md) {
+///       width: 70%;
+///     }
+///
+///     @include mq(lg) {
+///       width: 80%;
+///     }
+///
+///     @include mq(xl) {
+///       width: 90%;
+///     }
+///
+///     @include mq('2xl') {
+///       width: 100%;
+///     }
+///   }
+///
+/// @access public
+
+@mixin mq($breakpoint) {
+  // Check if the specified breakpoint exists in the $breakpoints map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    $min-width: map-get($breakpoints, $breakpoint);
+
+    // Apply the styles within a media query based on the breakpoint.
+    @media (min-width: $min-width) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
 
 
 
@@ -603,6 +707,8 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 		color: $to;
 	}
 }
+
+
 
 /// ------------------------------------------------------------------
 ///? Custom Mixin: swap-bg-color

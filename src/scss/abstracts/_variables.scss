@@ -1,6 +1,20 @@
-// -----------------------------------------------------------------------------
-// This file contains all application-wide Sass variables.
-// -----------------------------------------------------------------------------
+// Color palate 
+$color_1: #000000;
+$color_2: #8c20f8;
+$color_3: #100919;
+$color_4: #a652fa;
+$color_5: #ab88fb;
+$color_6: #020103;
+$color_7: #d6d0e0;
+$color_8: #dfe1e6;
+$color_9: #e9e2ff;
+$color_10: #ffffff;
+$color_11: #1c1d21;
+$color_12: #1e1e1e;
+$color_13: #30264d;
+$color_14: #050308;
+$color_15: #403054;
+$color_16: #000000;
 
 /// Regular font family
 /// @type List
@@ -296,47 +310,43 @@ select {
 	}
 }
 
-
-
-
 //* *********************** BUTTONS *******************************
-
 
 button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  appearance: none;
-  background-color: $action-color;
-  border: 0;
-  border-radius: var(--border-radius);
-  color: $action-color--contrast;
-  cursor: pointer;
-  display: inline-block;
-  font-family: var(--font-family-base);
-  font-size: 1rem;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  line-height: 1;
-  padding: var(--spacing--small) var(--spacing);
-  text-align: center;
-  text-decoration: none;
-  transition: background-color var(--duration) var(--timing);
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+	appearance: none;
+	background-color: $action-color;
+	border: 0;
+	border-radius: var(--border-radius);
+	color: $action-color--contrast;
+	cursor: pointer;
+	display: inline-block;
+	font-family: var(--font-family-base);
+	font-size: 1rem;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 600;
+	line-height: 1;
+	padding: var(--spacing--small) var(--spacing);
+	text-align: center;
+	text-decoration: none;
+	transition: background-color var(--duration) var(--timing);
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
 
-  &:hover {
-    background-color: $action-color--alt;
-  }
+	&:hover {
+		background-color: $action-color--alt;
+	}
 
-  &:focus {
-    outline: var(--focus-outline);
-    outline-offset: var(--focus-outline-offset);
-  }
+	&:focus {
+		outline: var(--focus-outline);
+		outline-offset: var(--focus-outline-offset);
+	}
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }
