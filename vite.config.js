@@ -1,9 +1,8 @@
-import { defineConfig } from "vite";
 import AutoImport from "unplugin-auto-import/vite";
 import Icons from "unplugin-icons/vite";
+import { defineConfig } from "vite";
+import { ViteAliases } from "vite-aliases";
 import dynamicImport from "vite-plugin-dynamic-import";
-import webfontDownload from "vite-plugin-webfont-dl";
-import { ViteAliases } from 'vite-aliases'
 
 export default defineConfig(({ command, mode, ssrBuild }) => ({
 	// Getting rid of hashes in generated filenames
@@ -24,14 +23,10 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 
 	resolve: {
 		alias: {
-			"gerillass": path.resolve(__dirname, "../../node_modules/gerillass/scss/gerillass.scss"),
+			"~gerillass": path.resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
 		},
 	},
 	plugins: [
-		webfontDownload([], {
-			injectAsStyleTag: true,
-			// minifyCss: true,
-		}),
 		dynamicImport(/* options */),
 		Icons({
 			scale: 1.2, // Scale of icons against 1em

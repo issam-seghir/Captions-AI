@@ -27,10 +27,10 @@ html {
  */
 a {
 	@include on-event {
-		color: $text-color;
+		color: red;
 		text-decoration: underline;
 	}
 
-	color: $brand-color;
+	color: white;
 	text-decoration: none;
 }

@@ -45,6 +45,20 @@
 
 //* -------------- Custom Mixins ---------------------
 
+///?  Mixin: rdg-text
+@mixin rdg-text( $direction: center,$colors...) {
+  background: radial-gradient(at #{$direction}, $colors);
+background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+-webkit-text-fill-color: transparent;
+}
+.element {
+  @include rdg-text(top-left, red, orange);
+}
+
+
+
 ///?  Mixin: pseudo
 ///? Create a CSS pseudo-element with custom properties.
 ///
@@ -462,7 +476,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///     word-wrap: normal;
 ///   }
 
-@mixin ellipsis(
+/* @mixin ellipsis(
   $width: 100%,
   $display: inline-block
 ) {
@@ -472,7 +486,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
-}
+} */
 
 
 
@@ -511,7 +525,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///     content: "";
 ///   }
 
-@mixin triangle(
+/* @mixin triangle(
   $direction,
   $width,
   $height,
@@ -524,7 +538,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
     @error "Direction must be `up`, `up-right`, `right`, `down-right`, " +
       "`down`, `down-left`, `left` or `up-left`.";
   } @else if not _is-color($color) {
-    @error "`#{$color}` is not a valid color for the `$color` argument in " +
+    @error "`$color` is not a valid color for the `$color` argument in " +
       "the `triangle` mixin.";
   } @else {
     border-style: solid;
@@ -558,7 +572,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
     }
   }
 }
-
+ */
 
 
 //* -------------- scut mixins ---------------------

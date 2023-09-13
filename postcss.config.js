@@ -1,10 +1,8 @@
-import fontMagician from "postcss-font-magician";
 import postcssInlineSvg from "postcss-inline-svg";
 import postcssPresetEnv from "postcss-preset-env";
 import rfs from "rfs";
 export default {
 	plugins: [
-		fontMagician(),
 		postcssInlineSvg(),
 		rfs({}),
 		// cssnano({

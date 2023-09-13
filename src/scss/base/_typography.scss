@@ -4,9 +4,62 @@
 
 @use "../abstracts" as *;
 
+
+//* *********************** TYPOGRAPHY *******************************
+html {
+  background-color: $bg-primary;
+	color: $text-primary-200;
+	font-family: var(--font-family);
+	font-size: 100%;
+	line-height: var(--line-height);
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-family--heading);
+	font-size: 1.25rem;
+	line-height: var(--line-height--heading);
+	margin: 0 0 var(--spacing--small);
+}
+
+p {
+	margin: 0 0 var(--spacing--small);
+}
+
+a {
+	color: red;
+	text-decoration-skip-ink: auto;
+	transition: color var(--duration) var(--timing);
+
+	&:hover {
+		color: red;
+	}
+
+	&:focus {
+		outline: var(--focus-outline);
+		outline-offset: var(--focus-outline-offset);
+	}
+}
+
+hr {
+	border-bottom: var(--border);
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	margin: var(--spacing) 0;
+}
+
 body {
-  color: $text-color;
-  font: normal 125% / 1.4 $text-font-stack;
+  color: red;
+  font-family: $font-family-primary;
+  font-weight: $font-light;
+
 }
 
 $tdbc-typography-variants: h1, h2, h3, h4;
