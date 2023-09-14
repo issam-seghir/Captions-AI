@@ -1,5 +1,5 @@
 import AutoImport from "unplugin-auto-import/vite";
-import Icons from "unplugin-icons/vite";
+// import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vite";
 import { ViteAliases } from "vite-aliases";
 import dynamicImport from "vite-plugin-dynamic-import";
@@ -21,14 +21,14 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 		},
 	},
 
-	resolve: {
+/* 	resolve: {
 		alias: {
-			"~gerillass": path.resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
+			// "~gerillass": path.resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
 		},
-	},
+	}, */
 	plugins: [
 		dynamicImport(/* options */),
-		Icons({
+/* 		Icons({
 			scale: 1.2, // Scale of icons against 1em
 			defaultStyle: "", // Style apply to icons
 			defaultClass: "", // Class names apply to icons
@@ -36,7 +36,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 			jsx: "react", // 'react' or 'preact'
 			// experimental : install the icon set when you import them
 			autoInstall: true,
-		}),
+		}), */
 		AutoImport({
 			/* options */
 		}),

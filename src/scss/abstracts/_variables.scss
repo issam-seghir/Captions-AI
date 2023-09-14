@@ -38,26 +38,60 @@
 
 
 // Color palate
-$text-primary-100: #8c20f8;
-$text-primary-200: #a652fa;
-$text-primary-300: #ab89fb;
-
+$text-primary-200: hsl(270, 94%, 65%);
 
 
 $bg-primary: #11091a;
-@mixin text-rdg-primary-100() {
-background: radial-gradient(70.71% 70.71% at 50% 50%, #C591FC 0%, #F1E7FF 54%);
+
+@mixin text-rgd-primary-100() {
+	$rgd-100 : #c592fc;
+	$rgd-200 : #F1E7FF;
+background: radial-gradient(70.71% 70.71% at 50% 50%, $rgd-100 0%, $rgd-200 54%);
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
-$text-primary-100: #D6D0E0;
-$text-primary-200: #ffffff;
-$text-secondary-100: #ab88fb;
-// $text-secondary-light-300: #e8e0ff;
+@mixin text-rgd-primary-200() {
+	$rgd-100 : #8C21F8;
+	$rgd-200 : #A958FA;
+background: radial-gradient(70.71% 70.71% at 50% 50%, $rgd-100 38%, $rgd-200 66%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+@mixin text-rgd-secondary-100() {
+	$rgd-100 : #DABBFE;
+	$rgd-200 : #F5F0FF;
+background: linear-gradient(90deg, $rgd-100 0%, $rgd-200 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+@mixin text-rgd-secondary-200() {
+	$rgd-100 : #EDE1FF;
+	$rgd-200 : #EADBFF;
+background: linear-gradient(90deg, $rgd-100 6%, $rgd-200 93%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+@mixin text-rgd-secondary-300() {
+	$rgd-100 : #D5B0FD;
+	$rgd-200 : #BC7EFC;
+background: linear-gradient(90deg, $rgd-100 0%, $rgd-200 100%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
 
-$effects-bg : #8C20F8;
-$selection-bg : rgb(140 32 248 / 20%);
+
+$text-primary-100: #ffffff;
+$text-primary-200: #D6D0E0;
+$text-primary-300: #e8e0ff;
+$text-secondary-100: #ab88fb;
+
+$bg-secondary : #8c20f8;
+$bg-selection : rgba($bg-secondary, 0.2);
 // $selection-text :
 
 
@@ -138,6 +172,8 @@ $text-4xl: rfs(2.25rem);
 $text-5xl: rfs(3rem);
 $text-6xl: rfs(3.75rem);
 $text-7xl: rfs(4.5rem);
+$text-8xl: rfs(6rem);
+$text-9xl: rfs(8rem);
 
 //? Letter spacing
 $tracking-heading : 0.75rem;

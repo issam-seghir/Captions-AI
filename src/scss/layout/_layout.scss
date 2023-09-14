@@ -2,12 +2,11 @@
 
 @use "../abstracts" as * ;
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: tdbc-color("background");
-  color: $tdbc-color-body;
-  font-family: $tdbc-font-family;
+  background-color: $bg-primary;
+  color: $text-primary-200;
+  font-family: $font-family-primary;
+  font-weight: $font-medium;
+
 }
 
 // stylelint-disable selector-max-type, selector-no-qualifying-type
