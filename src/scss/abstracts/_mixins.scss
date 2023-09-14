@@ -95,7 +95,7 @@ color: transparent;
 
   &::#{$loc} {
     content: $content;
-    position: $pos;
+    position: #{$pos};
     top: $top;
     bottom: $bottom;
     left: $left;

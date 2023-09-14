@@ -144,15 +144,13 @@ $fallback-fonts: "Open Sans", "Segoe UI", "Lucida Sans", "Verdana", "Helvetica N
 $font-family-primary: "Neue Haas Grotesk Display Pro", $fallback-fonts;
 
 //? Font Weights
-$font-normal: normal;
-$font-bold: bold;
 $font-thin: 100;
 // $font-extra-light: 200;
-$font-light: 300;
-// $font-normal: 400;
+// $font-light: 300;
+$font-normal: 400;
 $font-medium: 500;
 // $font-semi-bold: 600;
-// $font-bold: 700;
+$font-bold: 700;
 // $font-extra-bold: 800;
 $font-black: 900;
 

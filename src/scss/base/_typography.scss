@@ -15,7 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: $font-medium;
+	font-weight: $font-bold;
 }
 
 h1 {
@@ -80,6 +80,10 @@ font-weight: 400;
   &.tag{
     color: #AB88FB;
 font-weight: 500;
+@include pseudo("",45%,0,2%){
+  @include circle(13px);
+  background-color: currentColor;
+}
   }
   &.tag.tag--sm{
     font-size: 0.6875rem;
@@ -96,25 +100,15 @@ letter-spacing: 0.125rem;
 a{
   color: #D6D0E0;
   font-size: $text-base;
-font-weight: 500;
+font-weight: $font-bold;
 line-height: 1.5rem; /* 160% */
 letter-spacing: 0.1rem;
 text-transform: capitalize;
 transition: color var(--duration) var(--timing);
 
-	&:hover {
-		color: red;
-	}
-
-	&:focus {
-		outline: var(--focus-outline);
-		outline-offset: var(--focus-outline-offset);
-	}
-}
-
-a {
-	@include on-event {
-		color: red;
+  @include on-event {
+    outline: none;
+		color: rgb(204, 0, 255);
 		text-decoration: underline;
 	}
 }
