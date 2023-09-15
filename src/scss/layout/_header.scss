@@ -47,17 +47,18 @@ header {
 	margin: 0 auto;
 	background: url("src/assets/svg/radial-gradiant-blur.svg");
 	background-size: cover;
-  container-type: inline-size;
 
 	&__head {
 	}
 
 	&__grid {
 		display: grid;
+    container-type: inline-size;
+     container-name: gridy;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto auto;
 		gap: 2.5rem;
-    @container (width < 700px) {
+    @container gridy (width < 700px) {
         grid-template-columns:  1fr;
 
         }
