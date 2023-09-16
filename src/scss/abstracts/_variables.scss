@@ -46,7 +46,7 @@ $bg-primary: #11091a;
 @mixin text-rgd-primary-100() {
 	$rgd-100 : #c592fc;
 	$rgd-200 : #F1E7FF;
-background: radial-gradient(70.71% 70.71% at 50% 50%, $rgd-100 0%, $rgd-200 54%);
+background: radial-gradient(circle at 100% 100%, $rgd-100, $rgd-200 54%);
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -54,7 +54,7 @@ background-clip: text;
 @mixin text-rgd-primary-200() {
 	$rgd-100 : #8C21F8;
 	$rgd-200 : #A958FA;
-background: radial-gradient(70.71% 70.71% at 50% 50%, $rgd-100 38%, $rgd-200 66%);
+background:	radial-gradient(circle at 100% 100%, $rgd-100  38%, #A958FA 66%);
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -83,6 +83,14 @@ background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
+@mixin text-rgd-secondary-400() {
+	$rgd-100 : #DBBDFE;
+	$rgd-200 : #F6F2FF;
+background: 	radial-gradient(circle at 100% 70%, $rgd-100 12%, $rgd-200 81%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
 
 
 $text-primary-100: #ffffff;
@@ -92,9 +100,14 @@ $text-secondary-100: #ab88fb;
 
 $bg-secondary : #8c20f8;
 $bg-selection : rgba($bg-secondary, 0.2);
+$bg-cards: #050308;
 // $selection-text :
 
-
+/** color palate */
+$main-color: #10cab7;
+$sub-color: #2c4755;
+$sub-two-color: #f6f6f6;
+$nav-background-color: #eaeaea;
 
 
 // $base-color-primary: hsl(270, 94%, 55%);
@@ -124,17 +137,11 @@ $header-height: clamp(4rem, calc(4.5rem + ((1vw - 0.25rem) * -1)), 4.5rem);
 $main-gap: clamp(2rem, calc(4rem + ((1vw - 0.25rem) * -4)), 4rem);
 $min-card-width: 270px;
 $vertical-space: 5rem;
-$main-border-radius: clamp(5px, 2vw, 7px);
 /*? Style  */
 
-/** color palate */
-$main-color: #10cab7;
-$sub-color: #2c4755;
-$sub-two-color: #f6f6f6;
-$nav-background-color: #eaeaea;
+
 /** others */
 $main-transition-delay: 0.3s;
-$main-border-radius: 5px;
 
 // fonts
 
@@ -176,6 +183,7 @@ $text-9xl: rfs(8rem);
 //? Letter spacing
 $tracking-heading : 0.75rem;
 $tracking-paragraph : 1.75rem;
+$rounded: 1rem;
 
 
 
