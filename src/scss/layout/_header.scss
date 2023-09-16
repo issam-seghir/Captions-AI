@@ -49,7 +49,7 @@ header {
 
 .record {
 	position: relative;
-	margin: 0 auto 7rem;
+	margin: $margin-section auto;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -206,13 +206,11 @@ header {
 			@container (width < 700px) {
 				grid-column: 1;
 				grid-row: 1;
-				order: 99;
 			}
 
 			position: relative;
 			overflow: hidden;
-      grid-area: span 2 / span 1 / span 2 / span 1;
-			grid-area: 1/2/span 2/span 2;
+			grid-area: 1/2 / span 2 / span 2;
 			min-height: 481px;
 			background: url("src/assets/images/perssone.png"), lightgray -74.889px 0 / 112.865% 100% no-repeat;
 			background-size: cover;
@@ -220,9 +218,61 @@ header {
 
 		&:nth-child(3) &-title {
 			position: absolute;
-			top: 81%;
+			top: 81.3%;
 			left: 30px;
 			color: white;
+		}
+	}
+}
+
+//?  ------------------------ AI section ------------------------
+
+.ai {
+	position: relative;
+
+	// add gradiant-blur effect in the background
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: -4%;
+		left: -18%;
+		width: 103rem;
+		max-width: none;
+	}
+
+	// ai Title
+	&__head {
+		width: fit-content;
+		margin: 0 auto $margin-section;
+		text-align: center;
+	}
+
+	&__main {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		align-items: center;
+		height: 100vh;
+	}
+
+	&__mockup {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+		align-items: center;
+		height: 100vh;
+
+		&-img {
+			height: 79vh;
+		}
+	}
+
+	&__desc {
+		max-width: 25rem;
+
+		&-title {
+			margin-bottom: 2rem;
 		}
 	}
 }
