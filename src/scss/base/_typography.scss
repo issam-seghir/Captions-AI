@@ -17,7 +17,7 @@ h6 {
 
 h1 {
 	font-size: $text-8xl;
-	line-height: 6.25rem;
+	line-height: rfs(6.25rem);
 	letter-spacing: 0.125rem;
 
 	&.rgd-primary-100 {

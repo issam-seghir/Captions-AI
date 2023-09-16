@@ -174,12 +174,12 @@ header {
 				max-width: 943%;
 
 				@container (width < 400px) {
-						top: -12.3rem;
+					top: -12.3rem;
 				}
-				@container (width < 350px) {
-						top: -11.2rem;
-				width: 66.875rem;
 
+				@container (width < 350px) {
+					top: -11.2rem;
+					width: 66.875rem;
 				}
 			}
 
@@ -203,23 +203,24 @@ header {
 				background-image: linear-gradient(rgb(0 0 0 / 0%), #000);
 			}
 
-				@container (width < 700px) {
-						grid-column: 1;
-			grid-row: 1;
-      order: 99;
-				}
+			@container (width < 700px) {
+				grid-column: 1;
+				grid-row: 1;
+				order: 99;
+			}
+
 			position: relative;
-      min-height: 481px;
 			overflow: hidden;
-			grid-column: 2;
-			grid-row: 1/ 3;
+      grid-area: span 2 / span 1 / span 2 / span 1;
+			grid-area: 1/2/span 2/span 2;
+			min-height: 481px;
 			background: url("src/assets/images/perssone.png"), lightgray -74.889px 0 / 112.865% 100% no-repeat;
 			background-size: cover;
 		}
 
 		&:nth-child(3) &-title {
 			position: absolute;
-			top: 80%;
+			top: 81%;
 			left: 30px;
 			color: white;
 		}
