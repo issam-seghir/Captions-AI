@@ -21,14 +21,19 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 		},
 	},
 
-/* 	resolve: {
+	server: {
+		// open the server with google chrome browser
+		open:
+		process.env.BROWSER="E:\\Apps\\scoop\\apps\\googlechrome-dev\\current\\chrome.exe",
+	},
+	/* 	resolve: {
 		alias: {
 			// "~gerillass": path.resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
 		},
 	}, */
 	plugins: [
 		dynamicImport(/* options */),
-/* 		Icons({
+		/* 		Icons({
 			scale: 1.2, // Scale of icons against 1em
 			defaultStyle: "", // Style apply to icons
 			defaultClass: "", // Class names apply to icons

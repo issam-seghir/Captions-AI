@@ -1,0 +1,25 @@
+// Keep HTML elements default sized, this is necessary for Webflow implementation
+html.lenis {
+  height: auto !important;
+}
+
+// Make sure scroll-behavior is set to auto or not set at all
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+// Use the data-lenis-prevent attribute on nested scroll elements.
+// In addition, we advise you to add overscroll-behavior: contain on this element
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain !important;
+}
+
+// Hide overflow when lenis is stopped
+.lenis.lenis-stopped {
+  overflow: hidden !important;
+}
+
+// avoid "smooth scroll will stop working over iframe since they don't forward wheel events"
+.lenis.lenis-scrolling iframe {
+  pointer-events: none !important;
+}
