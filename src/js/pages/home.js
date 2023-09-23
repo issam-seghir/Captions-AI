@@ -16,6 +16,7 @@ const lenis = new Lenis({
 	infinite: false, // infinite scroll
 });
 
+
 function raf(time) {
 	lenis.raf(time);
 	requestAnimationFrame(raf);
