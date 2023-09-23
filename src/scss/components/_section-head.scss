@@ -1,0 +1,8 @@
+@use "../abstracts" as *;
+
+
+.section-head{
+    	width: fit-content !important;
+		margin: 0 auto $margin-section !important;
+		text-align: center;
+}

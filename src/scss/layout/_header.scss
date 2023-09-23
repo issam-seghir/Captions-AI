@@ -61,13 +61,6 @@ header {
 		max-width: none;
 	}
 
-	// Record Title
-	&__head {
-		width: fit-content;
-		margin: 0 auto 6rem;
-		text-align: center;
-	}
-
 	// Record Container
 	&__grid {
 		display: grid;
@@ -240,19 +233,12 @@ header {
 		max-width: none;
 	}
 
-	// ai Title
-	&__head {
-		width: fit-content;
-		margin: 0 auto $margin-section;
-		text-align: center;
-	}
-
 	&__main {
 		display: flex;
-		justify-content: center;
 		flex-wrap: wrap;
 		gap: 0.375rem;
 		align-items: center;
+		justify-content: center;
 		height: 100vh;
 	}
 
@@ -277,10 +263,94 @@ header {
 	}
 }
 
+//?  ------------------------ Edit section ------------------------
+
+.edit {
+	position: relative;
+
+	// add gradiant-blur effect in the background
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: -4%;
+		left: -18%;
+		width: 103rem;
+		max-width: none;
+	}
+}
+
+//?  ------------------------ Sound section ------------------------
+
+.sound {
+	position: relative;
+
+	// add gradiant-blur effect in the background
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: -4%;
+		left: -18%;
+		width: 103rem;
+		max-width: none;
+	}
+
+	&__head {
+		display: flex;
+		align-items: flex-end;
+		margin: 0 auto $margin-section;
+		text-align: left;
+
+		&-title {
+			flex-basis: 50%;
+		}
+
+		@container (width < 800px) {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	// sound Container
+	&__flex {
+		display: flex;
+		gap: 1.5rem;
+
+		@container (width < 700px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	// sound Cards
+	&__card {
+		display: flex;
+		flex: 50%;
+		flex-direction: column;
+		align-items: center;
+		background-color: $bg-cards;
+		border-radius: $rounded;
+
+		&-title {
+			z-index: 3;
+		}
+
+		&-img {
+			position: relative;
+			z-index: 3;
+		}
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			padding-bottom: 2rem;
+			padding-inline: 2rem;
+		}
+	}
+}
+
 @keyframes rotateAnimation {
 	0% {
-		color:#c04e61;
 		transform: rotateZ(0deg);
+		color: #c04e61;
 	}
 
 	100% {
