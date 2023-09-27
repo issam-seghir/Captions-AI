@@ -71,13 +71,13 @@ let tl = gsap.timeline({
 // Create a separate ScrollTrigger for the second timeline
 let scrollTrigger2 = {
 	trigger: ".edit__grid",
-	// pin: true, // pin the trigger element while active
+	pin: true, // pin the trigger element while active
 	// pinSpacing: "margin",
 	// pinType: "transform",
 	// pinReparent: true,
 	// anticipatePin: .2, // may help avoid jump
-	start: "top bottom", // when the top of the trigger hits the top of the viewport
-	end: "500px", // end after scrolling 2000px beyond the start
+	start: "top top", // when the top of the trigger hits the top of the viewport
+	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 	markers: true,
 };
@@ -124,6 +124,19 @@ animation.addEventListener("DOMLoaded", function () {
 });
 
 //?  edit section animation
-// const editSection = document.querySelectorAll(".edit__animate")
-// editSection.forEach((section) => { tl2.to(section, { translateY: section.dataset.y });})
-tl2.to(".edit__animate", { translateY: (index, element) => element.dataset.y });
+
+gsap.to(".edit__animate", {
+	translateY: (index, element) => element.dataset.y,
+	scrollTrigger: {
+		trigger: ".edit__grid",
+		start: "top bottom", // when the top of the trigger hits the top of the viewport
+		end: "500px", // end after scrolling 2000px beyond the start
+		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		markers: true,
+	},
+});
+
+
+tl2.to(".edit__animate", {
+	opacity: 0,
+	});
