@@ -11,7 +11,6 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
 // see : https://airbnb.io/lottie/#/web
 const lottieContainer = document.querySelector(".ai__mockup-lottie");
 
-console.log();
 let playhead = { frame: 0 },
 	animation = lottie.loadAnimation({
 		container: lottieContainer, // the dom element that will contain the animation
@@ -51,23 +50,45 @@ function connectToScrollTrigger() {
 }
 connectToScrollTrigger();
 
-// ai section animation
-animation.addEventListener("DOMLoaded", function () {
-	let tl = gsap.timeline({
-		scrollTrigger: {
-			trigger: ".ai__main",
-			pin: true, // pin the trigger element while active
-			// pinSpacing: "margin",
-			pinType: "transform",
-			// pinReparent: true,
-			// anticipatePin: .2, // may help avoid jump
-			start: "top top", // when the top of the trigger hits the top of the viewport
-			end: "+=4000", // end after scrolling 2000px beyond the start
-			scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-			markers: true,
-		},
-	});
+// Create a separate ScrollTrigger for the first timeline
+let scrollTrigger1 = {
+	trigger: ".ai__main",
+	pin: true, // pin the trigger element while active
+	// pinSpacing: "margin",
+	// pinType: "transform",
+	// pinReparent: true,
+	// anticipatePin: .2, // may help avoid jump
+	start: "top top", // when the top of the trigger hits the top of the viewport
+	end: "+=4000", // end after scrolling 2000px beyond the start
+	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	// markers: true,
+};
 
+let tl = gsap.timeline({
+	scrollTrigger: scrollTrigger1,
+});
+
+// Create a separate ScrollTrigger for the second timeline
+let scrollTrigger2 = {
+	trigger: ".edit__grid",
+	// pin: true, // pin the trigger element while active
+	// pinSpacing: "margin",
+	// pinType: "transform",
+	// pinReparent: true,
+	// anticipatePin: .2, // may help avoid jump
+	start: "top bottom", // when the top of the trigger hits the top of the viewport
+	end: "500px", // end after scrolling 2000px beyond the start
+	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	markers: true,
+};
+
+let tl2 = gsap.timeline({
+	scrollTrigger: scrollTrigger2,
+});
+
+//? ai section animation
+
+animation.addEventListener("DOMLoaded", function () {
 	// use lotties animation with scrolltrigger
 	tl.to(playhead, {
 		frame: animation.totalFrames - 1,
@@ -101,3 +122,8 @@ animation.addEventListener("DOMLoaded", function () {
 		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 		.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
 });
+
+//?  edit section animation
+// const editSection = document.querySelectorAll(".edit__animate")
+// editSection.forEach((section) => { tl2.to(section, { translateY: section.dataset.y });})
+tl2.to(".edit__animate", { translateY: (index, element) => element.dataset.y });
