@@ -1,6 +1,8 @@
 @use "../abstracts" as *;
 
 header {
+	@include adaptive(2px);
+
 	display: flex;
 	justify-content: space-between;
 	padding: 2rem 0.75rem; // top/bottom  right/left
@@ -48,7 +50,10 @@ header {
 //?  ------------------------ record section ------------------------
 
 .record {
+	@include adaptive(2px);
+
 	position: relative;
+	container-type: inline-size;
 	margin: $margin-section auto;
 
 	// add gradiant-blur effect in the background
@@ -228,6 +233,7 @@ header {
 
 .ai {
 	position: relative;
+	margin: $margin-section auto;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -246,7 +252,6 @@ header {
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
-		border: 1px solid #ccc;
 	}
 
 	&__mockup {
@@ -272,8 +277,8 @@ header {
 	&__progress {
 		display: flex;
 		gap: 2rem;
-		height: 40px;
 		align-items: flex-end;
+		height: 40px;
 
 		&-bar {
 			will-change: height;
@@ -288,6 +293,7 @@ header {
 
 .edit {
 	position: relative;
+	margin: $margin-section auto;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -298,12 +304,59 @@ header {
 		width: 103rem;
 		max-width: none;
 	}
+
+	&__grid {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+		column-gap: 2rem;
+		height: 100svh;
+		padding-inline: rfs(2rem);
+	}
+
+	&__section1 {
+		grid-area: 1 / 6 / 2 / 7;
+	}
+
+	&__section2 {
+		grid-area: 2 / 6 / 4 / 7;
+		align-self: end;
+		height: 75%;
+	}
+
+	&__section3 {
+		grid-area: 1 / 5 / 4 / 6;
+		align-self: center;
+	}
+
+	&__section4 {
+		grid-area: 2 / 3 / 4 / 4;
+		align-self: center;
+		height: 75%;
+	}
+
+	&__main {
+		grid-area: 1 / 4 / 6 / 5;
+	}
+
+	&__section5 {
+		grid-area: 4/2/4/3;
+	}
+
+	&__section6 {
+		grid-area: 1 / 2 / 4 / 3;
+		align-self: center;
+	}
 }
 
 //?  ------------------------ Sound section ------------------------
 
 .sound {
+	@include adaptive(2px);
+
 	position: relative;
+	container-type: inline-size;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {

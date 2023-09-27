@@ -99,6 +99,5 @@ animation.addEventListener("DOMLoaded", function () {
 		.to(".ai__desc-title", { duration: 0.01, text: "AI Lipdub" })
 		.to(".ai__desc-paragraph", { duration: 0.01, text: "Change your lip movement in post production to edit  the content of your speech" }, "<")
 		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".ai__desc", { autoAlpha: 1 }, { autoAlpha: 0 })
-		.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" }, "<");
+		.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
 });

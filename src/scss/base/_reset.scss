@@ -12,15 +12,11 @@ html:focus-within {
 	scroll-behavior: smooth;
 }
 
-html,
-body {
-	overflow: auto;
-	min-height: 100vh;
-	min-height: 100svh;
-}
 
 /* Set core body defaults */
 body {
+	min-height: 100vh;
+	min-height: 100svh;
 	text-rendering: optimizeSpeed;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
