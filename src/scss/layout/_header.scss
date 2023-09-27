@@ -205,8 +205,14 @@ header {
 			overflow: hidden;
 			grid-area: 1/2 / span 2 / span 2;
 			min-height: 481px;
-			background: url("src/assets/images/perssone.png"), lightgray -74.889px 0 / 112.865% 100% no-repeat;
-			background-size: cover;
+		}
+
+		&:nth-child(3) video {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: left;
 		}
 
 		&:nth-child(3) &-title {
@@ -227,7 +233,7 @@ header {
 	&__gradiant-blur-img {
 		position: absolute;
 		z-index: -1;
-		top: -4%;
+		top: -30%;
 		left: -18%;
 		width: 103rem;
 		max-width: none;
@@ -240,18 +246,19 @@ header {
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
+		border: 1px solid #ccc;
 	}
 
 	&__mockup {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.375rem;
-		align-items: center;
-		height: 100vh;
+		height: 79vh;
+	}
 
-		&-img {
-			height: 79vh;
-		}
+	&__text {
+		display: flex;
+		flex-direction: column;
+		gap: 3.375rem;
+		justify-content: flex-end;
+		height: 70vh;
 	}
 
 	&__desc {
@@ -259,6 +266,20 @@ header {
 
 		&-title {
 			margin-bottom: 2rem;
+		}
+	}
+
+	&__progress {
+		display: flex;
+		gap: 2rem;
+		height: 40px;
+		align-items: flex-end;
+
+		&-bar {
+			will-change: height;
+			width: 1px;
+			height: 25%;
+			background-color: #8c20f8;
 		}
 	}
 }
@@ -352,9 +373,9 @@ header {
 .ai-video {
 	width: 90cqw;
 	height: 90cqh;
-	border-radius: $rounded;
 	margin: 0 auto;
-	border: 1px solid #c04e61
+	border: 1px solid #c04e61;
+	border-radius: $rounded;
 }
 
 @keyframes rotateAnimation {

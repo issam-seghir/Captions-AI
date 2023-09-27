@@ -41,6 +41,8 @@
 $text-primary-200: hsl(270, 94%, 65%);
 
 
+
+
 $bg-primary: #11091a;
 
 @mixin text-rgd-primary-100() {
@@ -184,8 +186,26 @@ $text-9xl: rfs(8rem);
 $tracking-heading : 0.75rem;
 $tracking-paragraph : 1.75rem;
 $rounded: 1rem;
+$box-shadow: rfs(0 0 2rem rgba(0, 0, 0, .25));
 
+ // It's also possible to pass multiple values
+  // padding: rfs(3rem 4rem);
+
+  // or even
+  // box-shadow: rfs(0 3px 4rem red);
+
+  // or even comma seperated values
+  // box-shadow: rfs(0 3px 4rem red, 3px 0 4rem blue);
+
+  // To combine it with !important, use
+  // box-shadow: rfs(0 3px 4rem red) !important;
+
+  // Custom properties (css variables):
+  // --border-radius: rfs(4rem);
+
+  
 $margin-section: 6rem;
+
 
 // @font-face {
 // 	font-family: "Neue Haas Grotesk Display Pro";

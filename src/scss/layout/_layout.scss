@@ -9,6 +9,45 @@ body {
 
 }
 
+::selection {
+    // background-color: var(--main-color);
+    // color: var(--sub-color);
+}
+
+// :root {
+
+// 			scroll-behavior: smooth;
+// 			scrollbar-color: red #216cad23;
+// 			scrollbar-width: 5px;
+// 			scrollbar-gutter: auto;
+// 			overflow-y: scroll;
+// 		}
+
+// 			::selection {
+// 				background-color: red;
+// 			}
+
+// 			/* For Chrome and other browsers */
+
+// 		::-webkit-scrollbar-track {
+// 			background-color: #216cad23;
+// 			border-radius: 10px;
+// 			box-shadow: inset 0 0 2px rgb(2 5 46 / 30%);
+// 		}
+
+
+// 			::-webkit-scrollbar {
+// 				width: 12px;
+// 				background-color: #0000009d;
+// 			}
+
+// 			::-webkit-scrollbar-thumb {
+// 				background-color: red;
+// 				border-radius: 10px;
+// 				box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+// 			}
+
+
 // stylelint-disable selector-max-type, selector-no-qualifying-type
 main,
 main.tdbc-container {
