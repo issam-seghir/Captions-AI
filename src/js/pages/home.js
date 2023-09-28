@@ -141,13 +141,11 @@ tl2.to(".edit__animate", {
 	duration: 2,
 	opacity: 0,
 })
-	.to(".edit__main", {
-		margin: "-3rem",
-	})
-	.fromTo(".edit__gradiant-blur-img", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.to(".edit__main", { margin: "-3rem" }, "<")
+	.fromTo(".edit__gradiant-blur-img-bottom", { autoAlpha: 0 }, { autoAlpha: 1 },"<")
 	.to(".edit__main-img", {
 		duration: 5,
 		opacity: 0,
-		stagger: 3,
-	});
+		stagger: 10,
+	})
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<");

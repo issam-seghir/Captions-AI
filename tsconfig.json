@@ -13,6 +13,9 @@
             ],
             "~assets/*": [
                 "src/assets/*"
+            ],
+            "~services/*": [
+                "src/js/services/*"
             ]
         }
     }

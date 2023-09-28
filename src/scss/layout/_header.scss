@@ -292,7 +292,20 @@ header {
 
 .edit {
 	position: relative;
+	overflow: hidden;
 	margin: $margin-section auto;
+
+	&__grid {
+		position: relative;
+		display: grid;
+		grid-auto-flow: row;
+		grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+		column-gap: 2rem;
+		height: 100svh;
+		padding-block: rfs(5rem);
+		padding-inline: rfs(2rem);
+	}
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img-center {
@@ -313,17 +326,6 @@ header {
 		background-color: #100919;
 		filter: blur(60px);
 		border-radius: 50%;
-	}
-
-	&__grid {
-		display: grid;
-		grid-auto-flow: row;
-		grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
-		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-		column-gap: 2rem;
-		height: 100svh;
-		padding-block: rfs(5rem);
-		padding-inline: rfs(2rem);
 	}
 
 	&__section1 {
@@ -359,6 +361,21 @@ header {
 			top: 2%;
 			left: 5%;
 			width: 90.5%;
+
+			&--right {
+				position: absolute;
+				z-index: 6;
+				top: 7%;
+				left: 60%;
+				width: 80%;
+			}
+			&--left {
+				position: absolute;
+				z-index: 6;
+				top: 7%;
+				left: -40%;
+				width: 80%;
+			}
 		}
 
 		&-img:nth-child(2) {
