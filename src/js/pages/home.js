@@ -130,7 +130,7 @@ gsap.to(".edit__animate", {
 	scrollTrigger: {
 		trigger: ".edit__grid",
 		start: "top bottom", // when the top of the trigger hits the top of the viewport
-		end: "500px", // end after scrolling 2000px beyond the start
+		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 		markers: true,
 	},
@@ -138,5 +138,16 @@ gsap.to(".edit__animate", {
 
 
 tl2.to(".edit__animate", {
+	duration: 2,
 	opacity: 0,
+})
+	.to(".edit__main", {
+		margin: "-3rem",
+	})
+	.fromTo(".edit__gradiant-blur-img", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.to(".edit__main-img", {
+		duration: 5,
+		opacity: 0,
+		stagger: 3,
 	});

@@ -295,13 +295,24 @@ header {
 	margin: $margin-section auto;
 
 	// add gradiant-blur effect in the background
-	&__gradiant-blur-img {
+	&__gradiant-blur-img-center {
 		position: absolute;
 		z-index: -1;
-		top: -4%;
-		left: -18%;
-		width: 103rem;
+		top: -54%;
+		width: 97rem;
 		max-width: none;
+	}
+
+	&__gradiant-blur-img-bottom {
+		position: absolute;
+		z-index: 99;
+		top: 58%;
+		width: 120.375rem;
+		max-width: 999%;
+		height: 34rem;
+		background-color: #100919;
+		filter: blur(60px);
+		border-radius: 50%;
 	}
 
 	&__grid {
@@ -311,6 +322,7 @@ header {
 		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 		column-gap: 2rem;
 		height: 100svh;
+		padding-block: rfs(5rem);
 		padding-inline: rfs(2rem);
 	}
 
@@ -337,6 +349,56 @@ header {
 
 	&__main {
 		grid-area: 1 / 4 / 6 / 5;
+
+		&-assets {
+			position: relative;
+		}
+
+		&-img {
+			position: absolute;
+			top: 2%;
+			left: 5%;
+			width: 90.5%;
+		}
+
+		&-img:nth-child(2) {
+			z-index: 5;
+		}
+
+		&-img:nth-child(3) {
+			z-index: 4;
+		}
+
+		&-img:nth-child(4) {
+			z-index: 3;
+		}
+
+		&-img:nth-child(5) {
+			z-index: 2;
+		}
+
+		&-img:nth-child(6) {
+			z-index: 1;
+		}
+
+		&-desc {
+			position: absolute;
+			z-index: 99;
+			bottom: 9%;
+			left: -6rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: max-content;
+
+			&-icon {
+				margin-bottom: 2rem;
+			}
+
+			&-text {
+				margin-top: 1rem;
+			}
+		}
 	}
 
 	&__section5 {
