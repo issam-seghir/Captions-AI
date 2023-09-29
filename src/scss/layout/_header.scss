@@ -368,8 +368,10 @@ header {
 				top: 7%;
 				left: 60%;
 				width: 80%;
+				visibility: hidden;
 			}
 			&--left {
+				visibility: hidden;
 				position: absolute;
 				z-index: 6;
 				top: 7%;
@@ -412,7 +414,7 @@ header {
 				margin-bottom: 2rem;
 			}
 
-			&-text {
+			&-paragraph {
 				margin-top: 1rem;
 			}
 		}
@@ -425,6 +427,20 @@ header {
 	&__section6 {
 		grid-area: 1 / 2 / 4 / 3;
 		align-self: center;
+	}
+
+	&__progress {
+		display: flex;
+		gap: 2rem;
+		align-items: flex-end;
+		height: 40px;
+
+		&-bar {
+			will-change: height;
+			width: 1px;
+			height: 25%;
+			background-color: #8c20f8;
+		}
 	}
 }
 
