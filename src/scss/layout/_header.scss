@@ -370,13 +370,14 @@ header {
 				width: 80%;
 				visibility: hidden;
 			}
+
 			&--left {
-				visibility: hidden;
 				position: absolute;
 				z-index: 6;
 				top: 7%;
 				left: -40%;
 				width: 80%;
+				visibility: hidden;
 			}
 		}
 
@@ -400,18 +401,28 @@ header {
 			z-index: 1;
 		}
 
-		&-desc {
+		&-text {
 			position: absolute;
 			z-index: 99;
 			bottom: 9%;
-			left: -6rem;
+			left: -50%;
+			display: flex;
+			flex-direction: column;
+			gap: 2.5rem;
+			align-items: center;
+			width: 210%;
+		}
+
+		&-desc {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			width: max-content;
 
 			&-icon {
 				margin-bottom: 2rem;
+			}
+			&-title{
+				text-transform:capitalize;
 			}
 
 			&-paragraph {

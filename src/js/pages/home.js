@@ -136,10 +136,6 @@ gsap.to(".edit__animate", {
 	},
 });
 
-
-
-
-
 tl2.to(".edit__animate", {
 	duration: 2,
 	opacity: 0,
@@ -152,51 +148,53 @@ tl2.to(".edit__animate", {
 	})
 	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
 	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(1)", { height: "100%" }, { duration: 4, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+	.fromTo(".edit__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
+	.fromTo(".edit__progress-bar:nth-child(2)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
 	.to(".edit__main-img:nth-child(3)", {
 		duration: 5,
 		opacity: 0,
 	})
-	.fromTo(".edit__desc", { autoAlpha: 1 }, { duration: 0.1, autoAlpha: 0 })
-	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Enhance Speech" })
-	.to(".edit__desc-paragraph", { duration: 0.01, text: "Automatically remove background noise and enhance speech" }, "<")
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(2)", { height: "100%" }, { duration: 4, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(3)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+	.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 44.svg" } })
+	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Grading" })
+	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Copy the color gradeof any video or generate your own with a prompt" }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+	.fromTo(".edit__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
+	.fromTo(".edit__progress-bar:nth-child(3)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
 	.to(".edit__main-img:nth-child(4)", {
 		duration: 5,
 		opacity: 0,
 	})
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
 	.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(3)", { height: "100%" }, { duration: 4, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(4)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Schema" })
+	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Generate the perfect color schema with just a text prompt" })
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+	.fromTo(".edit__progress-bar:nth-child(3)", { height: "100%" }, { duration: 6, height: "35%" })
+	.fromTo(".edit__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
 	.to(".edit__main-img:nth-child(5)", {
 		duration: 5,
 		opacity: 0,
 	})
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(4)", { height: "100%" }, { duration: 4, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(5)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Background Removal" })
+	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Automatically remove the background of your video " })
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+	.fromTo(".edit__progress-bar:nth-child(4)", { height: "100%" }, { duration: 6, height: "35%" })
+	.fromTo(".edit__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
 	.to(".edit__main-img:nth-child(6)", {
 		duration: 5,
 		opacity: 0,
 	})
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
 	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
 	.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
-
-
-	// .fromTo(".ai__progress-bar:nth-child(1)", { height: "100%" }, { duration: 4, height: "35%" })
-	// 	.fromTo(".ai__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-	// 	.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 0.1, autoAlpha: 0 })
-	// 	.to(".ai__desc-title", { duration: 0.01, text: "AI Enhance Speech" })
-	// 	.to(".ai__desc-paragraph", { duration: 0.01, text: "Automatically remove background noise and enhance speech" }, "<")
-	// 	.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+	.to(".edit__main-desc-title", { duration: 0.01, text: "AI rotoscoping" })
+	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
+	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+	.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
