@@ -639,21 +639,74 @@ header {
 	}
 }
 
-// static Cards
+// statistic Cards
 
-.static {
+.statistic {
 	@include adaptive(2px);
 
 	display: flex;
 	gap: 6rem;
 	justify-content: center;
-	margin: $margin-section auto;
+	margin: $margin-section * 2 auto;
 
-	&__desc{
+	&__desc {
 		text-align: center;
 	}
+
 	&__desc-title {
 		margin-bottom: 1.5rem;
+	}
+}
+
+// product Cards
+
+.product {
+	@include adaptive(2px);
+
+	position: relative;
+	margin: $margin-section * 2 auto;
+
+	&__cards {
+		display: flex;
+		gap: 2rem;
+	}
+	&__card {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		flex: 1;
+		img{
+			border-radius: $rounded;
+
+		}
+		&-title{
+			margin-bottom: 1.5rem;
+		}
+		&-button{
+			border-radius: 50%;
+			background-color: rgb(64, 48, 84);
+			// overflow: hidden;
+			padding: .5rem;
+
+			img{
+				width: 40px;
+			}
+		}
+	}
+
+	&__action{
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: -1%;
+		left: -5%;
+		width: 90rem;
+		max-width: none;
 	}
 }
 
