@@ -567,8 +567,8 @@ header {
 
 .distribute {
 	position: relative;
-	container-type: inline-size;
-	width: 95vw;
+	// container-type: inline-size;
+	width: 97vw;
 	height: 95vh;
 	margin: $margin-section * 4 auto;
 
@@ -582,34 +582,51 @@ header {
 		border-radius: $rounded;
 	}
 
-	&__head {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-
-		&-tag {
-			margin: 0 30px !important;
-		}
-	}
-
 	&__flex {
 		position: relative;
 		z-index: 2;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		justify-content: space-between;
 		height: 100%;
-		padding: 2rem;
+		margin-left: 17rem;
+		padding-block: 5rem;
 
 		@container (width < 700px) {
 			flex-wrap: wrap;
 		}
 	}
 
-	&-desc {
+	&__item {
 		display: flex;
 		flex-direction: column;
-		gap: 1.25rem;
+		gap: 2rem;
+		max-width: 45rem;
+
+		&-tag {
+			margin: 0 30px !important;
+		}
+
+		&-desc {
+			display: flex;
+			gap: 4rem;
+			align-items: center;
+		}
+	}
+
+	&__progress {
+		display: flex;
+		gap: 2rem;
+		align-items: flex-end;
+		height: 40px;
+		margin-top: 2rem;
+
+		&-bar {
+			will-change: height;
+			width: 1px;
+			height: 25%;
+			background-color: #8c20f8;
+		}
 	}
 }
 
