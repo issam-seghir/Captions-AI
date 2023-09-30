@@ -670,31 +670,45 @@ header {
 		display: flex;
 		gap: 2rem;
 	}
+
 	&__card {
+		cursor: pointer;
+		overflow: hidden;
 		display: flex;
+		flex: 1;
 		flex-direction: column;
 		gap: 2rem;
-		flex: 1;
-		img{
-			border-radius: $rounded;
+		border-radius: $rounded;
 
+
+		img {
+			border-radius: $rounded;
+			transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+			transition-duration: 600ms;
+			transition-property: transform;
 		}
-		&-title{
+
+		&-title {
 			margin-bottom: 1.5rem;
 		}
-		&-button{
-			border-radius: 50%;
-			background-color: rgb(64, 48, 84);
-			// overflow: hidden;
-			padding: .5rem;
 
-			img{
+		&-button {
+			// overflow: hidden;
+			padding: 0.5rem;
+			background-color: rgb(64 48 84);
+			border-radius: 50%;
+
+			img {
 				width: 40px;
 			}
 		}
+
+		&:hover img {
+			transform: scale(1.05);
+		}
 	}
 
-	&__action{
+	&__action {
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
