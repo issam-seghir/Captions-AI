@@ -639,6 +639,24 @@ header {
 	}
 }
 
+// static Cards
+
+.static {
+	@include adaptive(2px);
+
+	display: flex;
+	gap: 6rem;
+	justify-content: center;
+	margin: $margin-section auto;
+
+	&__desc{
+		text-align: center;
+	}
+	&__desc-title {
+		margin-bottom: 1.5rem;
+	}
+}
+
 //?  ------------------------ ai video section ------------------------
 
 .ai-video {
