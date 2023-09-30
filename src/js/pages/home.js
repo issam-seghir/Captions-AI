@@ -125,7 +125,7 @@ animation.addEventListener("DOMLoaded", function () {
 
 //?  edit section animation
 
-const fadeUp = gsap.to(".edit__animate", {
+gsap.to(".edit__animate", {
 	translateY: (index, element) => element.dataset.y,
 	scrollTrigger: {
 		trigger: ".edit__grid",
@@ -203,3 +203,28 @@ tl2.to(".edit__animate", {
 	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
 	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 	.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
+
+
+
+	// sound section animation
+
+
+// Create a separate ScrollTrigger for the second timeline
+let scrollTrigger3 = {
+	trigger: ".sound__flex",
+	// pin: true, // pin the trigger element while active
+	// pinSpacing: "margin",
+	// pinType: "transform",
+	// pinReparent: true,
+	// anticipatePin: .2, // may help avoid jump
+	start: "top bottom", // when the top of the trigger hits the top of the viewport
+	end: "bottom top", // end after scrolling 2000px beyond the start
+	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	markers: true,
+};
+
+let tl3 = gsap.timeline({
+	scrollTrigger: scrollTrigger3,
+});
+
+tl3.to(".sound__card-img", {  translateX: -50 });
