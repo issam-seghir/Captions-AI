@@ -125,7 +125,7 @@ animation.addEventListener("DOMLoaded", function () {
 
 //?  edit section animation
 
-gsap.to(".edit__animate", {
+const fadeUp = gsap.to(".edit__animate", {
 	translateY: (index, element) => element.dataset.y,
 	scrollTrigger: {
 		trigger: ".edit__grid",
@@ -138,6 +138,8 @@ gsap.to(".edit__animate", {
 
 tl2.to(".edit__animate", {
 	duration: 2,
+	yPercent: -100,
+
 	opacity: 0,
 })
 	.to(".edit__main", { margin: "-3rem" }, "<")
