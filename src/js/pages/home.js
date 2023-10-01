@@ -50,6 +50,28 @@ function connectToScrollTrigger() {
 }
 connectToScrollTrigger();
 
+//? Hero section animation
+//! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
+// Create a separate ScrollTrigger for the second timeline
+let scrollTrigger5 = {
+	trigger: ".hero",
+	pin: true, // pin the trigger element while active
+	// pinSpacing: "margin",
+	// pinType: "transform",
+	// pinReparent: true,
+	// anticipatePin: .2, // may help avoid jump
+	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
+	end: "2000px", // end after scrolling 2000px beyond the start
+	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	markers: true,
+};
+
+let tl5 = gsap.timeline({
+	scrollTrigger: scrollTrigger5,
+});
+
+
+
 // Create a separate ScrollTrigger for the first timeline
 let scrollTrigger1 = {
 	trigger: ".ai__main",
@@ -233,7 +255,7 @@ let scrollTrigger4 = {
 	trigger: ".distribute",
 	pin: true, // pin the trigger element while active
 	// pinSpacing: "margin",
-	pinType: "transform",
+	// pinType: "transform",
 	// pinReparent: true,
 	// anticipatePin: .2, // may help avoid jump
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
@@ -266,3 +288,10 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 	.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
 	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
+
+
+
+
+
+// // tl3.to(".sound__card-img", {  translateX: -50 })
+// tl5.to(".hero__mockup-container", { scale:3 });

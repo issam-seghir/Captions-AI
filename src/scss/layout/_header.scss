@@ -24,19 +24,42 @@ header {
 
 .hero {
 	@include adaptive(2px);
-
 	position: relative;
+	margin-bottom: 35rem;
 	height: 100svh;
 	background-image: url("src/assets/svg/asset 9.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	border: 1px solid rgb(255 255 255 / 5.5%);
 
-	&__mockup {
+	&__mockup-container {
 		position: absolute;
-		bottom: -25%;
+		bottom: -37%;
 		left: 50%;
 		translate: -50%;
+		overflow: hidden;
+		border-radius: 4rem;
+
+		video {
+			position: absolute;
+			top: 70px;
+			left: 50%;
+			translate: -50%;
+			width: 95%;
+		}
+	}
+
+	&__mockup {
+		position: relative;
+		z-index: 2;
+	}
+
+	&__mockup-img {
+		position: absolute;
+		bottom: 4%;
+		left: 50%;
+		translate: -50%;
+		width: 89%;
 	}
 
 	// add gradiant-blur effect in the background
@@ -151,6 +174,7 @@ header {
 
 	&__frame {
 		position: absolute;
+		z-index: -1;
 		top: 37%;
 	}
 
