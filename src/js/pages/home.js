@@ -50,6 +50,10 @@ function connectToScrollTrigger() {
 }
 connectToScrollTrigger();
 
+// gsap.defaults({
+// 	smoothOrigin: true,
+// });
+
 //? Hero section animation
 //! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
 // Create a separate ScrollTrigger for the second timeline
@@ -70,7 +74,13 @@ let tl5 = gsap.timeline({
 	scrollTrigger: scrollTrigger5,
 });
 
-
+tl5.to(".hero__mockup-container", { yPercent: "-50", transformOrigin: "center 21%" })
+	.to(".hero__mockup-container", { scale: 7 })
+	.fromTo(".hero__mockup-container", {height: "70%", width: "35%" }, {  scale: 5, smoothOrigin: true, transformOrigin: "center 24%" })
+	.to(".hero__mockup-container video", { top: "5%", borderRadius: 7 }, "<")
+	.to(".hero__mockup", { duration: 0.01, display: "none" }, "<")
+	.to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<")
+	.to(".hero__frame-text", { rotate: 90 });
 
 // Create a separate ScrollTrigger for the first timeline
 let scrollTrigger1 = {
@@ -288,10 +298,3 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 	.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
 	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
-
-
-
-
-
-// // tl3.to(".sound__card-img", {  translateX: -50 })
-// tl5.to(".hero__mockup-container", { scale:3 });

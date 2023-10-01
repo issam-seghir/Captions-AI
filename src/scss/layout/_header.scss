@@ -24,9 +24,10 @@ header {
 
 .hero {
 	@include adaptive(2px);
+
 	position: relative;
-	margin-bottom: 35rem;
 	height: 100svh;
+	margin-bottom: 35rem;
 	background-image: url("src/assets/svg/asset 9.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -38,6 +39,8 @@ header {
 		left: 50%;
 		translate: -50%;
 		overflow: hidden;
+
+		//TODO: add size to container to show video in the animation
 		border-radius: 4rem;
 
 		video {
