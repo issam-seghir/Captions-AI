@@ -79,7 +79,7 @@ let scrollTrigger2 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	markers: true,
+	// markers: true,
 };
 
 let tl2 = gsap.timeline({
@@ -132,7 +132,7 @@ gsap.to(".edit__animate", {
 		start: "top bottom", // when the top of the trigger hits the top of the viewport
 		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-		markers: true,
+		// markers: true,
 	},
 });
 
@@ -217,7 +217,7 @@ let scrollTrigger3 = {
 	start: "top bottom", // when the top of the trigger hits the top of the viewport
 	end: "bottom top", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	markers: true,
+	// markers: true,
 };
 
 let tl3 = gsap.timeline({
@@ -239,7 +239,7 @@ let scrollTrigger4 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	markers: true,
+	// markers: true,
 };
 
 let tl4 = gsap.timeline({
