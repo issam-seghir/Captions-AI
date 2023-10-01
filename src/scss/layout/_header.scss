@@ -2,7 +2,7 @@
 
 header {
 	@include adaptive(2px);
-
+margin-bottom: 7rem;
 	display: flex;
 	justify-content: space-between;
 	padding: 2rem 0.75rem; // top/bottom  right/left
@@ -673,38 +673,67 @@ header {
 
 	&__card {
 		cursor: pointer;
-		overflow: hidden;
 		display: flex;
 		flex: 1;
 		flex-direction: column;
 		gap: 2rem;
-		border-radius: $rounded;
 
-
-		img {
+		&-img {
+			overflow: hidden;
 			border-radius: $rounded;
-			transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-			transition-duration: 600ms;
-			transition-property: transform;
+
+			img {
+				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+				transition-duration: 600ms;
+				transition-property: transform;
+			}
 		}
 
 		&-title {
 			margin-bottom: 1.5rem;
+			transition-timing-function: linear;
+			transition-duration: 200ms;
+			transition-property: all;
 		}
 
 		&-button {
-			// overflow: hidden;
+			position: relative;
+			overflow: hidden;
 			padding: 0.5rem;
 			background-color: rgb(64 48 84);
 			border-radius: 50%;
 
 			img {
 				width: 40px;
+				transition-timing-function: linear;
+				transition-duration: 200ms;
+				transition-property: all;
+			}
+
+			img:nth-child(2) {
+				position: absolute;
+				top: 100%;
+				right: 100%;
+				padding: 0.5rem;
 			}
 		}
 
-		&:hover img {
-			transform: scale(1.05);
+		&:hover & {
+			&-img img {
+				transform: scale(1.05);
+			}
+
+			&-button img {
+				transform: translate(100%, -100%);
+			}
+
+			&-button {
+				background-color: rgb(147 58 255);
+			}
+
+			&-title {
+				color: #f7f1ff75;
+			}
 		}
 	}
 
@@ -720,7 +749,118 @@ header {
 		top: -1%;
 		left: -5%;
 		width: 90rem;
-		max-width: none;
+	}
+}
+
+// footer section
+
+.footer {
+	@include adaptive(2px);
+
+	display: flex;
+	justify-content: space-between;
+	height: 30vh;
+	margin-bottom: 3rem;
+
+	&__left {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__right {
+		display: flex;
+		gap: 7rem;
+		justify-content: space-between;
+	}
+
+	&__company {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #ab88fb;
+		letter-spacing: 0.1em;
+
+		&-top ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down a {
+			font-size: 0.875rem;
+			font-weight: 400;
+			line-height: 1.4;
+			color: #d6d0e0;
+			transition: all 0.2s;
+		}
+
+		&-top li {
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+			color: #fff;
+			letter-spacing: 0.1em;
+		}
+	}
+
+	&__products {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #ab88fb;
+		letter-spacing: 0.1em;
+
+		&-top ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-top li {
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+			color: #fff;
+			letter-spacing: 0.1em;
+		}
+
+		&-down ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down a {
+			font-size: 0.875rem;
+			font-weight: 400;
+			line-height: 1.4;
+			color: #d6d0e0;
+			transition: all 0.2s;
+		}
+	}
+
+	&__contact {
+		display: flex;
+		gap: 1rem;
+
+		a{
+
+			fill: white;
+		}
+
 	}
 }
 
