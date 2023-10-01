@@ -2,9 +2,10 @@
 
 header {
 	@include adaptive(2px);
-margin-bottom: 7rem;
+
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 7rem;
 	padding: 2rem 0.75rem; // top/bottom  right/left
 
 	// .logo a {
@@ -22,10 +23,37 @@ margin-bottom: 7rem;
 }
 
 .hero {
+	@include adaptive(2px);
+
 	position: relative;
-	max-width: 75%;
-	height: 70vh;
-	margin: 0 auto;
+	height: 100svh;
+	border: 1px solid white;
+
+	&__voice-wave-img {
+		position: absolute;
+		z-index: 3;
+		top: 0.625rem;
+		right: 50%;
+		translate: 50%;
+		width: 33.333333%;
+		height: fit-content;
+	}
+	&__head {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+		padding-top: 8rem;
+		padding-bottom: 3.875rem;
+		text-align: center;
+
+
+		p {
+			max-width: 46rem;
+			font-size: 2rem;
+			line-height: 3rem;
+		}
+	}
 
 	&__camera-frames,
 	&__lines {
@@ -856,11 +884,9 @@ margin-bottom: 7rem;
 		display: flex;
 		gap: 1rem;
 
-		a{
-
+		a {
 			fill: white;
 		}
-
 	}
 }
 
