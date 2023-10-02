@@ -7,11 +7,14 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
 /* Set core root defaults */
 html:focus-within {
 	scroll-behavior: smooth;
 }
-
 
 /* Set core body defaults */
 body {
@@ -46,90 +49,6 @@ a:not([class]) {
 	text-decoration-skip-ink: auto;
 }
 
-a,
-abbr,
-acronym,
-address,
-applet,
-article,
-aside,
-audio,
-b,
-big,
-blockquote,
-body,
-canvas,
-caption,
-center,
-cite,
-code,
-dd,
-del,
-details,
-dfn,
-div,
-dl,
-dt,
-em,
-embed,
-fieldset,
-figcaption,
-figure,
-footer,
-form,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header,
-hgroup,
-html,
-i,
-iframe,
-img,
-ins,
-kbd,
-label,
-legend,
-li,
-mark,
-menu,
-nav,
-object,
-ol,
-output,
-p,
-pre,
-q,
-ruby,
-s,
-samp,
-section,
-small,
-span,
-strike,
-strong,
-sub,
-summary,
-sup,
-table,
-tbody,
-td,
-tfoot,
-th,
-thead,
-time,
-tr,
-tt,
-u,
-ul,
-var,
-video {
-	font: inherit;
-	vertical-align: baseline;
-}
 
 /* Make images easier to work with */
 img,
@@ -145,12 +64,22 @@ img[width][height] {
 	/* Preserve aspect ratio */
 }
 
-/* Inherit fonts for inputs and buttons */
+/*
+Forms
+=====
+*/
+
+/**
+1. Change the font styles in all browsers.
+*/
+
 input,
 button,
 textarea,
 select {
 	font: inherit;
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 1 */
 }
 
 input,
@@ -216,13 +145,18 @@ textarea {
 	resize: vertical;
 	vertical-align: top;
 }
+
+/* 1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016) */
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	text-indent: 0;
+	border-color: inherit; /* 2 */
+	text-indent: 0; /* 1 */
 }
 hr {
-	background: #000;
+	background: #0000007a;
 	border: 0;
 	box-sizing: content-box;
 	height: 1px;
@@ -234,7 +168,11 @@ hr {
 	width: 100%;
 }
 pre {
-	font-family: monospace, monospace;
+	font-family: "Fira Code", "Consolas", "Monaco", monospace;
+	line-height: 1.5; /* Adjust the line height for readability */
+	padding: 10px; /* Optional: Add padding for spacing */
+	border: 1px solid #ccc; /* Optional: Add a border */
+	overflow-x: auto; /* Enable horizontal scrolling for code blocks */
 	font-size: 100%;
 }
 a {
@@ -249,7 +187,7 @@ code,
 kbd,
 pre,
 samp {
-	font-family: monospace, monospace;
+	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, "Fira Code", "Consolas", "Monaco", monospace;
 }
 small,
 sub,
@@ -263,10 +201,18 @@ sup {
 	vertical-align: baseline;
 }
 sub {
-	bottom: -5px;
+	bottom: -0.25em;
 }
+
 sup {
-	top: -5px;
+	top: -0.5em;
+}
+
+/* Add the correct font weight in Edge and Safari. */
+
+b,
+strong {
+	font-weight: bolder;
 }
 
 [type="button"],
@@ -297,9 +243,60 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
 	display: block;
 }
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
 progress {
 	vertical-align: baseline;
 }
+
+
+
+/*
+Interactive
+===========
+*/
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+	display: list-item;
+}
+
+
+
+/* firefox */
+
+/**
+Remove the inner border and padding in Firefox.
+*/
+
+::-moz-focus-inner {
+	border-style: none;
+	padding: 0;
+}
+
+/**
+Restore the focus styles unset by the previous rule.
+*/
+
+:-moz-focusring {
+	outline: 1px dotted ButtonText;
+}
+
+/**
+Remove the additional ':invalid' styles in Firefox.
+See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737
+*/
+
+:-moz-ui-invalid {
+	box-shadow: none;
+}
+
+
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	html:focus-within {

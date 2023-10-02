@@ -149,8 +149,11 @@ $main-transition-delay: 0.3s;
 
 // Font Families
 
-$fallback-fonts: "Open Sans", "Segoe UI", "Lucida Sans", "Verdana", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$font-family-primary: "Neue Haas Grotesk Display Pro", $fallback-fonts;
+//? i add the fallback fonts in html in reset file instead .
+// $fallback-fonts: "Open Sans", "Segoe UI", "Lucida Sans", "Verdana", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+// $font-family-primary: "Neue Haas Grotesk Display Pro", $fallback-fonts;
+$font-family-primary: "Neue Haas Grotesk Display Pro";
+
 
 //? Font Weights
 $font-thin: 100;
@@ -203,7 +206,7 @@ $box-shadow: rfs(0 0 2rem rgba(0, 0, 0, .25));
   // Custom properties (css variables):
   // --border-radius: rfs(4rem);
 
-  
+
 $margin-section: 6rem;
 
 

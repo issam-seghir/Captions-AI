@@ -27,18 +27,30 @@ header {
 
 	position: relative;
 	height: 100svh;
-	margin-bottom: 35rem;
+	margin-bottom: 14rem;
 	background-image: url("src/assets/svg/asset 9.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	border: 1px solid rgb(255 255 255 / 5.5%);
 
+	// add gradiant-blur effect in the background
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: 30%;
+		left: -10%;
+
+		max-width: fit-content;
+	}
+
 	&__mockup-container {
 		position: absolute;
-		bottom: -37%;
+		bottom: -40%;
 		left: 50%;
 		translate: -50%;
 		overflow: hidden;
+		width: 35%;
+		height: 78%;
 
 		//TODO: add size to container to show video in the animation
 		border-radius: 4rem;
@@ -59,18 +71,11 @@ header {
 
 	&__mockup-img {
 		position: absolute;
-		bottom: 4%;
+		top: 0%;
 		left: 50%;
 		translate: -50%;
-		width: 89%;
-	}
-
-	// add gradiant-blur effect in the background
-	&__gradiant-blur-img {
-		position: absolute;
-		z-index: -1;
-		top: 34%;
-		left: 1%;
+		width: 90%;
+		border-radius: 4rem;
 	}
 
 	&__progress {
@@ -181,13 +186,13 @@ header {
 		top: 37%;
 	}
 
-	&__frame-text {
-		position: absolute;
-		left: 7%;
-		transform: rotate(270deg);
-		font-weight: 700;
-		color: $text-secondary-100;
-	}
+	// &__frame-text {
+	// 	position: absolute;
+	// 	left: 7%;
+	// 	transform: rotate(270deg);
+	// 	font-weight: 700;
+	// 	color: $text-secondary-100;
+	// }
 
 	&__head {
 		display: flex;

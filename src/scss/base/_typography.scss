@@ -141,22 +141,7 @@ strong {
 	font-weight: $tdbc-strong-font-weight;
 }
 
-pre,
-code {
-	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-	font-weight: bold;
-}
 
-code {
-	display: inline-flex;
-	padding: 0.15em;
-	font-size: 0.75em;
-	line-height: 1.1;
-	color: tdbc-color("gray");
-	background-color: tdbc-color("light");
-	border: 1px solid scale-color(tdbc-color("gray"), $lightness: 50%);
-	border-radius: 2px;
-}
 
 pre {
 	display: inline-block;
