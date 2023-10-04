@@ -14,8 +14,11 @@
             "~assets/*": [
                 "src/assets/*"
             ],
-            "~services/*": [
-                "src/js/services/*"
+            "~utilities-override/*": [
+                "src/scss/utilities-override/*"
+            ],
+            "~utilities/*": [
+                "src/scss/utilities/*"
             ]
         }
     }

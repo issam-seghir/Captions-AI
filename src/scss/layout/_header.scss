@@ -1,24 +1,67 @@
 @use "../abstracts" as *;
 
+// visual breakpoints
+@include breakpointer {
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	padding: 5px 10px;
+	color: white;
+}
+
+@include loadify(init);
+
 header {
 	@include adaptive(2px);
 
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 7rem;
-	padding: 2rem 0.75rem; // top/bottom  right/left
+	margin-bottom: 9rem;
+	padding-top: 2rem;
+	padding-inline: 0.75rem;
 
-	// .logo a {
-	// 	height: 100%;
-	// 	background-image: url("~assets/images/logo.png");
-	// 	background-position: center center;
-	// 	background-size: cover;
-	// }
+	.logo {
+		@include sizer(154px, 32px);
+
+		background: svg-load("../assets/logo/logo.svg", fill=$text-primary-100) center no-repeat;
+		transition: background $main-transition-delay, fill $main-transition-delay;
+	}
+
+	.logo:hover {
+		background: svg-load("../assets/logo/logo.svg", fill=$bg-links) center no-repeat;
+	}
 
 	nav {
 		display: flex;
 		gap: rfs(2.5rem);
 		align-items: center;
+	}
+
+	// mobile/tablet devices
+	@media (width <= $mq-xmd) {
+		.burger {
+			@include burger(25px, 3px, 3px, $text-primary-100, 1rem);
+
+			@include burger-middle {
+				height: 0;
+			}
+
+			&-container {
+				cursor: pointer;
+				display: block;
+				padding: 1rem;
+			}
+
+			&-container:hover .burger {
+				@include burger-to-cross($bg-links);
+			}
+		}
+
+		nav {
+			display: none;
+		}
 	}
 }
 
@@ -39,7 +82,6 @@ header {
 		z-index: -1;
 		top: 30%;
 		left: -10%;
-
 		max-width: fit-content;
 	}
 
@@ -235,7 +277,7 @@ header {
 
 	position: relative;
 	container-type: inline-size;
-	margin: $margin-section auto;
+	margin-block: $margin-section;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -415,7 +457,7 @@ header {
 .ai {
 	position: relative;
 	overflow: hidden;
-	margin: $margin-section auto;
+	margin-block: $margin-section;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -475,7 +517,7 @@ header {
 .edit {
 	position: relative;
 	overflow: hidden;
-	margin: $margin-section auto;
+	margin-block: $margin-section;
 
 	&__grid {
 		position: relative;
@@ -645,7 +687,7 @@ header {
 
 	position: relative;
 	container-type: inline-size;
-	margin: $margin-section auto;
+	margin-block: $margin-section;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -752,7 +794,7 @@ header {
 	// container-type: inline-size;
 	width: 97vw;
 	height: 95vh;
-	margin: $margin-section * 4 auto;
+	margin-block: $margin-section * 4;
 
 	&__video {
 		position: absolute;
@@ -794,7 +836,7 @@ header {
 		max-width: 45rem;
 
 		&-tag {
-			margin: 0 30px !important;
+			margin: 0 30px;
 		}
 
 		&-desc {
@@ -828,7 +870,7 @@ header {
 	display: flex;
 	gap: 6rem;
 	justify-content: center;
-	margin: $margin-section * 2 auto;
+	margin-block: $margin-section * 2;
 
 	&__desc {
 		text-align: center;
@@ -841,11 +883,11 @@ header {
 
 // product Cards
 
-.product {
+.products {
 	@include adaptive(2px);
 
 	position: relative;
-	margin: $margin-section * 2 auto;
+	margin-block: $margin-section * 2;
 
 	&__cards {
 		display: flex;

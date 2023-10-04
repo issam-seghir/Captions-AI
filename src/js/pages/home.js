@@ -29,6 +29,8 @@ const lenis = new Lenis({
 	lerp: 0.07, // animation smoothness (between 0 & 1)
 	wheelMultiplier: 0.7, // scrolling speed for mouse wheel
 	touchMultiplier: 0.7, // scrolling speed for touch events
+	smoothWheel: true, // smooth scrolling for while events
+	smoothTouch: true, // smooth scrolling for touche events
 	orientation: "vertical", // orientation of the scrolling (vertical/horizontal)
 	gestureOrientation: "vertical", // orientation of the gestures (vertical/horizontal)
 	normalizeWheel: false, // Normalize wheel inputs
@@ -299,3 +301,17 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 	.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
 	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
+
+
+
+	//  burger menu
+
+	// Plain JavaScript
+// document.addEventListener("DOMContentLoaded", function () {
+//     const burgerMenuButton = document.querySelector(".burger-menu");
+//     const menu = document.querySelector(".menu");
+
+//     burgerMenuButton.addEventListener("click", function () {
+//         menu.classList.toggle("active"); // Toggle the "active" class
+//     });
+// });

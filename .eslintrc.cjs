@@ -83,8 +83,6 @@ module.exports = {
 		// ],
 		"unicorn/no-array-reduce": "off",
 		"unicorn/no-array-for-each": "off",
-
-		//! deactive rules only for this project
 		"unicorn/filename-case": ["off"],
 	},
 };

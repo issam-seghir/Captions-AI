@@ -7,10 +7,6 @@
 	box-sizing: border-box;
 }
 
-html {
-	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
 /* Set core root defaults */
 html:focus-within {
 	scroll-behavior: smooth;
@@ -48,7 +44,6 @@ a:not([class]) {
 	-webkit-text-decoration-skip: ink;
 	text-decoration-skip-ink: auto;
 }
-
 
 /* Make images easier to work with */
 img,
@@ -187,7 +182,7 @@ code,
 kbd,
 pre,
 samp {
-	font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, "Fira Code", "Consolas", "Monaco", monospace;
+	font-family: ui-monospace, SFMono-Regular, "Liberation Mono", Menlo, "Fira Code", "Consolas", "Monaco", monospace;
 }
 small,
 sub,
@@ -214,6 +209,10 @@ b,
 strong {
 	font-weight: bolder;
 }
+
+
+/* fix hidden attribute  */
+[hidden] { display: none; }
 
 [type="button"],
 [type="reset"],
@@ -251,8 +250,6 @@ progress {
 	vertical-align: baseline;
 }
 
-
-
 /*
 Interactive
 ===========
@@ -265,8 +262,6 @@ Add the correct display in Chrome and Safari.
 summary {
 	display: list-item;
 }
-
-
 
 /* firefox */
 
@@ -295,7 +290,6 @@ See: https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d4
 :-moz-ui-invalid {
 	box-shadow: none;
 }
-
 
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {

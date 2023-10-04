@@ -1,6 +1,7 @@
 <svg width="1282" height="672" viewBox="0 0 1282 672" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-    <style>
+    <style >
+
         .frame-text {
             transform: rotate(270deg);
             font-weight: 700;
@@ -8,6 +9,8 @@
             fill: #ab88fb;
             font-family: "Neue Haas Grotesk Display Pro", "Open Sans", "Segoe UI", "Lucida Sans", "Verdana", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
             text-anchor: middle;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .star {

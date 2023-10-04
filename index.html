@@ -2,23 +2,24 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Vite App</title>
+		<title>Caption AI</title>
+		<!-- container query polyfill -->
+		<script defer src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
 		<script defer type="module" src="src/js/main.js"></script>
 	</head>
 	<body>
-		<!-- <div class="container"> -->
 		<header>
-			<a href="" role="link"><img class="logo" src="./src/assets/logo/logo.svg" alt="logo" /></a>
+			<a class="logo" href="./" role="link" >
+			</a>
 			<nav>
-				<a href="" role="link">products</a>
+				<a href="#products" role="link" onclick="lenis.scrollTo('#products')">products</a>
 				<a href="" role="link">resources</a>
 				<a href="" role="link">careers</a>
 				<a href="" role="link">about us</a>
 			</nav>
+			<div class="burger-container" hidden><button class="burger" ></button></div>
 		</header>
-
 		<div class="hero">
 			<img class="hero__gradiant-blur-img" src="src/assets/svg/asset 18.svg" alt="" srcset="" />
 
@@ -38,7 +39,6 @@
 			</div>
 
 			<img class="hero__frame" src="src/assets/svg/asset 16.svg" alt="" srcset="" />
-			<!-- <p class="hero__frame-text">scroll down</p> -->
 
 			<div class="hero__progress">
 				<div class="hero__progress-bar"></div>
@@ -48,8 +48,6 @@
 				<div class="hero__progress-bar"></div>
 			</div>
 		</div>
-
-
 
 		<div class="record">
 			<img class="record__gradiant-blur-img" src="src/assets/svg/radial-gradiant-blur.svg" alt="" srcset="" />
@@ -262,47 +260,47 @@
 
 		<!-- products section  -->
 
-		<div class="product">
-			<img class="product__gradiant-blur-img" src="src/assets/svg/radial-gradiant-blur.svg" alt="" srcset="" />
-			<div class="product__head section-head">
-				<h1 class="product__head-title rgd-primary-100">Discover our</h1>
-				<h1 class="product__head-title rgd-primary-200">desktop apps</h1>
+		<div class="products" id="products">
+			<img class="products__gradiant-blur-img" src="src/assets/svg/radial-gradiant-blur.svg" alt="" srcset="" />
+			<div class="products__head section-head">
+				<h1 class="products__head-title rgd-primary-100">Discover our</h1>
+				<h1 class="products__head-title rgd-primary-200">desktop apps</h1>
 			</div>
-			<div class="product__cards">
-				<div class="product__card">
-					<div class="product__card-img"><img src="src/assets/images/asset 1.webp" alt="" srcset="" /></div>
-					<div class="product__action">
-						<div class="product__card-desc">
-							<h4 class="product__card-title">Compress videos</h4>
-							<p class="product__card-paragraph">Optimize your videos for free with ease and enjoy hassle-free other.</p>
+			<div class="products__cards">
+				<div class="products__card">
+					<div class="products__card-img"><img src="src/assets/images/asset 1.webp" alt="" srcset="" /></div>
+					<div class="products__action">
+						<div class="products__card-desc">
+							<h4 class="products__card-title">Compress videos</h4>
+							<p class="products__card-paragraph">Optimize your videos for free with ease and enjoy hassle-free other.</p>
 						</div>
-						<button class="product__card-button">
+						<button class="products__card-button">
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 						</button>
 					</div>
 				</div>
-				<div class="product__card">
-					<div class="product__card-img"><img src="src/assets/images/asset 3.webp" alt="" srcset="" /></div>
-					<div class="product__action">
-						<div class="product__card-desc">
-							<h4 class="product__card-title">AI Eye Contact</h4>
-							<p class="product__card-desc">With Captions,you can correct for eye contact directly in post-production</p>
+				<div class="products__card">
+					<div class="products__card-img"><img src="src/assets/images/asset 3.webp" alt="" srcset="" /></div>
+					<div class="products__action">
+						<div class="products__card-desc">
+							<h4 class="products__card-title">AI Eye Contact</h4>
+							<p class="products__card-desc">With Captions,you can correct for eye contact directly in post-production</p>
 						</div>
-						<button class="product__card-button">
+						<button class="products__card-button">
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 						</button>
 					</div>
 				</div>
-				<div class="product__card">
-					<div class="product__card-img"><img src="src/assets/images/asset 4.webp" alt="" srcset="" /></div>
-					<div class="product__action">
-						<div class="product__card-desc">
-							<h4 class="product__card-title">Add Subtitles</h4>
-							<p class="product__card-desc">Turn your audio into subtitles and captions at the click of a button.</p>
+				<div class="products__card">
+					<div class="products__card-img"><img src="src/assets/images/asset 4.webp" alt="" srcset="" /></div>
+					<div class="products__action">
+						<div class="products__card-desc">
+							<h4 class="products__card-title">Add Subtitles</h4>
+							<p class="products__card-desc">Turn your audio into subtitles and captions at the click of a button.</p>
 						</div>
-						<button class="product__card-button">
+						<button class="products__card-button">
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 							<img src="src/assets/svg/asset 2.svg" alt="" srcset="" />
 						</button>

@@ -103,17 +103,16 @@ p {
 a {
 	@include on-event {
 		color: rgb(204 0 255);
-		text-decoration: underline;
 		outline: none;
 	}
 
 	font-size: $text-base;
 	font-weight: $font-bold;
 	line-height: 1.5rem; /* 160% */
-	color: #d6d0e0;
+	color: inherit;
 	text-transform: capitalize;
 	letter-spacing: 0.1rem;
-	transition: color var(--duration) var(--timing);
+	transition: color  $main-transition-delay cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
