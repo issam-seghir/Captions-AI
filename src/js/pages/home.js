@@ -320,10 +320,10 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 	// Plain JavaScript
 // document.addEventListener("DOMContentLoaded", function () {
     const burgerMenuButton = document.querySelector(".burger-menu");
-    const navMobile = document.querySelector("nav.mobile");
+    const navMobile = document.querySelector("nav");
 
     burgerMenuButton.addEventListener("click", function () {
-        burgerMenuButton.classList.toggle("active"); // Toggle the "active" class
-        navMobile.classList.toggle("active"); // Toggle the "active" class
+        burgerMenuButton.classList.toggle("active");
+        navMobile.classList.toggle("active");
     });
 // });
