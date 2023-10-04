@@ -43,6 +43,17 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
+
+// soothe scrolling in anchor links
+document.querySelectorAll("nav a").forEach((link) => {
+ 	link.addEventListener("click", (e) =>{
+		e.preventDefault();
+		lenis.scrollTo(`${e.target.getAttribute("href")}`, {
+			lerp: 0.09,
+		});
+	})
+});
+
 // ------------ Using Gsap ScrollTrigger with lenis  ---------------------
 function connectToScrollTrigger() {
 	lenis.on("scroll", ScrollTrigger.update);
@@ -308,10 +319,11 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 
 	// Plain JavaScript
 // document.addEventListener("DOMContentLoaded", function () {
-//     const burgerMenuButton = document.querySelector(".burger-menu");
-//     const menu = document.querySelector(".menu");
+    const burgerMenuButton = document.querySelector(".burger-menu");
+    const navMobile = document.querySelector("nav.mobile");
 
-//     burgerMenuButton.addEventListener("click", function () {
-//         menu.classList.toggle("active"); // Toggle the "active" class
-//     });
+    burgerMenuButton.addEventListener("click", function () {
+        burgerMenuButton.classList.toggle("active"); // Toggle the "active" class
+        navMobile.classList.toggle("active"); // Toggle the "active" class
+    });
 // });

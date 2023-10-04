@@ -28,6 +28,12 @@ ol[role="list"] {
 	list-style: none;
 }
 
+/* add curser pointure for buttons roles */
+*[role="button"]{
+	cursor: pointer;
+	padding: 1rem;
+}
+
 blockquote,
 q {
 	quotes: none;

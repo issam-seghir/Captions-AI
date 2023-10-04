@@ -13,6 +13,7 @@
 @include loadify(init);
 
 header {
+	@include loadify(1s);
 	@include adaptive(2px);
 
 	display: flex;
@@ -21,6 +22,7 @@ header {
 	margin-bottom: 9rem;
 	padding-top: 2rem;
 	padding-inline: 0.75rem;
+	background-color: $bg-primary;
 
 	.logo {
 		@include sizer(154px, 32px);
@@ -33,7 +35,7 @@ header {
 		background: svg-load("../assets/logo/logo.svg", fill=$bg-links) center no-repeat;
 	}
 
-	nav {
+	nav.main {
 		display: flex;
 		gap: rfs(2.5rem);
 		align-items: center;
@@ -41,31 +43,74 @@ header {
 
 	// mobile/tablet devices
 	@media (width <= $mq-xmd) {
-		.burger {
-			@include burger(25px, 3px, 3px, $text-primary-100, 1rem);
+		// make the header display even when showing mobile navigation menu
+		position: sticky;
+		z-index: 100;
+		top: 0;
 
-			@include burger-middle {
-				height: 0;
+		// change header container size
+		max-width: 92%;
+
+		// hide main navigation
+		nav.main {
+			display: none;
+		}
+
+		// burger menu icon
+		.burger-menu {
+			display: block;
+
+			&__bars {
+				// create menu bars (three bars)
+				@include burger(20px, 2px, 3px, $text-primary-100, 1rem);
+
+				// exclude middle bar (two bars only)
+				@include burger-middle {
+					height: 0;
+				}
 			}
 
-			&-container {
-				cursor: pointer;
-				display: block;
-				padding: 1rem;
-			}
-
-			&-container:hover .burger {
+			&.active .burger-menu__bars {
 				@include burger-to-cross($bg-links);
 			}
 		}
 
-		nav {
-			display: none;
+		& ~ {
+			/* Style for the mobile navigation container */
+			nav.mobile {
+				position: fixed;
+				z-index: 99;
+				right: 0%;
+				bottom: 0%;
+				left: 0%;
+				padding: 1rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				height: 100vh;
+				visibility: hidden;
+				opacity: 0;
+				background-color: #11091a;
+				transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+			}
+
+			nav.mobile a {
+				padding-block: 1.5rem;
+				padding-inline-end: 1.5rem;
+				border-bottom:1px solid rgb($text-secondary-100 , 0.3);
+				font-size: 18px;
+			}
+
+			nav.mobile.active {
+				visibility: visible;
+				opacity: 1;
+			}
 		}
 	}
 }
 
 .hero {
+	@include loadify(1s);
 	@include adaptive(2px);
 
 	position: relative;
@@ -895,6 +940,18 @@ header {
 	}
 
 	&__card {
+		@include only(1) {
+			@include loadify(0.4s);
+		}
+
+		@include only(2) {
+			@include loadify(0.6s);
+		}
+
+		@include only(3) {
+			@include loadify(0.8s);
+		}
+
 		cursor: pointer;
 		display: flex;
 		flex: 1;
