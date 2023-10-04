@@ -35,6 +35,7 @@ const lenis = new Lenis({
 	gestureOrientation: "vertical", // orientation of the gestures (vertical/horizontal)
 	normalizeWheel: false, // Normalize wheel inputs
 	infinite: false, // infinite scroll
+	autoResize: true,
 });
 
 function raf(time) {
@@ -44,14 +45,51 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 
-// soothe scrolling in anchor links
+// Function to stop all GSAP animations
+function pauseAnimations() {
+	// tl5.pause();
+	// tl4.pause();
+	// tl3.pause();
+	// tl2.pause();
+	// tl.pause();
+	// Remove ScrollTrigger instances
+	ScrollTrigger.getAll().forEach((trigger) => {
+		trigger.disable();
+	});
+}
+
+// Function to resume all GSAP animations
+function resumeAnimations() {
+	// Resume all GSAP animations
+	// tl5.resume();
+	// tl4.resume();
+	// tl3.resume();
+	// tl2.resume();
+	// tl.resume();
+	// Resume ScrollTrigger instances
+	ScrollTrigger.getAll().forEach((trigger) => {
+		trigger.enable();
+	});
+}
+
+
+// smoothe scrolling in anchor links
 document.querySelectorAll("nav a").forEach((link) => {
- 	link.addEventListener("click", (e) =>{
+	link.addEventListener("click", (e) => {
 		e.preventDefault();
+		// Pause the GSAP animations
+		pauseAnimations();
 		lenis.scrollTo(`${e.target.getAttribute("href")}`, {
 			lerp: 0.09,
+			onComplete: () => {
+				// Resume GSAP animations after scrolling is complete
+				resumeAnimations();
+			},
 		});
-	})
+
+		// const targetSection = document.querySelector(`${e.target.getAttribute("href")}`);
+		// targetSection.scrollIntoView({ behavior: "smooth" });
+	});
 });
 
 // ------------ Using Gsap ScrollTrigger with lenis  ---------------------
@@ -63,9 +101,48 @@ function connectToScrollTrigger() {
 }
 connectToScrollTrigger();
 
-// gsap.defaults({
-// 	smoothOrigin: true,
-// });
+/* header animation : hide when scroll down , shown when scroll down */
+let xmd = gsap.matchMedia();
+
+xmd.add("(min-width: 991px)", () => {
+	let didScroll = false;
+	let lastScrollTop = 0;
+	const delta = 150;
+	const header = document.querySelector("header");
+	const navbarHeight = header.offsetHeight;
+
+	window.addEventListener("scroll", () => {
+		didScroll = true;
+	});
+
+	setInterval(() => {
+		if (didScroll) {
+			hasScrolled();
+			didScroll = false;
+		}
+	}, 250);
+
+	function hasScrolled() {
+		const st = window.scrollY;
+
+		// Make sure they scroll more than delta
+		if (Math.abs(lastScrollTop - st) <= delta) return;
+
+		// If they scrolled down and are past the navbar, add class .nav-up.
+		// This is necessary so you never see what is "behind" the navbar.
+		if (st > lastScrollTop && st > navbarHeight) {
+			// Scroll Down
+			header.style.transform = "translate(0, -100%)";
+		} else {
+			// Scroll Up
+			if (st + window.innerHeight < document.documentElement.scrollHeight) {
+				header.style.transform = "translate(0, 0)";
+			}
+		}
+
+		lastScrollTop = st;
+	}
+});
 
 //? Hero section animation
 //! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
@@ -80,7 +157,7 @@ let scrollTrigger5 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "2000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	markers: true,
+	// markers: true,
 };
 
 let tl5 = gsap.timeline({
@@ -313,17 +390,17 @@ tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { durat
 	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
 	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
 
+//  burger menu
 
-
-	//  burger menu
-
-	// Plain JavaScript
+// Plain JavaScript
 // document.addEventListener("DOMContentLoaded", function () {
-    const burgerMenuButton = document.querySelector(".burger-menu");
-    const navMobile = document.querySelector("nav");
+const burgerMenuButton = document.querySelector(".burger-menu");
 
-    burgerMenuButton.addEventListener("click", function () {
-        burgerMenuButton.classList.toggle("active");
-        navMobile.classList.toggle("active");
-    });
-// });
+burgerMenuButton.addEventListener("click", function () {
+	burgerMenuButton.classList.toggle("active");
+});
+
+// if (burgerMenuButton.classList.contains("active")) {
+// }
+
+/* sticky header animation */
