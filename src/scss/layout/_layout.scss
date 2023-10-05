@@ -52,7 +52,9 @@ body {
 main,
 main.tdbc-container {
   padding-top: 5vh;
+  padding-top: 5svh;
   padding-bottom: 5vh;
+  padding-bottom: 5svh;
 }
 
 footer {
@@ -94,7 +96,9 @@ ul.tdbc-column-container {
 
   &--padded {
     padding-top: 10vh;
+    padding-top: 10svh;
     padding-bottom: 10vh;
+    padding-bottom: 10svh;
   }
 
   // stylelint-disable-next-line selector-max-universal
@@ -106,9 +110,12 @@ ul.tdbc-column-container {
 .tdbc-hero {
   display: grid;
   min-height: 40vh;
+  min-height: 40svh;
   place-content: center;
   padding-top: 10vh;
+  padding-top: 10svh;
   padding-bottom: 10vh;
+  padding-bottom: 10svh;
   text-align: center;
 }
 

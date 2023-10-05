@@ -45,46 +45,20 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 
-// Function to stop all GSAP animations
-function pauseAnimations() {
-	// tl5.pause();
-	// tl4.pause();
-	// tl3.pause();
-	// tl2.pause();
-	// tl.pause();
-	// Remove ScrollTrigger instances
-	ScrollTrigger.getAll().forEach((trigger) => {
-		trigger.disable();
-	});
-}
 
-// Function to resume all GSAP animations
-function resumeAnimations() {
-	// Resume all GSAP animations
-	// tl5.resume();
-	// tl4.resume();
-	// tl3.resume();
-	// tl2.resume();
-	// tl.resume();
-	// Resume ScrollTrigger instances
-	ScrollTrigger.getAll().forEach((trigger) => {
-		trigger.enable();
-	});
-}
-
+// ScrollTrigger.normalizeScroll({
+// 	allowNestedScroll: true,
+// 	lockAxis: false,
+// 	momentum: (self) => Math.min(3, Math.abs(self.velocityY) / 1000), // dynamically control the duration of the momentum when flick-scrolling
+// 	type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
+// });
 
 // smoothe scrolling in anchor links
-document.querySelectorAll("nav a").forEach((link) => {
+document.querySelectorAll("nav > a").forEach((link) => {
 	link.addEventListener("click", (e) => {
 		e.preventDefault();
-		// Pause the GSAP animations
-		pauseAnimations();
 		lenis.scrollTo(`${e.target.getAttribute("href")}`, {
 			lerp: 0.09,
-			onComplete: () => {
-				// Resume GSAP animations after scrolling is complete
-				resumeAnimations();
-			},
 		});
 
 		// const targetSection = document.querySelector(`${e.target.getAttribute("href")}`);
@@ -102,47 +76,58 @@ function connectToScrollTrigger() {
 connectToScrollTrigger();
 
 /* header animation : hide when scroll down , shown when scroll down */
-let xmd = gsap.matchMedia();
+// let xmd = gsap.matchMedia();
 
-xmd.add("(min-width: 991px)", () => {
-	let didScroll = false;
-	let lastScrollTop = 0;
-	const delta = 150;
-	const header = document.querySelector("header");
-	const navbarHeight = header.offsetHeight;
+let didScroll = false;
+let lastScrollTop = 0;
+const delta = 150;
+const header = document.querySelector(".wrapper:has(header)");
+const navbarHeight = header.offsetHeight;
+let scrollInterval; // Store the interval ID
 
+function hasScrolled() {
+	const st = window.scrollY;
+
+	// Make sure they scroll more than delta
+	if (Math.abs(lastScrollTop - st) <= delta) return;
+
+	// If they scrolled down and are past the navbar, add class .nav-up.
+	// This is necessary so you never see what is "behind" the navbar.
+	if (st > lastScrollTop && st > navbarHeight) {
+		// Scroll Down
+		header.style.transform = "translate(0, -100%)";
+	} else {
+		// Scroll Up
+		if (st + window.innerHeight < document.documentElement.scrollHeight) {
+			header.style.transform = "translate(0, 0)";
+		}
+	}
+
+	lastScrollTop = st;
+}
+
+const xmd = window.matchMedia("(min-width: 991px)");
+
+if (xmd.matches) {
+	console.log(xmd);
+	console.log("you are on desktop");
 	window.addEventListener("scroll", () => {
 		didScroll = true;
 	});
 
-	setInterval(() => {
+	scrollInterval=setInterval(() => {
 		if (didScroll) {
 			hasScrolled();
 			didScroll = false;
 		}
 	}, 250);
-
-	function hasScrolled() {
-		const st = window.scrollY;
-
-		// Make sure they scroll more than delta
-		if (Math.abs(lastScrollTop - st) <= delta) return;
-
-		// If they scrolled down and are past the navbar, add class .nav-up.
-		// This is necessary so you never see what is "behind" the navbar.
-		if (st > lastScrollTop && st > navbarHeight) {
-			// Scroll Down
-			header.style.transform = "translate(0, -100%)";
-		} else {
-			// Scroll Up
-			if (st + window.innerHeight < document.documentElement.scrollHeight) {
-				header.style.transform = "translate(0, 0)";
-			}
-		}
-
-		lastScrollTop = st;
-	}
-});
+}
+else{
+	  // The media query no longer matches (on mobile)
+        console.log("you are on mobile");
+        // Clear the scroll interval and remove the scroll event listener
+        clearInterval(scrollInterval);
+}
 
 //? Hero section animation
 //! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
@@ -157,6 +142,7 @@ let scrollTrigger5 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "2000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	  preventOverlaps: true,
 	// markers: true,
 };
 
@@ -184,6 +170,7 @@ let scrollTrigger1 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "+=4000", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	  preventOverlaps: true,
 	// markers: true,
 };
 
@@ -202,6 +189,7 @@ let scrollTrigger2 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	  preventOverlaps: true,
 	// markers: true,
 };
 
@@ -255,6 +243,7 @@ gsap.to(".edit__animate", {
 		start: "top bottom", // when the top of the trigger hits the top of the viewport
 		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		  preventOverlaps: true,
 		// markers: true,
 	},
 });
@@ -340,6 +329,7 @@ let scrollTrigger3 = {
 	start: "top bottom", // when the top of the trigger hits the top of the viewport
 	end: "bottom top", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	  preventOverlaps: true,
 	// markers: true,
 };
 
@@ -362,6 +352,7 @@ let scrollTrigger4 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+	  preventOverlaps: true,
 	// markers: true,
 };
 

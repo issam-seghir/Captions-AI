@@ -2,6 +2,7 @@
 @use "sass:string";
 @use "sass:list";
 @use "variables" as *;
+@use "functions" as *;
 
 
 @mixin on-event($self: false) {

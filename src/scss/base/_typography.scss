@@ -17,9 +17,13 @@ h6 {
 
 h1 {
 	font-size: $text-8xl;
-	line-height: rfs(6.25rem);
-	letter-spacing: 0.125rem;
+	line-height: $text-8xl;
 
+	@media (width<= $mq-md) {
+		font-size: $text-5xl;
+		line-height: $text-5xl;
+
+	}
 	&.rgd-primary-100 {
 		@include text-rgd-primary-100;
 	}
@@ -101,11 +105,9 @@ p {
 }
 
 a {
-	@include on-event {
+	&:hover{
 		color: rgb(204 0 255);
-		outline: none;
 	}
-
 	font-size: $text-base;
 	font-weight: $font-bold;
 	line-height: 1.5rem; /* 160% */

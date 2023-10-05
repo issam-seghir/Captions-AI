@@ -1,32 +1,22 @@
 @use "../abstracts" as *;
 
-// visual breakpoints
-@include breakpointer {
-	position: fixed;
-	z-index: 10;
+.wrapper:has(header) {
+	position: sticky;
+	z-index: 100;
 	top: 0;
-	left: 0;
-	padding: 5px 10px;
-	color: white;
+	background-color: $bg-primary;
+	transition: transform $main-transition-delay cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-@include loadify(init);
 
 header {
 	@include loadify(1s);
 	@include adaptive(2px);
 
-	position: sticky;
-	top: 0;
-	z-index: 100;
-	transition-property: transform;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: $main-transition-delay;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 9rem;
-	padding-top: 2rem;
+	margin-bottom: $margin-section;
+	padding-block: 2rem;
 	padding-inline: 0.75rem;
 	background-color: $bg-primary;
 
@@ -50,7 +40,9 @@ header {
 	// mobile/tablet devices
 	@media (width <= $mq-xmd) {
 		// change header container size
-		max-width: 92%;
+		max-width: 100%;
+		margin: 0;
+		padding: rfs(2rem);
 
 		// make the header displayed even when showing mobile navigation menu
 		.logo,
@@ -60,7 +52,7 @@ header {
 
 		// burger menu icon
 		.burger-menu {
-			display: block;
+			display: flex;
 
 			&__bars {
 				// create menu bars (three bars)
@@ -88,25 +80,24 @@ header {
 		nav {
 			position: fixed;
 			z-index: 99;
-			right: 0%;
-			bottom: 0%;
-			left: 0%;
+			inset: 0 0% 0%;
 			flex-direction: column;
 			gap: 0;
 			justify-content: flex-end;
 			height: 100vh;
+			height: 100svh;
 			padding: 1rem;
 			visibility: hidden;
 			opacity: 0;
-			background-color: #11091a;
+			background-color: $bg-primary;
 			transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 		}
 
 		nav a {
 			width: 100%;
 			padding-block: 1.5rem;
-			padding-inline-end: 1.5rem;
-			font-size: 18px;
+			padding-inline-end: rfs(1.5rem);
+			font-size: $text-2xl;
 		}
 
 		nav > a {
@@ -114,220 +105,13 @@ header {
 		}
 
 		nav .contact {
-			display: block;
 			display: flex;
 			gap: 1rem;
 
 			a {
-				fill: white;
+				fill: $text-primary-100;
 			}
 		}
-	}
-}
-
-.hero {
-	@include loadify(1s);
-	@include adaptive(2px);
-
-	position: relative;
-	height: 100svh;
-	margin-bottom: 14rem;
-	background-image: url("src/assets/svg/asset 9.svg");
-	background-repeat: no-repeat;
-	background-size: contain;
-	border: 1px solid rgb(255 255 255 / 5.5%);
-
-	// add gradiant-blur effect in the background
-	&__gradiant-blur-img {
-		position: absolute;
-		z-index: -1;
-		top: 30%;
-		left: -10%;
-		max-width: fit-content;
-	}
-
-	&__mockup-container {
-		position: absolute;
-		bottom: -40%;
-		left: 50%;
-		translate: -50%;
-		overflow: hidden;
-		width: 35%;
-		height: 78%;
-
-		//TODO: add size to container to show video in the animation
-		border-radius: 4rem;
-
-		video {
-			position: absolute;
-			top: 70px;
-			left: 50%;
-			translate: -50%;
-			width: 95%;
-		}
-	}
-
-	&__mockup {
-		position: relative;
-		z-index: 2;
-	}
-
-	&__mockup-img {
-		position: absolute;
-		top: 0%;
-		left: 50%;
-		translate: -50%;
-		width: 90%;
-		border-radius: 4rem;
-	}
-
-	&__progress {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		translate: -50%;
-		rotate: 180deg;
-		display: flex;
-		gap: 1rem;
-		align-items: flex-end;
-		height: 40px;
-
-		&-bar {
-			will-change: height;
-			width: 1px;
-			height: 25%;
-			background-color: #ac5eff;
-		}
-	}
-
-	/* Keyframes for the animations */
-	@keyframes audioWaveOne {
-		0% {
-			height: 25%;
-		}
-
-		50% {
-			height: 45%;
-		}
-
-		100% {
-			height: 60%;
-		}
-	}
-
-	@keyframes audioWaveTwo {
-		0% {
-			height: 20%;
-		}
-
-		50% {
-			height: 35%;
-		}
-
-		100% {
-			height: 50%;
-		}
-	}
-
-	@keyframes audioWaveThree {
-		0% {
-			height: 25%;
-		}
-
-		100% {
-			height: 40%;
-		}
-	}
-
-	@keyframes audioWaveFour {
-		0% {
-			height: 25%;
-		}
-
-		100% {
-			height: 35%;
-		}
-	}
-
-	/* Staggered animation delays for each progress bar */
-	&__progress-bar:nth-child(5) {
-		animation: audioWaveOne 1s infinite alternate;
-	}
-
-	&__progress-bar:nth-child(4) {
-		animation: audioWaveTwo 1.5s infinite alternate;
-	}
-
-	&__progress-bar:nth-child(3) {
-		animation: audioWaveThree 1s infinite alternate;
-		animation-delay: 1s;
-	}
-
-	&__progress-bar:nth-child(2) {
-		animation: audioWaveFour 0.6s infinite alternate;
-		animation-delay: 0.6s;
-	}
-
-	&__progress-bar:nth-child(1) {
-		animation: audioWaveOne 1s infinite alternate;
-		animation-delay: 1s;
-	}
-
-	&__voice-wave-img {
-		position: absolute;
-		z-index: 3;
-		top: 0.625rem;
-		right: 50%;
-		translate: 50%;
-		width: 33.333333%;
-		height: fit-content;
-	}
-
-	&__frame {
-		position: absolute;
-		z-index: -1;
-		top: 37%;
-	}
-
-	// &__frame-text {
-	// 	position: absolute;
-	// 	left: 7%;
-	// 	transform: rotate(270deg);
-	// 	font-weight: 700;
-	// 	color: $text-secondary-100;
-	// }
-
-	&__head {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		align-items: center;
-		padding-top: 8rem;
-		padding-bottom: 3.875rem;
-		text-align: center;
-
-		p {
-			max-width: 46rem;
-			font-size: 2rem;
-			line-height: 3rem;
-		}
-	}
-
-	&__camera-frames {
-		top: 0;
-	}
-
-	&__camera-frames,
-	&__lines-svg {
-		position: absolute;
-	}
-
-	&__camera-frames-svg {
-		z-index: 2;
-	}
-
-	&__lines-svg {
-		z-index: 3;
 	}
 }
 
@@ -536,10 +320,12 @@ header {
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
+		height: 100svh;
 	}
 
 	&__mockup {
 		height: 79vh;
+		height: 79svh;
 	}
 
 	&__text {
@@ -548,6 +334,7 @@ header {
 		gap: 3.375rem;
 		justify-content: flex-end;
 		height: 70vh;
+		height: 70svh;
 	}
 
 	&__desc {
@@ -587,6 +374,7 @@ header {
 		grid-template-columns: min-content 1fr 1fr 1fr 1fr 1fr min-content;
 		grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 		column-gap: 2rem;
+		height: 100vh;
 		height: 100svh;
 		padding-block: rfs(5rem);
 		padding-inline: rfs(2rem);
@@ -854,8 +642,10 @@ header {
 
 	// container-type: inline-size;
 	width: 97vw;
+	width: 97svw;
 	height: 95vh;
-	margin-block: $margin-section * 4;
+	height: 95svh;
+	margin-block: 6rem * 4;
 
 	&__video {
 		position: absolute;
@@ -931,7 +721,7 @@ header {
 	display: flex;
 	gap: 6rem;
 	justify-content: center;
-	margin-block: $margin-section * 2;
+	margin-block: 6rem * 2;
 
 	&__desc {
 		text-align: center;
@@ -948,7 +738,7 @@ header {
 	@include adaptive(2px);
 
 	position: relative;
-	margin-block: $margin-section * 2;
+	margin-block: 6rem * 2;
 
 	&__cards {
 		display: flex;
@@ -1056,6 +846,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	height: 30vh;
+	height: 30svh;
 	margin-bottom: 3rem;
 
 	&__left {

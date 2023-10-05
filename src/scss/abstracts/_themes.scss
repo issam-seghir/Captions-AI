@@ -1,3 +1,6 @@
+@use "variables" as *;
+
+
 @mixin light-theme {
   --background-primary: #ffffff;
   --text-primary: #121212;

@@ -1,0 +1,5 @@
+@use "variables" as *;
+
+
+// init opacity animation on loading mixin
+@include loadify(init);
