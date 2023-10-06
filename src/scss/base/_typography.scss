@@ -13,35 +13,36 @@ h4,
 h5,
 h6 {
 	font-weight: $font-bold;
+	text-wrap: balance;
 }
 
 h1 {
 	font-size: $text-8xl;
 	line-height: $text-8xl;
 
-	@media (width<= $mq-md) {
-		font-size: $text-5xl;
-		line-height: $text-5xl;
-
-	}
-	&.rgd-primary-100 {
+	&.rgd-primary-100,& span.rgd-primary-100 {
 		@include text-rgd-primary-100;
 	}
 
-	&.rgd-primary-200 {
+	&.rgd-primary-200,& span.rgd-primary-200 {
 		@include text-rgd-primary-200;
 	}
 
-	&.rgd-secondary-100 {
+	&.rgd-secondary-100,& span.rgd-secondary-100 {
 		@include text-rgd-secondary-100;
 	}
 
-	&.rgd-secondary-200 {
+	&.rgd-secondary-200,& span.rgd-secondary-200 {
 		@include text-rgd-secondary-200;
 	}
 
-	&.rgd-secondary-300 {
+	&.rgd-secondary-300,& span.rgd-secondary-300 {
 		@include text-rgd-secondary-300;
+	}
+
+	@media (width<= $mq-md) {
+		font-size: $text-5xl;
+		line-height: $text-5xl;
 	}
 }
 
@@ -83,11 +84,12 @@ p {
 	&.tag {
 		@include pseudo("", 0.5em, 0, -1.5rem) {
 			@include circle(13px);
+
 			background-color: currentcolor;
 		}
 
-    margin: 0 auto 3rem;
 		width: fit-content;
+		margin: 0 auto 3rem;
 		font-weight: 700;
 		color: #ab88fb;
 	}
@@ -100,24 +102,23 @@ p {
 
 	&.tag.tag--lg {
 		line-height: 1.875rem;
-		letter-spacing: .1em;
+		letter-spacing: 0.1em;
 	}
 }
 
 a {
-	&:hover{
-		color: rgb(204 0 255);
-	}
 	font-size: $text-base;
 	font-weight: $font-bold;
 	line-height: 1.5rem; /* 160% */
 	color: inherit;
 	text-transform: capitalize;
 	letter-spacing: 0.1rem;
-	transition: color  $main-transition-delay cubic-bezier(0.4, 0, 0.2, 1);
+	transition: color $main-transition-delay cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover {
+		color: rgb(204 0 255);
+	}
 }
-
-
 
 article {
 	> ul,
@@ -141,8 +142,6 @@ article {
 strong {
 	font-weight: $tdbc-strong-font-weight;
 }
-
-
 
 pre {
 	display: inline-block;

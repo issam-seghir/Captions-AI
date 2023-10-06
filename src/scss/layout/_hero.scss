@@ -1,7 +1,5 @@
 @use "../abstracts" as *;
 
-
-
 .hero {
 	@include loadify(1s);
 	@include adaptive(2px);
@@ -24,16 +22,17 @@
 		left: 50%;
 		translate: -50%;
 		max-width: 98vw;
-        @media (width<= $mq-2xl) {
-            max-width: 100%;
 
-        }
-        @media (width<= $mq-lg) {
-            top: 34%;
-        }
+		@media (width<= $mq-2xl) {
+			max-width: 100%;
+		}
+
+		@media (width<= $mq-lg) {
+			top: 34%;
+		}
 	}
 
-    &__head {
+	&__head {
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
@@ -42,7 +41,7 @@
 		padding-bottom: 3.875rem;
 		text-align: center;
 
-		&-title {
+		&-title h1 {
 			@include only(1) {
 				@include loadify(0.4s);
 			}
@@ -53,9 +52,11 @@
 		}
 
 		p {
+            $text-size:1.6;
 			max-width: 46rem;
-			font-size: 2rem;
-			line-height: 3rem;
+			font-size: rfs($text-size * 1rem);
+            text-wrap:balance;
+			line-height: $text-size;
 		}
 	}
 
@@ -75,7 +76,6 @@
 	&__lines-svg {
 		z-index: 3;
 	}
-
 
 	&__mockup-container {
 		position: absolute;
@@ -227,6 +227,4 @@
 	// 	font-weight: 700;
 	// 	color: $text-secondary-100;
 	// }
-
-
 }
