@@ -7,7 +7,7 @@
 	position: relative;
 	height: 100vh;
 	height: 100svh;
-	margin-bottom: 14rem;
+	// margin-bottom: 14rem;
 	background: svg-load("../assets/svg/camera-frames.svg", fill=#A652FA);
 	background-repeat: no-repeat;
 	background-position: 33% top;
@@ -52,49 +52,33 @@
 		}
 
 		p {
-            $text-size:1.6;
+			$text-size: 1.6;
+
 			max-width: 46rem;
 			font-size: rfs($text-size * 1rem);
-            text-wrap:balance;
 			line-height: $text-size;
+			text-wrap: balance;
 		}
 	}
 
-	&__camera-frames {
-		top: 0;
-	}
-
-	&__camera-frames,
-	&__lines-svg {
-		position: absolute;
-	}
-
-	&__camera-frames-svg {
-		z-index: 2;
-	}
-
-	&__lines-svg {
-		z-index: 3;
-	}
-
 	&__mockup-container {
+        overflow: hidden;
 		position: absolute;
 		bottom: -40%;
 		left: 50%;
 		translate: -50%;
-		overflow: hidden;
 		width: 35%;
 		height: 78%;
-
-		//TODO: add size to container to show video in the animation
 		border-radius: 4rem;
 
 		video {
 			position: absolute;
-			top: 70px;
+			top: -250px;
+			// top: -25%;
 			left: 50%;
 			translate: -50%;
 			width: 95%;
+			height: 100%;
 		}
 	}
 
@@ -214,13 +198,13 @@
 		height: fit-content;
 	}
 
-	&__frame {
+	&__lines {
 		position: absolute;
 		z-index: -1;
 		top: 37%;
 	}
 
-	// &__frame-text {
+	// &__lines-text {
 	// 	position: absolute;
 	// 	left: 7%;
 	// 	transform: rotate(270deg);

@@ -44,8 +44,6 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-
-
 // ScrollTrigger.normalizeScroll({
 // 	allowNestedScroll: true,
 // 	lockAxis: false,
@@ -115,18 +113,17 @@ if (xmd.matches) {
 		didScroll = true;
 	});
 
-	scrollInterval=setInterval(() => {
+	scrollInterval = setInterval(() => {
 		if (didScroll) {
 			hasScrolled();
 			didScroll = false;
 		}
 	}, 250);
-}
-else{
-	  // The media query no longer matches (on mobile)
-        console.log("you are on mobile");
-        // Clear the scroll interval and remove the scroll event listener
-        clearInterval(scrollInterval);
+} else {
+	// The media query no longer matches (on mobile)
+	console.log("you are on mobile");
+	// Clear the scroll interval and remove the scroll event listener
+	clearInterval(scrollInterval);
 }
 
 //? Hero section animation
@@ -142,7 +139,7 @@ let scrollTrigger5 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "2000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	  preventOverlaps: true,
+	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -150,14 +147,17 @@ let tl5 = gsap.timeline({
 	scrollTrigger: scrollTrigger5,
 });
 
-tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 21%" })
-	.to(".hero__mockup-container", { scale: 7 })
-	.to(".hero__mockup-container", { scale: 4.1, smoothOrigin: true })
-	.to(".hero__mockup-container video", { top: "6.2%", borderRadius: 7 }, "<")
-	.to(".hero__frame", { duration: 0.01, display: "none" }, "<")
+tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 24%" })
+	.to(".hero__mockup-container", { scale: 1.8 })
+	// .to(".hero__mockup-container", {  width: "98vw", bottom: "-2%" }, "<")
+	.to(".hero__mockup-container", { width: "98vw", height: "100vh", top: "48%", yPercent: "-50", xPercent: "-50" }, "<")
+	.to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
+	.to(".hero__mockup-container video", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", borderRadius: 7 }, "<")
+	.to(".hero__mockup-container video",  { height: "96%", width: "98%" }, "<")
+	.to(".hero__lines", { duration: 0.01, display: "none" }, "<")
 	.to(".hero__mockup", { duration: 0.01, display: "none" }, "<")
-	.to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<")
-	.to(".hero__frame-text", { rotate: 90 });
+	.to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<");
+// .to(".hero__lines-text", { rotate: 90 });
 
 // Create a separate ScrollTrigger for the first timeline
 let scrollTrigger1 = {
@@ -170,7 +170,7 @@ let scrollTrigger1 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "+=4000", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	  preventOverlaps: true,
+	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -189,7 +189,7 @@ let scrollTrigger2 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	  preventOverlaps: true,
+	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -243,7 +243,7 @@ gsap.to(".edit__animate", {
 		start: "top bottom", // when the top of the trigger hits the top of the viewport
 		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-		  preventOverlaps: true,
+		preventOverlaps: true,
 		// markers: true,
 	},
 });
@@ -329,7 +329,7 @@ let scrollTrigger3 = {
 	start: "top bottom", // when the top of the trigger hits the top of the viewport
 	end: "bottom top", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	  preventOverlaps: true,
+	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -352,7 +352,7 @@ let scrollTrigger4 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	  preventOverlaps: true,
+	preventOverlaps: true,
 	// markers: true,
 };
 

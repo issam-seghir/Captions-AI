@@ -6,6 +6,14 @@
 		<title>Caption AI</title>
 		<!-- container query polyfill -->
 		<script defer src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
+		<!-- :has selector polyfill -->
+		<script  src="https://unpkg.com/css-has-pseudo@6.0.0/dist/browser-global.js">
+		</script>
+		<script module defer>
+			// eslint-disable-next-line no-undef
+			cssHasPseudo(document, { debug: true });
+			console.log("has polyfill loaded correctly : " + typeof cssHasPseudo);
+		</script>
 		<script defer type="module" src="src/js/main.js"></script>
 	</head>
 	<body>
@@ -61,17 +69,20 @@
 						<span class="rgd-primary-200">creative studio</span>
 					</h1>
 				</div>
-				<p>Meet Captions. The next generation of storytelling - at your fingertips. Discover the power of Al and create studio-grade videos in just a few taps.</p>
+				<p>
+					Meet Captions. The next generation of storytelling - at your fingertips. Discover the power of Al <br />
+					and create studio-grade videos in just a few taps.
+				</p>
 			</div>
 			<div class="hero__mockup-container">
-				<img height="100%" width="100%" class="hero__mockup" src="src/assets/images/asset 14.webp" alt="" srcset="" />
-				<img class="hero__mockup-img" src="src/assets/images/asset 15.webp" alt="" srcset="" />
-				<video loading="lazy" playsinline autoplay muted loop poster="src/assets/images/asset 59.jpeg">
+				<img height="100%" width="100%" class="hero__mockup" src="src/assets/images/mockup.webp" alt="" srcset="" />
+				<img class="hero__mockup-img" src="src/assets/images/hero-mockup-img.webp" alt="" srcset="" />
+				<video loading="lazy" playsinline autoplay muted loop poster="src/assets/images/hero-video-poster.jpeg" title="recording" aria-describedby="black man recording video">
 					<source src="src/assets/videos/recording.webm" />
 					Your browser does not support the video tag.
 				</video>
 			</div>
-			<img class="hero__frame" src="src/assets/svg/asset 16.svg" alt="" srcset="" />
+			<img class="hero__lines" src="src/assets/svg/lines.svg" alt="lines" srcset="" />
 			<div class="hero__progress">
 				<div class="hero__progress-bar"></div>
 				<div class="hero__progress-bar"></div>
@@ -160,7 +171,7 @@
 				<div class="edit__section4 edit__animate" data-y="-7rem"><img src="src/assets/svg/asset 50.svg" alt="" srcset="" /></div>
 				<div class="edit__main">
 					<div class="edit__main-assets">
-						<img class="edit__main-mockup" src="src/assets/images/asset 14.webp" alt="" srcset="" />
+						<img class="edit__main-mockup" src="src/assets/images/mockup.webp" alt="" srcset="" />
 						<div class="edit__main-img">
 							<img src="src/assets/images/asset 31.webp" alt="" srcset="" />
 						</div>
@@ -403,5 +414,6 @@
 				</div>
 			</div>
 		</footer>
+
 	</body>
 </html>

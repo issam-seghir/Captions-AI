@@ -44,6 +44,10 @@ h1 {
 		font-size: $text-5xl;
 		line-height: $text-5xl;
 	}
+	@media (width<= $mq-sm) {
+		font-size: 2.4rem;
+		line-height: 2.4rem;
+	}
 }
 
 h2 {
@@ -77,7 +81,7 @@ h4 {
 
 p {
 	font-size: $text-lg;
-	font-weight: 400;
+	font-weight: $font-normal;
 	line-height: 1.75rem;
 	color: #d6d0e0;
 
