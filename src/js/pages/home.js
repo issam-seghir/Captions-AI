@@ -147,10 +147,11 @@ let tl5 = gsap.timeline({
 	scrollTrigger: scrollTrigger5,
 });
 
-tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 24%" })
+tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 70%" })
 	.to(".hero__mockup-container", { scale: 1.8 })
 	// .to(".hero__mockup-container", {  width: "98vw", bottom: "-2%" }, "<")
 	.to(".hero__mockup-container", { width: "98vw", height: "100vh", top: "48%", yPercent: "-50", xPercent: "-50" }, "<")
+	.to(".hero__mockup-container video", {yPercent: "-50", top: "70%", borderRadius: 7 }, "<")
 	.to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
 	.to(".hero__mockup-container video", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", borderRadius: 7 }, "<")
 	.to(".hero__mockup-container video",  { height: "96%", width: "98%" }, "<")
