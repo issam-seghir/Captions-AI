@@ -7,8 +7,7 @@
 		<!-- container query polyfill -->
 		<script defer src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
 		<!-- :has selector polyfill -->
-		<script  src="https://unpkg.com/css-has-pseudo@6.0.0/dist/browser-global.js">
-		</script>
+		<script src="https://unpkg.com/css-has-pseudo@6.0.0/dist/browser-global.js"></script>
 		<script module defer>
 			// eslint-disable-next-line no-undef
 			cssHasPseudo(document, { debug: true });
@@ -60,7 +59,16 @@
 
 		<!-- hero section  -->
 		<section class="hero">
+			<!-- some cool animations -->
 			<img class="hero__gradiant-blur-img" src="src/assets/svg/gradient-blur.svg" alt="gradient blur background" srcset="" />
+			<img class="hero__lines" src="src/assets/svg/lines.svg" alt="lines" srcset="" />
+			<div class="hero__progress">
+				<div class="hero__progress-bar"></div>
+				<div class="hero__progress-bar"></div>
+				<div class="hero__progress-bar"></div>
+				<div class="hero__progress-bar"></div>
+				<div class="hero__progress-bar"></div>
+			</div>
 			<div class="hero__head">
 				<div class="hero__head-title">
 					<h1 class="rgd-primary-100">
@@ -77,18 +85,10 @@
 			<div class="hero__mockup-container">
 				<img height="100%" width="100%" class="hero__mockup" src="src/assets/images/mockup.webp" alt="" srcset="" />
 				<img class="hero__mockup-img" src="src/assets/images/hero-mockup-img.webp" alt="" srcset="" />
-				<video loading="lazy" playsinline autoplay muted loop poster="src/assets/images/hero-video-poster.jpeg" title="recording" aria-describedby="black man recording video">
+				<video height="100%" width="100%" loading="lazy" playsinline autoplay muted loop poster="src/assets/images/hero-video-poster.jpeg" title="recording" aria-describedby="black man recording video">
 					<source src="src/assets/videos/recording.webm" />
 					Your browser does not support the video tag.
 				</video>
-			</div>
-			<img class="hero__lines" src="src/assets/svg/lines.svg" alt="lines" srcset="" />
-			<div class="hero__progress">
-				<div class="hero__progress-bar"></div>
-				<div class="hero__progress-bar"></div>
-				<div class="hero__progress-bar"></div>
-				<div class="hero__progress-bar"></div>
-				<div class="hero__progress-bar"></div>
 			</div>
 		</section>
 
@@ -414,6 +414,5 @@
 				</div>
 			</div>
 		</footer>
-
 	</body>
 </html>

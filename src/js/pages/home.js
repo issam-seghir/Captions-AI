@@ -139,7 +139,6 @@ let scrollTrigger5 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "2000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -147,17 +146,16 @@ let tl5 = gsap.timeline({
 	scrollTrigger: scrollTrigger5,
 });
 
-tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 70%" })
-	.to(".hero__mockup-container", { scale: 1.8 })
+tl5.to(".hero__mockup-container", { yPercent: "-40", xPercent: "50", transformOrigin: "center 70%" }).to(".hero__mockup-container", { scale: 1.8 });
 	// .to(".hero__mockup-container", {  width: "98vw", bottom: "-2%" }, "<")
-	.to(".hero__mockup-container", { width: "98vw", height: "100vh", top: "48%", yPercent: "-50", xPercent: "-50" }, "<")
-	.to(".hero__mockup-container video", {yPercent: "-50", top: "70%", borderRadius: 7 }, "<")
-	.to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
-	.to(".hero__mockup-container video", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", borderRadius: 7 }, "<")
-	.to(".hero__mockup-container video",  { height: "96%", width: "98%" }, "<")
-	.to(".hero__lines", { duration: 0.01, display: "none" }, "<")
-	.to(".hero__mockup", { duration: 0.01, display: "none" }, "<")
-	.to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<");
+	// .to(".hero__mockup-container", { width: "98vw", height: "100vh", top: "48%", yPercent: "-50", xPercent: "-50" }, "<")
+	// .to(".hero__video-container", { yPercent: "-50", top: "80%" }, "<")
+	// .to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
+	// .to(".hero__video-container", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", height: "96%", width: "98%" }, "<")
+	// .to(".hero__lines", { duration: 0.01, display: "none" }, "<")
+	// .to(".hero__mockup", { duration: 0.01, display: "none" }, "<")
+	// .to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<")
+	// .to(".hero__video-container", { borderRadius: 16, ease: "linear" });
 // .to(".hero__lines-text", { rotate: 90 });
 
 // Create a separate ScrollTrigger for the first timeline
@@ -171,7 +169,6 @@ let scrollTrigger1 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "+=4000", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -190,7 +187,6 @@ let scrollTrigger2 = {
 	start: "top top", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -244,7 +240,6 @@ gsap.to(".edit__animate", {
 		start: "top bottom", // when the top of the trigger hits the top of the viewport
 		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-		preventOverlaps: true,
 		// markers: true,
 	},
 });
@@ -330,7 +325,6 @@ let scrollTrigger3 = {
 	start: "top bottom", // when the top of the trigger hits the top of the viewport
 	end: "bottom top", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	preventOverlaps: true,
 	// markers: true,
 };
 
@@ -353,7 +347,6 @@ let scrollTrigger4 = {
 	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 	end: "4000px", // end after scrolling 2000px beyond the start
 	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	preventOverlaps: true,
 	// markers: true,
 };
 
