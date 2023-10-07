@@ -15,24 +15,6 @@
 	background-size: contain;
 	border: 1px solid rgb(255 255 255 / 5.5%);
 
-	// add gradiant-blur effect in the background
-	&__gradiant-blur-img {
-		position: absolute;
-		z-index: -1;
-		top: 30%;
-		left: 50%;
-		translate: -50%;
-		max-width: 98vw;
-
-		@media (width<= $mq-2xl) {
-			max-width: 100%;
-		}
-
-		@media (width<= $mq-lg) {
-			top: 34%;
-		}
-	}
-
 	&__head {
 		display: flex;
 		flex-direction: column;
@@ -78,10 +60,11 @@
 		border-radius: 4rem;
 
 		video {
-            position: absolute;
-			top: 5rem;
+			position: absolute;
+			top: -14rem;
 			width: 100%;
-			height: fit-content;
+
+			// height: fit-content;
 		}
 	}
 
@@ -100,26 +83,54 @@
 		border-radius: 4rem;
 	}
 
-	&__video-container {
-		// position: absolute;
+	&__video-desc {
+		$gaps: rfs(1.7rem);
 
-		// // bottom: 14rem;
-		// top: -27%;
-		// left: 50%;
-		// transform: translate(-50%, -50%);
-		// width: 95%;
+		position: relative;
+		z-index: 4;
+		padding: 2.4rem;
 
-		// // @media (width<= 1600px) {
-		// // 	top: -27%;
-		// // }
+		&-tag {
+			margin-block: $gaps;
+			margin-inline: 27px;
+		}
 
-		// // height: 100%;
+		&-title {
+			margin-bottom: $gaps;
+		}
+		.hero__video-desc-paragraph{
+			max-width: rfs(35rem);
 
-		// video {
-		// 	object-fit: cover;
-		// }
+		}
 	}
 
+	//* Some cool animations
+	// add gradiant-blur effect in the background
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: 30%;
+		left: 50%;
+		translate: -50%;
+		max-width: 98vw;
+
+		@media (width<= $mq-2xl) {
+			max-width: 100%;
+		}
+
+		@media (width<= $mq-lg) {
+			top: 34%;
+		}
+	}
+
+	// add faded lines with scroll down text
+	&__lines {
+		position: absolute;
+		z-index: -1;
+		top: 37%;
+	}
+
+	// add progressbar animations
 	&__progress {
 		position: absolute;
 		top: 0;
@@ -130,17 +141,40 @@
 		gap: 1rem;
 		align-items: flex-end;
 		height: 40px;
+	}
 
-		&-bar {
-			will-change: height;
-			width: 1px;
-			height: 25%;
-			background-color: #ac5eff;
+	/* Staggered animation delays for each progress bar */
+	&__progress-bar {
+		will-change: height;
+		width: 1px;
+		height: 25%;
+		background-color: $bg-animation;
+
+		&:nth-child(5) {
+			animation: dancingOne 1s infinite alternate;
+		}
+
+		&:nth-child(4) {
+			animation: dancingTwo 1.5s infinite alternate;
+		}
+
+		&:nth-child(3) {
+			animation: dancingThree 1s infinite alternate;
+			animation-delay: 1s;
+		}
+
+		&:nth-child(2) {
+			animation: dancingFour 0.6s infinite alternate;
+			animation-delay: 0.6s;
+		}
+
+		&:nth-child(1) {
+			animation: dancingOne 1s infinite alternate;
+			animation-delay: 1s;
 		}
 	}
 
-	/* Keyframes for the animations */
-	@keyframes audioWaveOne {
+	@keyframes dancingOne {
 		0% {
 			height: 25%;
 		}
@@ -154,7 +188,7 @@
 		}
 	}
 
-	@keyframes audioWaveTwo {
+	@keyframes dancingTwo {
 		0% {
 			height: 20%;
 		}
@@ -168,7 +202,7 @@
 		}
 	}
 
-	@keyframes audioWaveThree {
+	@keyframes dancingThree {
 		0% {
 			height: 25%;
 		}
@@ -178,7 +212,7 @@
 		}
 	}
 
-	@keyframes audioWaveFour {
+	@keyframes dancingFour {
 		0% {
 			height: 25%;
 		}
@@ -187,52 +221,4 @@
 			height: 35%;
 		}
 	}
-
-	/* Staggered animation delays for each progress bar */
-	&__progress-bar:nth-child(5) {
-		animation: audioWaveOne 1s infinite alternate;
-	}
-
-	&__progress-bar:nth-child(4) {
-		animation: audioWaveTwo 1.5s infinite alternate;
-	}
-
-	&__progress-bar:nth-child(3) {
-		animation: audioWaveThree 1s infinite alternate;
-		animation-delay: 1s;
-	}
-
-	&__progress-bar:nth-child(2) {
-		animation: audioWaveFour 0.6s infinite alternate;
-		animation-delay: 0.6s;
-	}
-
-	&__progress-bar:nth-child(1) {
-		animation: audioWaveOne 1s infinite alternate;
-		animation-delay: 1s;
-	}
-
-	&__voice-wave-img {
-		position: absolute;
-		z-index: 3;
-		top: 0.625rem;
-		right: 50%;
-		translate: 50%;
-		width: 33.333333%;
-		height: fit-content;
-	}
-
-	&__lines {
-		position: absolute;
-		z-index: -1;
-		top: 37%;
-	}
-
-	// &__lines-text {
-	// 	position: absolute;
-	// 	left: 7%;
-	// 	transform: rotate(270deg);
-	// 	font-weight: 700;
-	// 	color: $text-secondary-100;
-	// }
 }

@@ -4,10 +4,10 @@
 
         .frame-text {
             transform: rotate(270deg);
-            font-weight: 700;
+            font-weight: 500;
             font-size: 1.125rem;
             fill: #ab88fb;
-            font-family: "Neue Haas Grotesk Display Pro", "Open Sans", "Segoe UI", "Lucida Sans", "Verdana", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            font-family: "Aileron", system-ui, "Roboto", "Open Sans", "Segoe UI", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Lucida Sans", "Verdana", "Arial", sans-serif;
             text-anchor: middle;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -54,7 +54,7 @@
 
     <!-- Add the text "scroll down" -->
     <g transform="translate(150, 300)">
-        <text class="frame-text">scroll down</text>
+        <text class="frame-text">Scroll down</text>
     </g>
 
     <!-- camera frame svg -->

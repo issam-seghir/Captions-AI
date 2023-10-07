@@ -146,15 +146,19 @@ let tl5 = gsap.timeline({
 	scrollTrigger: scrollTrigger5,
 });
 
-tl5.to(".hero__mockup-container", { yPercent: "-40", xPercent: "50", transformOrigin: "center 70%" }).to(".hero__mockup-container", { scale: 1.8 });
-	// .to(".hero__mockup-container", {  width: "98vw", bottom: "-2%" }, "<")
-	// .to(".hero__mockup-container", { width: "98vw", height: "100vh", top: "48%", yPercent: "-50", xPercent: "-50" }, "<")
+tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 21%" })
+	.to(".hero__mockup-container", { scale: 6 })
+	.to(".hero__lines", { duration: 0.01, autoAlpha: 0 })
+	.to(".hero__mockup", { duration: 0.01, autoAlpha: 0 }, "<")
+	.to(".hero__mockup-img", { duration: 0.01, autoAlpha: 0 }, "<")
+	.to(".hero__mockup-container", { scale: 1 })
+	.to(".hero__mockup-container", { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
+	.to(".hero__mockup-container video", { top: 0, objectFit: "cover", borderRadius: "4rem" })
+	.from(".hero__video-desc", {yPercent: "100" , autoAlpha:0});
+	// .to(".hero__mockup-container", {  width: "98vw" })
 	// .to(".hero__video-container", { yPercent: "-50", top: "80%" }, "<")
 	// .to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
 	// .to(".hero__video-container", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", height: "96%", width: "98%" }, "<")
-	// .to(".hero__lines", { duration: 0.01, display: "none" }, "<")
-	// .to(".hero__mockup", { duration: 0.01, display: "none" }, "<")
-	// .to(".hero__mockup-img", { duration: 0.01, display: "none" }, "<")
 	// .to(".hero__video-container", { borderRadius: 16, ease: "linear" });
 // .to(".hero__lines-text", { rotate: 90 });
 

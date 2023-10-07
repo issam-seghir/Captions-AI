@@ -8,6 +8,7 @@ module.exports = {
 	extends: [
 		"eslint:recommended",
 		"plugin:import/recommended",
+		"plugin:jsonc/base", // or use jsonc/recommended-with-(json/jsonc/json5/prettier )
 		"plugin:security/recommended",
 		"plugin:unicorn/recommended",
 		"plugin:sonarjs/recommended",
