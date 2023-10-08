@@ -11,20 +11,20 @@ gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 // lotties animation
 // see : https://airbnb.io/lottie/#/web
-const lottieContainer = document.querySelector(".ai__mockup-lottie");
+// const lottieContainer = document.querySelector(".ai__mockup-lottie");
 
-let playhead = { frame: 0 },
-	animation = lottie.loadAnimation({
-		container: lottieContainer, // the dom element that will contain the animation
-		renderer: "svg", // Use 'svg' as animation format rendered in the container (svg || canvas|| html )
-		loop: !!+lottieContainer.dataset.loop, // true/false
-		autoplay: !!+lottieContainer.dataset.autoplay, // true/false
-		path: lottieContainer.dataset.src, // the path to the animation json
-		// name: "Hello World", // Name for future reference.
-	});
+// let playhead = { frame: 0 },
+// 	animation = lottie.loadAnimation({
+// 		container: lottieContainer, // the dom element that will contain the animation
+// 		renderer: "svg", // Use 'svg' as animation format rendered in the container (svg || canvas|| html )
+// 		loop: !!+lottieContainer.dataset.loop, // true/false
+// 		autoplay: !!+lottieContainer.dataset.autoplay, // true/false
+// 		path: lottieContainer.dataset.src, // the path to the animation json
+// 		// name: "Hello World", // Name for future reference.
+// 	});
 
 // Optionally set animation speed and other properties
-animation.setSpeed(4); // Adjust the speed if needed
+// animation.setSpeed(4); // Adjust the speed if needed
 
 // initialize lenis smooth scrolling
 const lenis = new Lenis({
@@ -161,7 +161,7 @@ MqXmd.add("(min-width: 992px)", () => {
 		// .fromTo(".hero__mockup-container video", { objectFit: (index, e) => console.log(bgSize(e)) }, { top: 0, objectFit: "cover", borderRadius: "4rem", ease: "linear" })
 		.fromTo(".hero__video-desc", { yPercent: "100", autoAlpha: 0 }, { yPercent: "-15", autoAlpha: 1 });
 
-	// Create a separate ScrollTrigger for the first timeline
+	/* // Create a separate ScrollTrigger for the first timeline
 	let scrollTrigger1 = {
 		trigger: ".ai__main",
 		pin: true, // pin the trigger element while active
@@ -314,74 +314,75 @@ MqXmd.add("(min-width: 992px)", () => {
 		.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
 		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 		.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
+
+	// sound section animation
+
+	// Create a separate ScrollTrigger for the second timeline
+	let scrollTrigger3 = {
+		trigger: ".sound__flex",
+		// pin: true, // pin the trigger element while active
+		// pinSpacing: "margin",
+		// pinType: "transform",
+		// pinReparent: true,
+		// anticipatePin: .2, // may help avoid jump
+		start: "top bottom", // when the top of the trigger hits the top of the viewport
+		end: "bottom top", // end after scrolling 2000px beyond the start
+		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		// markers: true,
+	};
+
+	let tl3 = gsap.timeline({
+		scrollTrigger: scrollTrigger3,
+	});
+
+	tl3.to(".sound__card-img", { translateX: -50 });
+
+	// Distribute section animation
+
+	// Create a separate ScrollTrigger for the second timeline
+	let scrollTrigger4 = {
+		trigger: ".distribute",
+		pin: true, // pin the trigger element while active
+		// pinSpacing: "margin",
+		// pinType: "transform",
+		// pinReparent: true,
+		// anticipatePin: .2, // may help avoid jump
+		start: "top 2.5%", // when the top of the trigger hits the top of the viewport
+		end: "4000px", // end after scrolling 2000px beyond the start
+		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		// markers: true,
+	};
+
+	let tl4 = gsap.timeline({
+		scrollTrigger: scrollTrigger4,
+	});
+
+	// tl3.to(".sound__card-img", {  translateX: -50 })
+	tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".distribute__progress-bar:nth-child(2)", { height: "75%" }, { duration: 6, height: "100%" }, "<")
+		.fromTo(".distribute__progress-bar:nth-child(3)", { height: "50%" }, { duration: 6, height: "80%" }, "<")
+		.fromTo(".distribute__video:nth-child(1)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
+		.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
+		.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Dubbing" })
+		.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Dub your video into any language while maintaining your voice" }, "<")
+		.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".distribute__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".distribute__progress-bar:nth-child(3)", { height: "80%" }, { duration: 6, height: "35%" }, "<")
+		.fromTo(".distribute__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" })
+		.fromTo(".distribute__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "75%" }, "<")
+		.fromTo(".distribute__video:nth-child(2)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
+		.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
+		.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Extract Clips" })
+		.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Automatically extract interesting and viral worthy short clips from longer video provided" }, "<")
+		.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
+		.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
+		*/
 });
 
-// sound section animation
-
-// Create a separate ScrollTrigger for the second timeline
-let scrollTrigger3 = {
-	trigger: ".sound__flex",
-	// pin: true, // pin the trigger element while active
-	// pinSpacing: "margin",
-	// pinType: "transform",
-	// pinReparent: true,
-	// anticipatePin: .2, // may help avoid jump
-	start: "top bottom", // when the top of the trigger hits the top of the viewport
-	end: "bottom top", // end after scrolling 2000px beyond the start
-	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	// markers: true,
-};
-
-let tl3 = gsap.timeline({
-	scrollTrigger: scrollTrigger3,
-});
-
-tl3.to(".sound__card-img", { translateX: -50 });
-
-// Distribute section animation
-
-// Create a separate ScrollTrigger for the second timeline
-let scrollTrigger4 = {
-	trigger: ".distribute",
-	pin: true, // pin the trigger element while active
-	// pinSpacing: "margin",
-	// pinType: "transform",
-	// pinReparent: true,
-	// anticipatePin: .2, // may help avoid jump
-	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
-	end: "4000px", // end after scrolling 2000px beyond the start
-	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	// markers: true,
-};
-
-let tl4 = gsap.timeline({
-	scrollTrigger: scrollTrigger4,
-});
-
-// tl3.to(".sound__card-img", {  translateX: -50 })
-tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".distribute__progress-bar:nth-child(2)", { height: "75%" }, { duration: 6, height: "100%" }, "<")
-	.fromTo(".distribute__progress-bar:nth-child(3)", { height: "50%" }, { duration: 6, height: "80%" }, "<")
-	.fromTo(".distribute__video:nth-child(1)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-	.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-	.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Dubbing" })
-	.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Dub your video into any language while maintaining your voice" }, "<")
-	.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".distribute__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".distribute__progress-bar:nth-child(3)", { height: "80%" }, { duration: 6, height: "35%" }, "<")
-	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" })
-	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "75%" }, "<")
-	.fromTo(".distribute__video:nth-child(2)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-	.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-	.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Extract Clips" })
-	.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Automatically extract interesting and viral worthy short clips from longer video provided" }, "<")
-	.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
-	.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
 
 //  burger menu
 
-// Plain JavaScript
 // document.addEventListener("DOMContentLoaded", function () {
 const burgerMenuButton = document.querySelector(".burger-menu");
 

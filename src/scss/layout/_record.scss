@@ -11,10 +11,31 @@
 	&__gradiant-blur-img {
 		position: absolute;
 		z-index: -1;
-		top: -1%;
-		left: -5%;
-		width: 90rem;
-		max-width: none;
+
+		&.left {
+			top: 4%;
+			left: -6%;
+
+			@media (width<=$mq-md) {
+				top: 9%;
+				left: -9%;
+			}
+
+			@media (width<=$mq-sm) {
+				top: 12%;
+				left: -3%;
+			}
+		}
+
+		&.right {
+			bottom: -18%;
+			left: 3%;
+
+			@media (width<=$mq-md) {
+				bottom: -6%;
+				left: 2%;
+			}
+		}
 	}
 
 	// Record Container

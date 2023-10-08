@@ -107,7 +107,7 @@ $box-shadow: rfs(0 0 2rem rgb(0 0 0 / 25%));
 // Custom properties (css variables):
 // --border-radius: rfs(4rem);
 
-$margin-section: rfs(6rem);
+$margin-section: rfs(15rem);
 
 @mixin text-rgd-primary-100() {
 	$rgd-100: #c592fc;

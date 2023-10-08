@@ -15,7 +15,7 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: $margin-section;
+	margin-bottom: 6rem;
 	padding-block: 2rem;
 	padding-inline: 0.75rem;
 	background-color: $bg-primary;
@@ -115,13 +115,12 @@ header {
 	}
 }
 
-
 //?  ------------------------ AI section ------------------------
 
 .ai {
 	position: relative;
 	overflow: hidden;
-	margin-block: $margin-section;
+	margin-block: 6rem;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
