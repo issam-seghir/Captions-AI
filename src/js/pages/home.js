@@ -4,6 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import lottie from "lottie-web";
 
+import bgSize from "../gsapHelpers.js";
+
 // Register the ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -126,195 +128,193 @@ if (xmd.matches) {
 	clearInterval(scrollInterval);
 }
 
-//? Hero section animation
-//! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
-// Create a separate ScrollTrigger for the second timeline
-let scrollTrigger5 = {
-	trigger: ".hero",
-	pin: true, // pin the trigger element while active
-	// pinSpacing: "margin",
-	// pinType: "transform",
-	// pinReparent: true,
-	// anticipatePin: .2, // may help avoid jump
-	start: "top 2.5%", // when the top of the trigger hits the top of the viewport
-	end: "2000px", // end after scrolling 2000px beyond the start
-	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	// markers: true,
-};
 
-let tl5 = gsap.timeline({
-	scrollTrigger: scrollTrigger5,
-});
 
-tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 21%" })
-	.to(".hero__mockup-container", { scale: 6 })
-	.to(".hero__lines", { duration: 0.01, autoAlpha: 0 })
-	.to(".hero__mockup", { duration: 0.01, autoAlpha: 0 }, "<")
-	.to(".hero__mockup-img", { duration: 0.01, autoAlpha: 0 }, "<")
-	.to(".hero__mockup-container", { scale: 1 })
-	.to(".hero__mockup-container", { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
-	.to(".hero__mockup-container video", { top: 0, objectFit: "cover", borderRadius: "4rem" })
-	.from(".hero__video-desc", {yPercent: "100" , autoAlpha:0});
-	// .to(".hero__mockup-container", {  width: "98vw" })
-	// .to(".hero__video-container", { yPercent: "-50", top: "80%" }, "<")
-	// .to(".hero__mockup-container", { scale: 1, smoothOrigin: true })
-	// .to(".hero__video-container", { objectFit: "cover", yPercent: "-50", xPercent: "-50", top: "50%", left: "50%", height: "96%", width: "98%" }, "<")
-	// .to(".hero__video-container", { borderRadius: 16, ease: "linear" });
-// .to(".hero__lines-text", { rotate: 90 });
-
-// Create a separate ScrollTrigger for the first timeline
-let scrollTrigger1 = {
-	trigger: ".ai__main",
-	pin: true, // pin the trigger element while active
-	// pinSpacing: "margin",
-	// pinType: "transform",
-	// pinReparent: true,
-	// anticipatePin: .2, // may help avoid jump
-	start: "top top", // when the top of the trigger hits the top of the viewport
-	end: "+=4000", // end after scrolling 2000px beyond the start
-	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	// markers: true,
-};
-
-let tl = gsap.timeline({
-	scrollTrigger: scrollTrigger1,
-});
-
-// Create a separate ScrollTrigger for the second timeline
-let scrollTrigger2 = {
-	trigger: ".edit__grid",
-	pin: true, // pin the trigger element while active
-	// pinSpacing: "margin",
-	// pinType: "transform",
-	// pinReparent: true,
-	// anticipatePin: .2, // may help avoid jump
-	start: "top top", // when the top of the trigger hits the top of the viewport
-	end: "4000px", // end after scrolling 2000px beyond the start
-	scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-	// markers: true,
-};
-
-let tl2 = gsap.timeline({
-	scrollTrigger: scrollTrigger2,
-});
-
-//? ai section animation
-
-animation.addEventListener("DOMLoaded", function () {
-	// use lotties animation with scrolltrigger
-	tl.to(playhead, {
-		frame: animation.totalFrames - 1,
-		duration: lottieContainer.dataset.duration,
-		ease: "none",
-		onUpdate: () => animation.goToAndStop(playhead.frame, true),
-	})
-		.fromTo(".ai__progress-bar:nth-child(1)", { height: "100%" }, { duration: 4, height: "35%" })
-		.fromTo(".ai__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 0.1, autoAlpha: 0 })
-		.to(".ai__desc-title", { duration: 0.01, text: "AI Enhance Speech" })
-		.to(".ai__desc-paragraph", { duration: 0.01, text: "Automatically remove background noise and enhance speech" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".ai__progress-bar:nth-child(2)", { height: "100%" }, { duration: 4, height: "35%" })
-		.fromTo(".ai__progress-bar:nth-child(3)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
-		.to(".ai__desc-title", { duration: 0.01, text: "AI Eye Contact" })
-		.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct eye contact to look at the camera in post production" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".ai__progress-bar:nth-child(3)", { height: "100%" }, { duration: 4, height: "35%" })
-		.fromTo(".ai__progress-bar:nth-child(4)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
-		.to(".ai__desc-title", { duration: 0.01, text: "AI Speech Correction" })
-		.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct any mistakes or in your recorded speech with one tap" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".ai__progress-bar:nth-child(4)", { height: "100%" }, { duration: 4, height: "35%" })
-		.fromTo(".ai__progress-bar:nth-child(5)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
-		.to(".ai__desc-title", { duration: 0.01, text: "AI Lipdub" })
-		.to(".ai__desc-paragraph", { duration: 0.01, text: "Change your lip movement in post production to edit  the content of your speech" }, "<")
-		.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
-});
-
-//?  edit section animation
-
-gsap.to(".edit__animate", {
-	translateY: (index, element) => element.dataset.y,
-	scrollTrigger: {
-		trigger: ".edit__grid",
-		start: "top bottom", // when the top of the trigger hits the top of the viewport
-		end: "bottom top+=20px", // end after scrolling 2000px beyond the start
+let MqXmd = gsap.matchMedia();
+MqXmd.add("(min-width: 992px)", () => {
+	//? Hero section animation
+	//! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
+	// reate a separate ScrollTrigger for the second timeline
+	let scrollTrigger5 = {
+		trigger: ".hero",
+		pin: true, // pin the trigger element while active
+		// pinSpacing: "margin",
+		// pinType: "transform",
+		// pinReparent: true,
+		// anticipatePin: .2, // may help avoid jump
+		start: "top 2.5%", // when the top of the trigger hits the top of the viewport
+		end: "2000px", // end after scrolling 2000px beyond the start
 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 		// markers: true,
-	},
+	};
+	let tl5 = gsap.timeline({
+		scrollTrigger: scrollTrigger5,
+	});
+	tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 21%" })
+		.to(".hero__mockup-container", { scale: 6 })
+		.to(".hero__lines", { duration: 0.01, autoAlpha: 0 })
+		.to(".hero__mockup", { duration: 0.01, autoAlpha: 0 }, "<")
+		.to(".hero__mockup-img", { duration: 0.01, autoAlpha: 0 }, "<")
+		.to(".hero__mockup-container", { scale: 1 })
+		.to(".hero__mockup-container", { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
+		.to(".hero__mockup-container video", { top: 0, height: "100%", borderRadius: "4rem", ease: "linear" }, "<0.1")
+		// .fromTo(".hero__mockup-container video", { objectFit: (index, e) => console.log(bgSize(e)) }, { top: 0, objectFit: "cover", borderRadius: "4rem", ease: "linear" })
+		.fromTo(".hero__video-desc", { yPercent: "100", autoAlpha: 0 }, { yPercent: "-15", autoAlpha: 1 });
+
+	// Create a separate ScrollTrigger for the first timeline
+	let scrollTrigger1 = {
+		trigger: ".ai__main",
+		pin: true, // pin the trigger element while active
+		// pinSpacing: "margin",
+		// pinType: "transform",
+		// pinReparent: true,
+		// anticipatePin: .2, // may help avoid jump
+		start: "top top", // when the top of the trigger hits the top of the viewport
+		end: "+=4000", // end after scrolling 2000px beyond the start
+		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		// markers: true,
+	};
+
+	let tl = gsap.timeline({
+		scrollTrigger: scrollTrigger1,
+	});
+
+	// Create a separate ScrollTrigger for the second timeline
+	let scrollTrigger2 = {
+		trigger: ".edit__grid",
+		pin: true, // pin the trigger element while active
+		// pinSpacing: "margin",
+		// pinType: "transform",
+		// pinReparent: true,
+		// anticipatePin: .2, // may help avoid jump
+		start: "top top", // when the top of the trigger hits the top of the viewport
+		end: "4000px", // end after scrolling 2000px beyond the start
+		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		// markers: true,
+	};
+
+	let tl2 = gsap.timeline({
+		scrollTrigger: scrollTrigger2,
+	});
+
+	//? ai section animation
+
+	animation.addEventListener("DOMLoaded", function () {
+		// use lotties animation with scrolltrigger
+		tl.to(playhead, {
+			frame: animation.totalFrames - 1,
+			duration: lottieContainer.dataset.duration,
+			ease: "none",
+			onUpdate: () => animation.goToAndStop(playhead.frame, true),
+		})
+			.fromTo(".ai__progress-bar:nth-child(1)", { height: "100%" }, { duration: 4, height: "35%" })
+			.fromTo(".ai__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 0.1, autoAlpha: 0 })
+			.to(".ai__desc-title", { duration: 0.01, text: "AI Enhance Speech" })
+			.to(".ai__desc-paragraph", { duration: 0.01, text: "Automatically remove background noise and enhance speech" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".ai__progress-bar:nth-child(2)", { height: "100%" }, { duration: 4, height: "35%" })
+			.fromTo(".ai__progress-bar:nth-child(3)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
+			.to(".ai__desc-title", { duration: 0.01, text: "AI Eye Contact" })
+			.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct eye contact to look at the camera in post production" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".ai__progress-bar:nth-child(3)", { height: "100%" }, { duration: 4, height: "35%" })
+			.fromTo(".ai__progress-bar:nth-child(4)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
+			.to(".ai__desc-title", { duration: 0.01, text: "AI Speech Correction" })
+			.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct any mistakes or in your recorded speech with one tap" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".ai__progress-bar:nth-child(4)", { height: "100%" }, { duration: 4, height: "35%" })
+			.fromTo(".ai__progress-bar:nth-child(5)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 })
+			.to(".ai__desc-title", { duration: 0.01, text: "AI Lipdub" })
+			.to(".ai__desc-paragraph", { duration: 0.01, text: "Change your lip movement in post production to edit  the content of your speech" }, "<")
+			.fromTo(".ai__desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
+	});
+
+	//?  edit section animation
+
+	gsap.to(".edit__animate", {
+		translateY: (index, element) => element.dataset.y,
+		scrollTrigger: {
+			trigger: ".edit__grid",
+			start: "top bottom", // when the top of the trigger hits the top of the viewport
+			end: "bottom top+=20px", // end after scrolling 2000px beyond the start
+			scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+			// markers: true,
+		},
+	});
+
+	tl2.to(".edit__animate", {
+		duration: 2,
+		yPercent: -100,
+
+		opacity: 0,
+	})
+		.to(".edit__main", { margin: "-3rem" }, "<")
+		.fromTo(".edit__gradiant-blur-img-bottom", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.to(".edit__main-img:nth-child(2)", {
+			duration: 5,
+			opacity: 0,
+		})
+		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.fromTo(".edit__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".edit__progress-bar:nth-child(2)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
+		.to(".edit__main-img:nth-child(3)", {
+			duration: 5,
+			opacity: 0,
+		})
+		.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 44.svg" } })
+		.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Grading" })
+		.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Copy the color gradeof any video or generate your own with a prompt" }, "<")
+		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".edit__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".edit__progress-bar:nth-child(3)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
+		.to(".edit__main-img:nth-child(4)", {
+			duration: 5,
+			opacity: 0,
+		})
+		.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 45.svg" } })
+		.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Schema" })
+		.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Generate the perfect color schema with just a text prompt" })
+		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".edit__progress-bar:nth-child(3)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".edit__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
+		.to(".edit__main-img:nth-child(5)", {
+			duration: 5,
+			opacity: 0,
+		})
+		.fromTo(".edit__main-desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 46.svg" } })
+		.to(".edit__main-desc-title", { duration: 0.01, text: "AI Background Removal" })
+		.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Automatically remove the background of your video " })
+		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".edit__progress-bar:nth-child(4)", { height: "100%" }, { duration: 6, height: "35%" })
+		.fromTo(".edit__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
+		.to(".edit__main-img:nth-child(6)", {
+			duration: 5,
+			opacity: 0,
+		})
+		.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
+		.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
+		.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 47.svg" } })
+		.to(".edit__main-desc-title", { duration: 0.01, text: "AI rotoscoping" })
+		.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
+		.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+		.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
 });
-
-tl2.to(".edit__animate", {
-	duration: 2,
-	yPercent: -100,
-
-	opacity: 0,
-})
-	.to(".edit__main", { margin: "-3rem" }, "<")
-	.fromTo(".edit__gradiant-blur-img-bottom", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.to(".edit__main-img:nth-child(2)", {
-		duration: 5,
-		opacity: 0,
-	})
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(2)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-	.to(".edit__main-img:nth-child(3)", {
-		duration: 5,
-		opacity: 0,
-	})
-	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 44.svg" } })
-	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Grading" })
-	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Copy the color gradeof any video or generate your own with a prompt" }, "<")
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".edit__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(3)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-	.to(".edit__main-img:nth-child(4)", {
-		duration: 5,
-		opacity: 0,
-	})
-	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 45.svg" } })
-	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Schema" })
-	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Generate the perfect color schema with just a text prompt" })
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".edit__progress-bar:nth-child(3)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-	.to(".edit__main-img:nth-child(5)", {
-		duration: 5,
-		opacity: 0,
-	})
-	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 46.svg" } })
-	.to(".edit__main-desc-title", { duration: 0.01, text: "AI Background Removal" })
-	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Automatically remove the background of your video " })
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".edit__progress-bar:nth-child(4)", { height: "100%" }, { duration: 6, height: "35%" })
-	.fromTo(".edit__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-	.to(".edit__main-img:nth-child(6)", {
-		duration: 5,
-		opacity: 0,
-	})
-	.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-	.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-	.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/asset 47.svg" } })
-	.to(".edit__main-desc-title", { duration: 0.01, text: "AI rotoscoping" })
-	.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
-	.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-	.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
 
 // sound section animation
 
