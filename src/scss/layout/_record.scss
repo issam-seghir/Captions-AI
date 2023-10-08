@@ -83,6 +83,8 @@
 			&-img-container {
 				// add gradient border animation
 				@include pseudo {
+					@include sizer(calc(100% + 5rem));
+
 					will-change: transform;
 					z-index: 1;
 					top: 50%;
@@ -90,8 +92,6 @@
 					transform-style: preserve-3d;
 					transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(226.685deg) skew(0deg, 0deg);
 					translate: -50% -50%;
-					width: calc(100% + 5rem);
-					height: calc(100% + 5rem);
 					background-image: linear-gradient(159deg, #1e1628, rgb(30 22 40 / 0%) 85%);
 					border-radius: 50%;
 					animation: rotateAnimation 3.5s linear infinite;
@@ -99,15 +99,15 @@
 
 				// add shadow effect
 				@include pseudo("", -20%, 0, -20%, 0, "after") {
+					@include sizer(calc(100% + 5rem));
+
 					z-index: 1;
-					width: calc(100% + 5rem);
-					height: calc(100% + 5rem);
 					background-image: linear-gradient(rgb(5 3 8 / 0%) 74%, #050308 91%);
 				}
 
+				@include sizer(11.375rem);
+
 				z-index: 3;
-				width: 11.375rem;
-				height: 11.375rem;
 				margin-top: 4.375rem;
 				margin-bottom: 2.5rem;
 			}
@@ -197,7 +197,7 @@
 			position: absolute;
 			top: 81.3%;
 			left: 30px;
-			color: white;
+			color: $text-primary-100;
 		}
 	}
 }
