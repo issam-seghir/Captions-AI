@@ -1,7 +1,9 @@
+@use "../abstracts" as *;
+
 .ai {
 	position: relative;
 	overflow: hidden;
-	margin-block: 6rem;
+	margin-block-end: $margin-section;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {
@@ -20,11 +22,84 @@
 		justify-content: center;
 		height: 100vh;
 		height: 100svh;
+
+		// mobile/tablet devices
+		@media (width <= $mq-xmd) {
+			display: none;
+
+			&-mobile {
+				display: block;
+			}
+
+			&-mobile-card {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: rfs(4rem);
+				text-align: center;
+				&-gradiant-blur-img {
+					position: absolute;
+				}
+			}
+
+			&-mobile-assets {
+				position: relative;
+				max-width: rfs(25rem);
+				margin-bottom: rfs(4rem);
+			}
+
+			&-mobile-img {
+				position: absolute;
+				top: 2%;
+				left: 5%;
+				width: 90.5%;
+			}
+
+		}
 	}
 
 	&__mockup {
+		position: relative;
 		height: 79vh;
 		height: 79svh;
+
+		&-images {
+			position: absolute;
+			z-index: 2;
+			top: 5.5%;
+			left: 18.5%;
+			overflow: hidden;
+			width: 63%;
+			height: 88%;
+			border-radius: 2.7rem;
+
+			img {
+				position: absolute;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			img:nth-child(1) {
+				z-index: 1;
+			}
+
+			img:nth-child(2) {
+				z-index: 2;
+			}
+
+			img:nth-child(3) {
+				z-index: 3;
+			}
+
+			img:nth-child(4) {
+				z-index: 4;
+			}
+
+			img:nth-child(5) {
+				z-index: 5;
+			}
+		}
 	}
 
 	&__text {
@@ -40,7 +115,11 @@
 		max-width: 25rem;
 
 		&-title {
-			margin-bottom: 2rem;
+			margin-bottom: rfs(2rem);
+		}
+
+		&-paragraph {
+			padding: 0.2rem;
 		}
 	}
 
@@ -54,7 +133,7 @@
 			will-change: height;
 			width: 1px;
 			height: 25%;
-			background-color: #8c20f8;
+			background-color: $bg-animation;
 		}
 	}
 }

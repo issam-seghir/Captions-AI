@@ -8,7 +8,7 @@
 	height: 100vh;
 	height: 100svh;
 	margin-block-end: $margin-section;
-	background: svg-load("../assets/svg/camera-frames.svg", fill=#A652FA), svg-load("../assets/svg/camera-frames.svg", fill=#A652FA);
+	background: svg-load("../assets/svg/camera-frames.svg", fill=$bg-animation), svg-load("../assets/svg/camera-frames.svg", fill=$bg-animation);
 	background-repeat: no-repeat;
 	background-position: 33% top, 80% 0;
 	background-size: contain, cover;
