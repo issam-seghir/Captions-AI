@@ -7,10 +7,11 @@
 	position: relative;
 	height: 100vh;
 	height: 100svh;
-	background: svg-load("../assets/svg/camera-frames.svg", fill=#A652FA);
+	margin-block-end: $margin-section;
+	background: svg-load("../assets/svg/camera-frames.svg", fill=#A652FA), svg-load("../assets/svg/camera-frames.svg", fill=#A652FA);
 	background-repeat: no-repeat;
-	background-position: 33% top;
-	background-size: contain;
+	background-position: 33% top, 80% 0;
+	background-size: contain, cover;
 
 	&__head {
 		display: flex;
@@ -50,14 +51,10 @@
 		border-radius: $rounded;
 
 		video {
-			// position: absolute;
-			// top: -14rem;
-			// width: 100%;
-			// height: fit-content;
 			position: absolute;
 			top: 5.5rem;
-			left: 2px;
-			width: 99%;
+			left: 3px;
+			width: 98%;
 			height: 14rem;
 			object-fit: cover;
 		}

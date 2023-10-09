@@ -115,68 +115,7 @@ header {
 	}
 }
 
-//?  ------------------------ AI section ------------------------
 
-.ai {
-	position: relative;
-	overflow: hidden;
-	margin-block: 6rem;
-
-	// add gradiant-blur effect in the background
-	&__gradiant-blur-img {
-		position: absolute;
-		z-index: -1;
-		top: -30%;
-		width: 103rem;
-		max-width: none;
-	}
-
-	&__main {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.375rem;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-		height: 100svh;
-	}
-
-	&__mockup {
-		height: 79vh;
-		height: 79svh;
-	}
-
-	&__text {
-		display: flex;
-		flex-direction: column;
-		gap: 3.375rem;
-		justify-content: flex-end;
-		height: 70vh;
-		height: 70svh;
-	}
-
-	&__desc {
-		max-width: 25rem;
-
-		&-title {
-			margin-bottom: 2rem;
-		}
-	}
-
-	&__progress {
-		display: flex;
-		gap: 2rem;
-		align-items: flex-end;
-		height: 40px;
-
-		&-bar {
-			will-change: height;
-			width: 1px;
-			height: 25%;
-			background-color: #8c20f8;
-		}
-	}
-}
 
 //?  ------------------------ Edit section ------------------------
 

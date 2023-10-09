@@ -4,8 +4,6 @@
 
 @use "../abstracts" as *;
 
-
-
 /**
  * Main content containers
  * 1. Make the container full-width with a maximum width
@@ -21,7 +19,11 @@
 //   width: 100%; /* 1 */
 // }
 
+.container {
+	@include adaptive(2px);
+}
 
-.container{
-  @include adaptive(2px);
+// add margin to pen spacer wrapper if Gsap add one
+body > .pen-spacer {
+	margin-block-end: $margin-section;
 }

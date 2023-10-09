@@ -5,7 +5,7 @@
 
 	position: relative;
 	container-type: inline-size;
-	margin-block: $margin-section;
+	margin-block-end: $margin-section;
 
 	// add gradiant-blur effect in the background
 	&__gradiant-blur-img {

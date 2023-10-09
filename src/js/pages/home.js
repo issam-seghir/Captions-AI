@@ -4,27 +4,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import lottie from "lottie-web";
 
-import bgSize from "../gsapHelpers.js";
+import bgSize from "../gsapHelpers";
 
-// Register the ScrollTrigger plugin with GSAP
+// ? ------------  Media queries ------------
+const mq = {
+	small: "(max-width: 480px)",
+	xSmall: "(max-width: 640px)",
+	medium: "(min-width: 768px)",
+	xMedium: "(min-width: 992px)",
+	large: "(min-width: 1024px)",
+	xLarge: "(min-width: 1280px)",
+	xxLarge: "(min-width: 1536px)",
+};
+
+// ? ------------  setup GSAP/Plugins  & Lenis smooth scrolling ------------
+
+// Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-// lotties animation
-// see : https://airbnb.io/lottie/#/web
-// const lottieContainer = document.querySelector(".ai__mockup-lottie");
-
-// let playhead = { frame: 0 },
-// 	animation = lottie.loadAnimation({
-// 		container: lottieContainer, // the dom element that will contain the animation
-// 		renderer: "svg", // Use 'svg' as animation format rendered in the container (svg || canvas|| html )
-// 		loop: !!+lottieContainer.dataset.loop, // true/false
-// 		autoplay: !!+lottieContainer.dataset.autoplay, // true/false
-// 		path: lottieContainer.dataset.src, // the path to the animation json
-// 		// name: "Hello World", // Name for future reference.
-// 	});
-
-// Optionally set animation speed and other properties
-// animation.setSpeed(4); // Adjust the speed if needed
 
 // initialize lenis smooth scrolling
 const lenis = new Lenis({
@@ -46,14 +42,17 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 
-// ScrollTrigger.normalizeScroll({
-// 	allowNestedScroll: true,
-// 	lockAxis: false,
-// 	momentum: (self) => Math.min(3, Math.abs(self.velocityY) / 1000), // dynamically control the duration of the momentum when flick-scrolling
-// 	type: "touch,wheel,pointer", // now the page will be drag-scrollable on desktop because "pointer" is in the list
-// });
+// Using Gsap ScrollTrigger with lenis
+function connectToScrollTrigger() {
+	lenis.on("scroll", ScrollTrigger.update);
+	gsap.ticker.add(function (time) {
+		lenis.raf(time * 1000);
+	});
+}
+connectToScrollTrigger();
 
-// smoothe scrolling in anchor links
+// ? ------------  smooth scrolling (Lenis) in anchor links (nav links) ------------
+
 document.querySelectorAll("nav > a").forEach((link) => {
 	link.addEventListener("click", (e) => {
 		e.preventDefault();
@@ -66,21 +65,11 @@ document.querySelectorAll("nav > a").forEach((link) => {
 	});
 });
 
-// ------------ Using Gsap ScrollTrigger with lenis  ---------------------
-function connectToScrollTrigger() {
-	lenis.on("scroll", ScrollTrigger.update);
-	gsap.ticker.add(function (time) {
-		lenis.raf(time * 1000);
-	});
-}
-connectToScrollTrigger();
-
-/* header animation : hide when scroll down , shown when scroll down */
-// let xmd = gsap.matchMedia();
+// ? ------------  header animation : hide when scroll down , shown when scroll down  ------------
 
 let didScroll = false;
 let lastScrollTop = 0;
-const delta = 150;
+const delta = 150; // how much to scroll down to hiding the header
 const header = document.querySelector(".wrapper:has(header)");
 const navbarHeight = header.offsetHeight;
 let scrollInterval; // Store the interval ID
@@ -91,22 +80,20 @@ function hasScrolled() {
 	// Make sure they scroll more than delta
 	if (Math.abs(lastScrollTop - st) <= delta) return;
 
-	// If they scrolled down and are past the navbar, add class .nav-up.
-	// This is necessary so you never see what is "behind" the navbar.
+	// If they scrolled down and are past the navbar, hide the navbar.
 	if (st > lastScrollTop && st > navbarHeight) {
 		// Scroll Down
 		header.style.transform = "translate(0, -100%)";
-	} else {
+	} else if (st + window.innerHeight < document.documentElement.scrollHeight) {
 		// Scroll Up
-		if (st + window.innerHeight < document.documentElement.scrollHeight) {
-			header.style.transform = "translate(0, 0)";
-		}
+		header.style.transform = "translate(0, 0)";
 	}
 
 	lastScrollTop = st;
 }
 
-const xmd = window.matchMedia("(min-width: 991px)");
+//  deactive header scrolling animation in tablet / mobile
+const xmd = window.matchMedia(mq.xMedium);
 
 if (xmd.matches) {
 	console.log(xmd);
@@ -128,43 +115,46 @@ if (xmd.matches) {
 	clearInterval(scrollInterval);
 }
 
+// ? ------------  GSAP on Scroll animations  ------------
 
-
-let MqXmd = gsap.matchMedia();
-MqXmd.add("(min-width: 992px)", () => {
+let xmdG = gsap.matchMedia();
+xmdG.add(mq.xMedium, () => {
 	//? Hero section animation
-	//! important : scroll trigers must be in order , the first section is the one which triggers the scrollTrigger1 (tl1)
-	// reate a separate ScrollTrigger for the second timeline
-	let scrollTrigger5 = {
+	//! important : scroll triggers must be in order ,
+	//! the first section is the one which triggers the scrollTrigger1 (tlHero)
+	let scrollTriggerHero = {
 		trigger: ".hero",
-		pin: true, // pin the trigger element while active
+		pin: true,
 		// pinSpacing: "margin",
 		// pinType: "transform",
 		// pinReparent: true,
 		// anticipatePin: .2, // may help avoid jump
 		start: "top 2.5%", // when the top of the trigger hits the top of the viewport
 		end: "2000px", // end after scrolling 2000px beyond the start
-		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		scrub: 1,
 		// markers: true,
 	};
-	let tl5 = gsap.timeline({
-		scrollTrigger: scrollTrigger5,
+	let tlHero = gsap.timeline({
+		scrollTrigger: scrollTriggerHero,
 	});
-	tl5.to(".hero__mockup-container", { yPercent: "-40", transformOrigin: "center 21%" })
-		.to(".hero__mockup-container", { scale: 6 })
+
+	const heroMockupContainer = document.querySelector(".hero__mockup-container");
+	tlHero
+		.to(heroMockupContainer, { yPercent: "-40", transformOrigin: "center 21%" })
+		.to(heroMockupContainer, { scale: 6 })
 		.to(".hero__lines", { duration: 0.01, autoAlpha: 0 })
 		.to(".hero__mockup", { duration: 0.01, autoAlpha: 0 }, "<")
 		.to(".hero__mockup-img", { duration: 0.01, autoAlpha: 0 }, "<")
-		.to(".hero__mockup-container", { scale: 1 })
-		.to(".hero__mockup-container", { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
-		.to(".hero__mockup-container video", { top: 0, height: "100%", borderRadius: "4rem", ease: "linear" }, "<0.1")
-		// .fromTo(".hero__mockup-container video", { objectFit: (index, e) => console.log(bgSize(e)) }, { top: 0, objectFit: "cover", borderRadius: "4rem", ease: "linear" })
+		.to(heroMockupContainer, { scale: 1 })
+		.to(heroMockupContainer, { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
+		.to(".hero__mockup-container video", { top: 0, left: 0, height: "100%", width: "100%", borderRadius: "3rem", ease: "linear" }, "<0.1")
+		// .fromTo(".hero", { backgroundPosition: "33% top , 80% 0", backgroundSize: (index, e) => bgSize(e, { size: "contain ,cover", nativeWidth: 1200, nativeHeight: 684 }) }, { backgroundPosition: "100% 0, 0", backgroundSize: "cover" }, "<")
 		.fromTo(".hero__video-desc", { yPercent: "100", autoAlpha: 0 }, { yPercent: "-15", autoAlpha: 1 });
 
 	/* // Create a separate ScrollTrigger for the first timeline
 	let scrollTrigger1 = {
 		trigger: ".ai__main",
-		pin: true, // pin the trigger element while active
+		pin: true,
 		// pinSpacing: "margin",
 		// pinType: "transform",
 		// pinReparent: true,
@@ -195,17 +185,34 @@ MqXmd.add("(min-width: 992px)", () => {
 
 	let tl2 = gsap.timeline({
 		scrollTrigger: scrollTrigger2,
-	});
+	}); */
 
-	//? ai section animation
+	// ? ai section animation
 
-	animation.addEventListener("DOMLoaded", function () {
-		// use lotties animation with scrolltrigger
+	// Setup Lottie's animation
+	// see : https://airbnb.io/lottie/#/web
+	const lottieContainer = document.querySelector(".ai__mockup-lottie");
+
+	let playhead = { frame: 0 },
+		mockupLottieAnimation = lottie.loadAnimation({
+			container: lottieContainer, // the dom element that will contain the animation
+			renderer: "svg", // Use 'svg' as animation format rendered in the container (svg || canvas|| html )
+			loop: !!+lottieContainer.dataset.loop, // true/false
+			autoplay: !!+lottieContainer.dataset.autoplay, // true/false
+			path: lottieContainer.dataset.src, // the path to the animation json
+			// name: "Hello World", // Name for future reference.
+		});
+
+	// Optionally set animation speed and other properties
+	mockupLottieAnimation.setSpeed(4);
+
+	mockupLottieAnimation.addEventListener("DOMLoaded", function () {
+		// use Lottie's animation with scrolltrigger
 		tl.to(playhead, {
-			frame: animation.totalFrames - 1,
+			frame: mockupLottieAnimation.totalFrames - 1,
 			duration: lottieContainer.dataset.duration,
 			ease: "none",
-			onUpdate: () => animation.goToAndStop(playhead.frame, true),
+			onUpdate: () => mockupLottieAnimation.goToAndStop(playhead.frame, true),
 		})
 			.fromTo(".ai__progress-bar:nth-child(1)", { height: "100%" }, { duration: 4, height: "35%" })
 			.fromTo(".ai__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
@@ -234,6 +241,7 @@ MqXmd.add("(min-width: 992px)", () => {
 			.fromTo(".ai__progress-bar:nth-child(5)", { height: "100%" }, { height: "35%" });
 	});
 
+	/*
 	//?  edit section animation
 
 	gsap.to(".edit__animate", {
@@ -379,7 +387,6 @@ MqXmd.add("(min-width: 992px)", () => {
 		.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
 		*/
 });
-
 
 //  burger menu
 
