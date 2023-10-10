@@ -135,5 +135,9 @@
 			height: 25%;
 			background-color: $bg-animation;
 		}
+
+		&-bar:nth-child(1) {
+			height: 100%;
+		}
 	}
 }
