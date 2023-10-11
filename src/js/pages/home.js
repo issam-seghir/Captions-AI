@@ -173,7 +173,7 @@ xmdG.add(mq.xMedium, () => {
 			start: "top top", // when the top of the trigger hits the top of the viewport
 			end: "4000px",
 			scrub: 1,
-			markers: true,
+			// markers: true,
 		};
 		let tlEdit = gsap.timeline({
 			scrollTrigger: scrollTriggerEdit,
@@ -191,6 +191,18 @@ xmdG.add(mq.xMedium, () => {
 			scrollTrigger: scrollTriggerSound,
 		});
 
+		let scrollTriggerDistribution = {
+			trigger: ".distribute",
+			pin: true,
+			start: "top 2.5%", // when the top of the trigger hits the top of the viewport
+			end: "4000px",
+			scrub: 1,
+			// markers: true,
+		};
+
+		let tlDistribution = gsap.timeline({
+			scrollTrigger: scrollTriggerDistribution,
+		});
 
 		//?  -------- Hero section animation ------------
 		const heroMockupContainer = document.querySelector(".hero__mockup-container");
@@ -254,7 +266,7 @@ xmdG.add(mq.xMedium, () => {
 				start: "top bottom",
 				end: "bottom top+=20px",
 				scrub: 1,
-				markers: true,
+				// markers: true,
 			},
 		});
 		tlEdit
@@ -325,58 +337,33 @@ xmdG.add(mq.xMedium, () => {
 			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
 			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 			.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
-			
 
-			//?  -------- Sound section animation ------------
-			tlSound.to(".sound__card-img", { translateX: -50 });
+		//?  -------- Sound section animation ------------
+		tlSound.to(".sound__card-img", { translateX: -50 });
+
+		//?  -------- Distribute section animation ------------
+		// tl3.to(".sound__card-img", {  translateX: -50 })
+		tlDistribution
+			.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
+			.fromTo(".distribute__progress-bar:nth-child(2)", { height: "75%" }, { duration: 6, height: "100%" }, "<")
+			.fromTo(".distribute__progress-bar:nth-child(3)", { height: "50%" }, { duration: 6, height: "80%" }, "<")
+			.fromTo(".distribute__video:nth-child(1)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
+			.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
+			.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Dubbing" })
+			.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Dub your video into any language while maintaining your voice" }, "<")
+			.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".distribute__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
+			.fromTo(".distribute__progress-bar:nth-child(3)", { height: "80%" }, { duration: 6, height: "35%" }, "<")
+			.fromTo(".distribute__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" })
+			.fromTo(".distribute__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "75%" }, "<")
+			.fromTo(".distribute__video:nth-child(2)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
+			.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
+			.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Extract Clips" })
+			.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Automatically extract interesting and viral worthy short clips from longer video provided" }, "<")
+			.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
+			.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
 	});
-
-
-
-
-
-	/*
-	// Distribute section animation
-
-	// Create a separate ScrollTrigger for the second timeline
-	let scrollTrigger4 = {
-		trigger: ".distribute",
-		pin: true, // pin the trigger element while active
-		// pinSpacing: "margin",
-		// pinType: "transform",
-		// pinReparent: true,
-		// anticipatePin: .2, // may help avoid jump
-		start: "top 2.5%", // when the top of the trigger hits the top of the viewport
-		end: "4000px", // end after scrolling 2000px beyond the start
-		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-		// markers: true,
-	};
-
-	let tl4 = gsap.timeline({
-		scrollTrigger: scrollTrigger4,
-	});
-
-	// tl3.to(".sound__card-img", {  translateX: -50 })
-	tl4.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
-		.fromTo(".distribute__progress-bar:nth-child(2)", { height: "75%" }, { duration: 6, height: "100%" }, "<")
-		.fromTo(".distribute__progress-bar:nth-child(3)", { height: "50%" }, { duration: 6, height: "80%" }, "<")
-		.fromTo(".distribute__video:nth-child(1)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-		.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-		.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Dubbing" })
-		.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Dub your video into any language while maintaining your voice" }, "<")
-		.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".distribute__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
-		.fromTo(".distribute__progress-bar:nth-child(3)", { height: "80%" }, { duration: 6, height: "35%" }, "<")
-		.fromTo(".distribute__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" })
-		.fromTo(".distribute__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "75%" }, "<")
-		.fromTo(".distribute__video:nth-child(2)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-		.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-		.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Extract Clips" })
-		.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Automatically extract interesting and viral worthy short clips from longer video provided" }, "<")
-		.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-		.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
-		.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
-		*/
 });
 
 //  burger menu
