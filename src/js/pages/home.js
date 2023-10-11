@@ -179,6 +179,19 @@ xmdG.add(mq.xMedium, () => {
 			scrollTrigger: scrollTriggerEdit,
 		});
 
+		let scrollTriggerSound = {
+			trigger: ".sound__flex",
+			start: "top bottom", // when the top of the trigger hits the top of the viewport
+			end: "bottom top",
+			scrub: 1,
+			// markers: true,
+		};
+
+		let tlSound = gsap.timeline({
+			scrollTrigger: scrollTriggerSound,
+		});
+
+
 		//?  -------- Hero section animation ------------
 		const heroMockupContainer = document.querySelector(".hero__mockup-container");
 		tlHero
@@ -190,7 +203,7 @@ xmdG.add(mq.xMedium, () => {
 			.to(heroMockupContainer, { scale: 1 })
 			.to(heroMockupContainer, { width: "100%", height: "100%", top: "50%", yPercent: "-50", xPercent: "-50" }, "<")
 			.to(".hero__mockup-container video", { top: 0, left: 0, height: "100%", width: "100%", borderRadius: "3rem", ease: "linear" }, "<0.1")
-			.to(".hero", { backgroundPosition: "100% 0, 0", backgroundSize: "cover"}, "<")
+			.to(".hero", { backgroundPosition: "100% 0, 0", backgroundSize: "cover" }, "<")
 			.fromTo(".hero__video-desc", { yPercent: "100", autoAlpha: 0 }, { yPercent: "-15", autoAlpha: 1 });
 
 		//?  -------- AI section animation ------------
@@ -251,7 +264,7 @@ xmdG.add(mq.xMedium, () => {
 
 				opacity: 0,
 			})
-			.to(".edit__main", { margin: "-3rem" ,display:"flex"}, "<")
+			.to(".edit__main", { margin: "-3rem", display: "flex" }, "<")
 			.fromTo(".edit__shadow-blur-img", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
 			.to(".edit__main-img:nth-child(2)", {
 				duration: 5,
@@ -312,32 +325,17 @@ xmdG.add(mq.xMedium, () => {
 			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
 			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
 			.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
+			
+
+			//?  -------- Sound section animation ------------
+			tlSound.to(".sound__card-img", { translateX: -50 });
 	});
+
+
+
 
 
 	/*
-	// sound section animation
-
-	// Create a separate ScrollTrigger for the second timeline
-	let scrollTrigger3 = {
-		trigger: ".sound__flex",
-		// pin: true, // pin the trigger element while active
-		// pinSpacing: "margin",
-		// pinType: "transform",
-		// pinReparent: true,
-		// anticipatePin: .2, // may help avoid jump
-		start: "top bottom", // when the top of the trigger hits the top of the viewport
-		end: "bottom top", // end after scrolling 2000px beyond the start
-		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-		// markers: true,
-	};
-
-	let tl3 = gsap.timeline({
-		scrollTrigger: scrollTrigger3,
-	});
-
-	tl3.to(".sound__card-img", { translateX: -50 });
-
 	// Distribute section animation
 
 	// Create a separate ScrollTrigger for the second timeline
