@@ -36,6 +36,12 @@
 
 				.edit__main {
 					width: 45%;
+					&-img{
+						&--right,&--left{
+							visibility: visible;
+
+						}
+					}
 				}
 
 				.edit__shadow-blur-img {
@@ -91,9 +97,9 @@
 		@media (width<= 380px) {
 			&-mobile {
 				.edit__shadow-blur-img {
-					top: 35%;
-					left: -139%;
-					height: 19rem;
+					top: 56%;
+    left: -139%;
+    height: 12rem;
 				}
 			}
 		}
