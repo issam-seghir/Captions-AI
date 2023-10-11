@@ -1,0 +1,127 @@
+@use "../abstracts" as *;
+
+.products {
+	@include adaptive(2px);
+
+	position: relative;
+	margin-block-end: $margin-section;
+
+	&__gradiant-blur-img {
+		position: absolute;
+		z-index: -1;
+		top: -1%;
+		left: -5%;
+		width: 90rem;
+	}
+
+	&__cards {
+		display: flex;
+		gap: 2rem;
+
+		@media (width<=800px) {
+			flex-direction: column;
+			gap: rfs(6rem);
+			justify-content: center;
+		}
+	}
+
+	&__card {
+		@include only(1) {
+			@include loadify(0.4s);
+		}
+
+		@include only(2) {
+			@include loadify(0.6s);
+		}
+
+		@include only(3) {
+			@include loadify(0.8s);
+		}
+
+		cursor: pointer;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		gap: 2rem;
+		justify-content: space-between;
+
+		&-img {
+			overflow: hidden;
+
+			img {
+				width: 100%;
+				border-radius: $rounded;
+				transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+				transition-duration: 600ms;
+				transition-property: transform;
+			}
+		}
+
+		&-title {
+			margin-bottom: 1.5rem;
+			transition-timing-function: linear;
+			transition-duration: 200ms;
+			transition-property: all;
+		}
+
+		&-button {
+			position: relative;
+			overflow: hidden;
+			padding: 0.5rem;
+			background-color: #403054;
+			border-radius: 50%;
+
+			img {
+				width: rfs(2.5rem);
+				transition-timing-function: linear;
+				transition-duration: 200ms;
+				transition-property: all;
+			}
+
+			img:nth-child(2) {
+				position: absolute;
+				top: 100%;
+				right: 100%;
+				padding: 0.5rem;
+			}
+		}
+
+		&:hover & {
+			&-img img {
+				transform: scale(1.05);
+			}
+
+			&-button img {
+				transform: translate(100%, -100%);
+			}
+
+			&-button {
+				background-color: #933aff;
+			}
+
+			&-title {
+				color: #f7f1ff75;
+			}
+		}
+	}
+
+	&__action {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	@media (width<=800px) {
+		&__action {
+			display: flex;
+			gap: 0;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+	}
+
+	@media (width<=600px) {
+		max-width: 93%;
+		margin-inline: auto;
+	}
+}

@@ -1,3 +1,131 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the footer of the site/application.
-// -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.footer {
+	@include adaptive(2px);
+
+	display: flex;
+	justify-content: space-between;
+	height: 30vh;
+	height: 30svh;
+	margin-bottom: 3rem;
+
+	&__left {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	&__right {
+		display: flex;
+		gap: 7rem;
+		justify-content: space-between;
+	}
+
+	&__company {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #ab88fb;
+		letter-spacing: 0.1em;
+
+		&-top ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down a {
+			font-size: 0.875rem;
+			font-weight: 400;
+			line-height: 1.4;
+			color: #d6d0e0;
+			transition: all 0.2s;
+		}
+
+		&-top li {
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+			color: #fff;
+			letter-spacing: 0.1em;
+		}
+	}
+
+	&__products {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #ab88fb;
+		letter-spacing: 0.1em;
+
+		&-top ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-top li {
+			font-size: 1rem;
+			font-weight: 500;
+			line-height: 1.5;
+			color: #fff;
+			letter-spacing: 0.1em;
+		}
+
+		&-down ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&-down a {
+			font-size: 0.875rem;
+			font-weight: 400;
+			line-height: 1.4;
+			color: #d6d0e0;
+			transition: all 0.2s;
+		}
+	}
+
+	&__contact {
+		display: flex;
+		gap: 1rem;
+
+		a {
+			fill: white;
+		}
+	}
+}
+
+//?  ------------------------ ai video section ------------------------
+
+.ai-video {
+	width: 90cqw;
+	height: 90cqh;
+	margin: 0 auto;
+	border: 1px solid #c04e61;
+	border-radius: $rounded;
+}
+
+@keyframes rotateAnimation {
+	0% {
+		transform: rotateZ(0deg);
+		color: #c04e61;
+	}
+
+	100% {
+		transform: rotateZ(360deg);
+	}
+}

@@ -113,6 +113,15 @@ if (xmd.matches) {
 	clearInterval(scrollInterval);
 }
 
+
+// ? ------------  nav animation : burger menu  ------------
+
+const burgerMenuButton = document.querySelector(".burger-menu");
+
+burgerMenuButton.addEventListener("click", function () {
+	burgerMenuButton.classList.toggle("active");
+});
+
 // ? ------------  GSAP on Scroll animations  ------------
 
 // the scroll animation only fires in desktop >= 991px
@@ -365,17 +374,3 @@ xmdG.add(mq.xMedium, () => {
 			.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
 	});
 });
-
-//  burger menu
-
-// document.addEventListener("DOMContentLoaded", function () {
-const burgerMenuButton = document.querySelector(".burger-menu");
-
-burgerMenuButton.addEventListener("click", function () {
-	burgerMenuButton.classList.toggle("active");
-});
-
-// if (burgerMenuButton.classList.contains("active")) {
-// }
-
-/* sticky header animation */
