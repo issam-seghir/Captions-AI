@@ -20,6 +20,83 @@
 		@media (width <= 1300px) {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
+
+		// tablet and mobile devices
+		@media (width<= $mq-xmd) {
+			& {
+				display: none;
+			}
+
+			&-mobile {
+				display: flex;
+				flex-direction: column;
+				gap: rfs(10.5rem);
+				align-items: center;
+				justify-content: center;
+
+				.edit__main {
+					width: 45%;
+				}
+
+				.edit__shadow-blur-img {
+					top: 70%;
+					left: -50%;
+					height: 19rem;
+				}
+
+				.edit__main-desc {
+					max-width: 90%;
+				}
+			}
+		}
+
+		@media (width<= 600px) {
+			&-mobile {
+				.edit__shadow-blur-img {
+					top: 68%;
+					left: -81%;
+					height: 19rem;
+				}
+
+				.edit__main-desc-paragraph,
+				.edit__main-desc-icon {
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+
+				.edit__main-desc {
+					gap: 1rem;
+				}
+			}
+		}
+
+		@media (width<= 430px) {
+			&-mobile {
+				.edit__main-desc {
+					max-width: 100%;
+				}
+
+				.edit__shadow-blur-img {
+					top: 56%;
+					left: -139%;
+					height: 17rem;
+				}
+
+				.edit__main-desc {
+					gap: 0;
+				}
+			}
+		}
+
+		@media (width<= 380px) {
+			&-mobile {
+				.edit__shadow-blur-img {
+					top: 35%;
+					left: -139%;
+					height: 19rem;
+				}
+			}
+		}
 	}
 
 	// add gradiant-blur effect in the background
@@ -34,7 +111,7 @@
 
 	&__shadow-blur-img {
 		position: absolute;
-		z-index: 98;
+		z-index: 7;
 		top: 58%;
 		width: 120.375rem;
 		max-width: 999%;
@@ -89,6 +166,7 @@
 	}
 
 	&__main {
+		position: relative;
 		grid-area: 1 / 4 / 6 / 5;
 
 		&-assets {
@@ -142,7 +220,7 @@
 
 		&-text {
 			position: absolute;
-			z-index: 99;
+			z-index: 8;
 			bottom: 9%;
 			left: -50%;
 			display: flex;
@@ -162,7 +240,9 @@
 			align-items: center;
 
 			&-icon {
-				margin-bottom: 2rem;
+				width: rfs(2.2rem);
+				height: rfs(2.2rem);
+				margin-bottom: rfs(2rem);
 			}
 
 			&-title {
@@ -175,21 +255,23 @@
 		}
 
 		@media (width <= 1300px) {
-			transform: scale(1.2);
 			grid-area: 1/2/3/4;
 
 			// align-self: center;
 			align-items: flex-start;
 			justify-self: center;
-			width: 50%;
+			width: 55%;
 			height: 50%;
 			margin: 0 !important;
-
-			// margin: 1rem !important;
 		}
 
 		@media (width <= 1200px) {
-			// margin: 4rem !important;
+			width: 60%;
+			text-align: center;
+		}
+
+		@media (width <= 1100px) {
+			width: 70%;
 			text-align: center;
 		}
 	}
