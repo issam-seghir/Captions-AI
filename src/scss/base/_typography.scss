@@ -52,7 +52,7 @@ h1 {
 
 h2 {
 	font-size: $text-6xl;
-	line-height: 4.4rem; /* 125.714% */
+	line-height: rfs(4.4rem); /* 125.714% */
 	color: $text-primary-100;
 	letter-spacing: 0.08rem;
 }

@@ -55,8 +55,14 @@
 
 		&-desc {
 			display: flex;
-			gap: 4rem;
+			gap: rfs(4rem);
 			align-items: center;
+
+			@media (width<=400px) {
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				justify-content: flex-start;
+			}
 		}
 	}
 
@@ -72,6 +78,45 @@
 			width: 1px;
 			height: 25%;
 			background-color: $bg-progress-bar;
+		}
+	}
+
+	// tablet and mobile devices
+	@media (width<= $mq-xmd) {
+		& {
+			display: none;
+		}
+
+		&-mobile {
+			@include adaptive(2px);
+
+			display: block;
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+
+			&__video {
+				height: auto;
+				border-radius: $rounded;
+			}
+		}
+
+		&__flex {
+			width: 90%;
+			height: 80%;
+			margin: 0 auto;
+			padding-inline: 1rem;
+		}
+
+		&__item {
+			z-index: 4;
+		}
+	}
+
+	@media (width<=600px) {
+		&-mobile {
+			max-width: 93%;
+			margin: auto;
 		}
 	}
 }
