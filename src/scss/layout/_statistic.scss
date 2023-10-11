@@ -1,0 +1,20 @@
+@use "../abstracts" as *;
+
+.statistic {
+	@include adaptive(2px);
+	display: flex;
+	gap: rfs(9rem);
+	justify-content: center;
+	margin: 0 auto $margin-section;
+
+    @media (width < 500px) {
+			    flex-direction: column;
+		}
+	&__desc {
+		text-align: center;
+	}
+
+	&__desc-title {
+		margin-bottom: rfs(1.5rem);
+	}
+}
