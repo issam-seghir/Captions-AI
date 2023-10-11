@@ -28,7 +28,7 @@
 		font-size: 1rem;
 		font-weight: 500;
 		line-height: 1.5;
-		color: #ab88fb;
+		color: $text-secondary-100;
 		letter-spacing: 0.1em;
 
 		&-top ul {
@@ -47,7 +47,7 @@
 			font-size: 0.875rem;
 			font-weight: 400;
 			line-height: 1.4;
-			color: #d6d0e0;
+			color: $text-primary-200;
 			transition: all 0.2s;
 		}
 
@@ -55,7 +55,7 @@
 			font-size: 1rem;
 			font-weight: 500;
 			line-height: 1.5;
-			color: #fff;
+			color: $text-primary-100;
 			letter-spacing: 0.1em;
 		}
 	}
@@ -67,7 +67,7 @@
 		font-size: 1rem;
 		font-weight: 500;
 		line-height: 1.5;
-		color: #ab88fb;
+		color: $text-secondary-100;
 		letter-spacing: 0.1em;
 
 		&-top ul {
@@ -80,7 +80,7 @@
 			font-size: 1rem;
 			font-weight: 500;
 			line-height: 1.5;
-			color: #fff;
+			color: $text-primary-100;
 			letter-spacing: 0.1em;
 		}
 
@@ -94,7 +94,7 @@
 			font-size: 0.875rem;
 			font-weight: 400;
 			line-height: 1.4;
-			color: #d6d0e0;
+			color: $text-primary-200;
 			transition: all 0.2s;
 		}
 	}
@@ -104,28 +104,29 @@
 		gap: 1rem;
 
 		a {
-			fill: white;
+			fill: $text-primary-100;
+		}
+	}
+
+	@media (width<=760px) {
+		gap: 4rem;
+		max-width: 93%;
+	}
+
+	@media (width<=560px) {
+		flex-direction: column;
+		align-items: center;
+		height: fit-content;
+
+		&__left {
+			gap: 2rem;
+		}
+
+		&__right {
+			gap: 0;
+			justify-content: space-evenly;
+			width: 100%;
 		}
 	}
 }
 
-//?  ------------------------ ai video section ------------------------
-
-.ai-video {
-	width: 90cqw;
-	height: 90cqh;
-	margin: 0 auto;
-	border: 1px solid #c04e61;
-	border-radius: $rounded;
-}
-
-@keyframes rotateAnimation {
-	0% {
-		transform: rotateZ(0deg);
-		color: #c04e61;
-	}
-
-	100% {
-		transform: rotateZ(360deg);
-	}
-}

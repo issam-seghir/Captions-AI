@@ -97,6 +97,17 @@
 					animation: rotateAnimation 3.5s linear infinite;
 				}
 
+				@keyframes rotateAnimation {
+					0% {
+						transform: rotateZ(0deg);
+						color: #c04e61;
+					}
+
+					100% {
+						transform: rotateZ(360deg);
+					}
+				}
+
 				// add shadow effect
 				@include pseudo("", -20%, 0, -20%, 0, "after") {
 					@include sizer(calc(100% + 5rem));
