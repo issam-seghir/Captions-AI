@@ -17,6 +17,10 @@
 		padding-block: rfs(5rem);
 		padding-inline: rfs(2rem);
 
+		img {
+			border-radius: $rounded ;
+		}
+
 		@media (width <= 1300px) {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
@@ -36,10 +40,11 @@
 
 				.edit__main {
 					width: 45%;
-					&-img{
-						&--right,&--left{
-							visibility: visible;
 
+					&-img {
+						&--right,
+						&--left {
+							visibility: visible;
 						}
 					}
 				}
@@ -98,8 +103,8 @@
 			&-mobile {
 				.edit__shadow-blur-img {
 					top: 56%;
-    left: -139%;
-    height: 12rem;
+					left: -139%;
+					height: 12rem;
 				}
 			}
 		}
@@ -136,6 +141,7 @@
 
 	&__section1 {
 		grid-area: 1 / 6 / 2 / 7;
+
 
 		@media (width <= 1300px) {
 			grid-area: 1/4/2/5;
@@ -181,7 +187,7 @@
 
 		&-img {
 			position: absolute;
-			    top: 1.7%;
+			top: 1.7%;
 			left: 5%;
 			width: 90.5%;
 
@@ -294,22 +300,11 @@
 		grid-area: 1 / 2 / 4 / 3;
 		align-self: center;
 
+
 		@media (width <= 1300px) {
 			grid-area: 1/1/4 /2;
 		}
 	}
 
-	&__progress {
-		display: flex;
-		gap: 2rem;
-		align-items: flex-end;
-		height: 40px;
 
-		&-bar {
-			will-change: height;
-			width: 1px;
-			height: 25%;
-			background-color: $bg-progress-bar;
-		}
-	}
 }

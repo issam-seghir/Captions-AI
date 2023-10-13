@@ -94,7 +94,7 @@ p {
 
 		width: fit-content;
 		margin: 0 auto 3rem;
-		font-weight: 700;
+		font-weight: $font-bold;
 		color: #ab88fb;
 	}
 
@@ -144,7 +144,7 @@ article {
 }
 
 strong {
-	font-weight: $tdbc-strong-font-weight;
+	font-weight: $font-bold;
 }
 
 pre {

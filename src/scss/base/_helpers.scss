@@ -19,8 +19,21 @@
 //   width: 100%; /* 1 */
 // }
 
-.container {
-	@include adaptive(2px);
+
+// progress-bar
+
+.progress {
+	display: flex;
+	gap: 2rem;
+	align-items: flex-end;
+	height: 40px;
+
+	.bar {
+		will-change: height;
+		width: 1px;
+		height: 25%;
+		background-color: $bg-animation;
+	}
 }
 
 // add margin to pen spacer wrapper if Gsap add one

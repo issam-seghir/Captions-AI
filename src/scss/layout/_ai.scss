@@ -124,18 +124,6 @@
 	}
 
 	&__progress {
-		display: flex;
-		gap: 2rem;
-		align-items: flex-end;
-		height: 40px;
-
-		&-bar {
-			will-change: height;
-			width: 1px;
-			height: 25%;
-			background-color: $bg-animation;
-		}
-
 		&-bar:nth-child(1) {
 			height: 100%;
 		}

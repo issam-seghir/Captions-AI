@@ -13,12 +13,6 @@
             ],
             "~assets/*": [
                 "src/assets/*"
-            ],
-            "~utilities-override/*": [
-                "src/scss/utilities-override/*"
-            ],
-            "~utilities/*": [
-                "src/scss/utilities/*"
             ]
         }
     }

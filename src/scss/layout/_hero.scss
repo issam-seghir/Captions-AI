@@ -55,7 +55,9 @@
 			top: 5.5rem;
 			left: 3px;
 			width: 98%;
-			height: 14rem;
+
+			// height: 14rem;
+			height: 26%;
 			object-fit: cover;
 		}
 	}
@@ -133,19 +135,11 @@
 		left: 50%;
 		translate: -50%;
 		rotate: 180deg;
-		display: flex;
 		gap: 1rem;
-		align-items: flex-end;
-		height: 40px;
 	}
 
 	/* Staggered animation delays for each progress bar */
 	&__progress-bar {
-		will-change: height;
-		width: 1px;
-		height: 25%;
-		background-color: $bg-animation;
-
 		&:nth-child(5) {
 			animation: dancingOne 1s infinite alternate;
 		}
@@ -288,7 +282,7 @@
 			width: 24rem;
 
 			video {
-				top: 6rem;
+				top: 13%;
 				height: 11rem;
 				object-fit: cover;
 			}
@@ -333,8 +327,7 @@
 			height: 48rem;
 
 			video {
-				top: 6rem;
-				height: 11rem;
+				height: 26%;
 				object-fit: cover;
 			}
 		}
@@ -361,17 +354,18 @@
 
 		&__mockup-container {
 			video {
-				top: 5rem;
-				height: 9rem;
+				top: 13%;
+				height: 20%;
 			}
 		}
 	}
+	@media (width<= 340px) {
 
-	@media (width<=350px) {
 		&__mockup-container {
 			video {
-				top: 4rem;
-				height: 9rem;
+				    top: 11%;
+				height: 17%;
+
 			}
 		}
 	}

@@ -67,6 +67,11 @@
 		&-img {
 			position: relative;
 			z-index: 3;
+
+			&.profile {
+				background: $bg-animation-2;
+				border-radius: 50%;
+			}
 		}
 
 		&:nth-child(1),
