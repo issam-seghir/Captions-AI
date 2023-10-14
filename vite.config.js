@@ -6,8 +6,8 @@ import dynamicImport from "vite-plugin-dynamic-import";
 
 export default defineConfig(({ command, mode, ssrBuild }) => ({
 	// Getting rid of hashes in generated filenames
-	filenameHashing: false,
-	build: {
+	// filenameHashing: false,
+	/* build: {
 		// cssMinify: false, // disable CSS mininfy only
 		minify: false, // disable CSS/JS mininfy only
 		// change output location
@@ -19,7 +19,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 				chunkFileNames: "assets/[name].[ext]", // Output dynamic imports (chunks) to the assets folder
 			},
 		},
-	},
+	}, */
 
 	server: {
 		// open the server with google chrome browser
@@ -33,15 +33,6 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 	}, */
 	plugins: [
 		dynamicImport(/* options */),
-		/* 		Icons({
-			scale: 1.2, // Scale of icons against 1em
-			defaultStyle: "", // Style apply to icons
-			defaultClass: "", // Class names apply to icons
-			compiler: null, // 'vue2', 'vue3', 'jsx'
-			jsx: "react", // 'react' or 'preact'
-			// experimental : install the icon set when you import them
-			autoInstall: true,
-		}), */
 		AutoImport({
 			/* options */
 		}),

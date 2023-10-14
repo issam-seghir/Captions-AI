@@ -17,7 +17,6 @@
 	&__main {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.375rem;
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
@@ -38,6 +37,7 @@
 				align-items: center;
 				margin-bottom: rfs(4rem);
 				text-align: center;
+
 				&-gradiant-blur-img {
 					position: absolute;
 				}
@@ -55,7 +55,6 @@
 				left: 5%;
 				width: 90.5%;
 			}
-
 		}
 	}
 
@@ -77,7 +76,7 @@
 			img {
 				position: absolute;
 				height: 100%;
-				object-fit: cover;
+				visibility: hidden;
 			}
 
 			img:nth-child(1) {
@@ -125,7 +124,7 @@
 
 	&__progress {
 		&-bar:nth-child(1) {
-			height: 100%;
+			transform: scaleY(2.8);
 		}
 	}
 }

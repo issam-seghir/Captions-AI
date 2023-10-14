@@ -18,7 +18,7 @@
 		padding-inline: rfs(2rem);
 
 		img {
-			border-radius: $rounded ;
+			border-radius: $rounded;
 		}
 
 		@media (width <= 1300px) {
@@ -141,7 +141,6 @@
 
 	&__section1 {
 		grid-area: 1 / 6 / 2 / 7;
-
 
 		@media (width <= 1300px) {
 			grid-area: 1/4/2/5;
@@ -272,18 +271,18 @@
 			// align-self: center;
 			align-items: flex-start;
 			justify-self: center;
-			width: 55%;
+			width: 74%;
 			height: 50%;
 			margin: 0 !important;
 		}
 
 		@media (width <= 1200px) {
-			width: 60%;
+			width: 85%;
 			text-align: center;
 		}
 
 		@media (width <= 1100px) {
-			width: 70%;
+			width: 90%;
 			text-align: center;
 		}
 	}
@@ -300,11 +299,8 @@
 		grid-area: 1 / 2 / 4 / 3;
 		align-self: center;
 
-
 		@media (width <= 1300px) {
 			grid-area: 1/1/4 /2;
 		}
 	}
-
-
 }
