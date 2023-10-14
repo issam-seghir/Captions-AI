@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-object-injection */
 import gsap from "gsap";
 import lottie from "lottie-web";
 
@@ -114,48 +115,33 @@ xmdG.add(mq.xMedium, () => {
 			.fromTo(heroVideoDesc, { yPercent: "100", autoAlpha: 0 }, { yPercent: "-15", autoAlpha: 1 });
 
 		//?  -------- AI section animation ------------
-		// use Lottie's animation with scrolltrigger
+
+		//  select elements
+		const descContent = [
+			{
+				title: "AI Enhance Speech",
+				paragraph: "Automatically remove background noise and enhance speech",
+			},
+			{
+				title: "AI Eye Contact",
+				paragraph: "Correct eye contact to look at the camera in post production",
+			},
+			{
+				title: "AI Speech Correction",
+				paragraph: "Correct any mistakes in your recorded speech with one tap",
+			},
+			{
+				title: "AI Lipdub",
+				paragraph: "Change your lip movement in post production to edit the content of your speech",
+			},
+		];
 		const progressBars = document.querySelectorAll(".ai__progress-bar");
 		const mockupImages = document.querySelectorAll(".ai__mockup-images img");
 		const desc = document.querySelectorAll(".ai__desc");
-		// console.log(mockupImages);
-		// const animationSteps = [
-		// 	{
-		// 		title: "AI Enhance Speech",
-		// 		paragraph: "Automatically remove background noise and enhance speech",
-		// 	},
-		// 	{
-		// 		title: "AI Eye Contact",
-		// 		paragraph: "Correct eye contact to look at the camera in post production",
-		// 	},
-		// 	{
-		// 		title: "AI Speech Correction",
-		// 		paragraph: "Correct any mistakes in your recorded speech with one tap",
-		// 	},
-		// 	{
-		// 		title: "AI Lipdub",
-		// 		paragraph: "Change your lip movement in post production to edit the content of your speech",
-		// 	},
-		// ];
+		const descTitle = document.querySelectorAll(".ai__desc-title");
+		const descParagraph = document.querySelectorAll(".ai__desc-paragraph");
 
-		// tlAi.to(playhead, {
-		// 	frame: mockupLottieAnimation.totalFrames - 1,
-		// 	duration: lottieContainer.dataset.duration,
-		// 	ease: "none",
-		// 	onUpdate: () => {
-		// 		mockupLottieAnimation.goToAndStop(playhead.frame, true);
-		// 	},
-		// });
-		// for (let index = 0; index < animationSteps.length-1; index++) {
-		// 	tlAi.to(progressBars[index], { duration: 4, scaleY: 1 });
-		// 	tlAi.to(progressBars[index + 1 ], { duration: 4, scaleY: 2.8 }, "<");
-		// 	tlAi.fromTo(descAi[index], { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 }); // Target the current descAi element
-		// 	tlAi.to(".ai__desc-title", { duration: 0.01, text: animationSteps[index].title });
-		// 	tlAi.to(".ai__desc-paragraph", { duration: 0.01, text: animationSteps[index].paragraph }, "<");
-		// 	tlAi.fromTo(descAi[index], { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 }); // Target the current descAi element
-		// 	tlAi.fromTo(mockupImages[index], { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 }, "<"); // Target the current mockup image
-		// }
-
+		// use Lottie's animation with scrolltrigger
 		tlAi.to(playhead, {
 			frame: mockupLottieAnimation.totalFrames - 1,
 			duration: lottieContainer.dataset.duration,
@@ -163,37 +149,19 @@ xmdG.add(mq.xMedium, () => {
 			onUpdate: () => {
 				mockupLottieAnimation.goToAndStop(playhead.frame, true);
 			},
-		})
-			.to(progressBars[0], { duration: 4, scaleY: 1 })
-			.to(progressBars[1], { duration: 4, scaleY: 2.8 }, "<")
-			// .fromTo(".ai__progress-bar:nth-child(2)", { height: "35%" }, { duration: 4, height: "100%" }, "<")
-			.to(desc, { duration: 0.1, autoAlpha: 0 })
-			.to(".ai__desc-title", { duration: 0.01, text: "AI Enhance Speech" })
-			.to(".ai__desc-paragraph", { duration: 0.01, text: "Automatically remove background noise and enhance speech" }, "<")
-			.to(desc, { duration: 2, autoAlpha: 1 })
-			.from(mockupImages[0], { duration: 2, autoAlpha: 0 }, "<")
-			.to(progressBars[1], { duration: 4, scaleY: 1 })
-			.to(progressBars[2], { duration: 4, scaleY: 2.8 }, "<")
-			.to(desc, { duration: 2, autoAlpha: 0 })
-			.to(".ai__desc-title", { duration: 0.01, text: "AI Eye Contact" })
-			.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct eye contact to look at the camera in post production" }, "<")
-			.to(desc, { duration: 2, autoAlpha: 1 })
-			.from(mockupImages[1], { duration: 2, autoAlpha: 0 }, "<")
-			.to(progressBars[2], { duration: 4, scaleY: 1 })
-			.to(progressBars[3], { duration: 4, scaleY: 2.8 }, "<")
-			.to(desc, { duration: 2, autoAlpha: 0 })
-			.to(".ai__desc-title", { duration: 0.01, text: "AI Speech Correction" })
-			.to(".ai__desc-paragraph", { duration: 0.01, text: "Correct any mistakes or in your recorded speech with one tap" }, "<")
-			.to(desc, { duration: 2, autoAlpha: 1 })
-			.from(mockupImages[2], { duration: 2, autoAlpha: 0 }, "<")
-			.to(progressBars[3], { duration: 4, scaleY: 1 })
-			.to(progressBars[4], { duration: 4, scaleY: 2.8 }, "<")
-			.to(desc, { duration: 2, autoAlpha: 0 })
-			.to(".ai__desc-title", { duration: 0.01, text: "AI Lipdub" })
-			.to(".ai__desc-paragraph", { duration: 0.01, text: "Change your lip movement in post production to edit  the content of your speech" }, "<")
-			.to(desc, { duration: 2, autoAlpha: 1 })
-			.from(mockupImages[3], { duration: 2, autoAlpha: 0 }, "<")
-			.to(progressBars[4], { duration: 8, scaleY: 1 });
+		});
+		descContent.forEach(({ title, paragraph }, index) => {
+			tlAi.to(progressBars[index], { duration: 4, scaleY: 1 })
+				.to(progressBars[index + 1], { duration: 4, scaleY: 2.8 }, "<")
+				.to(desc, { duration: 0.1, autoAlpha: 0 })
+				.to(descTitle, { duration: 0.01, text: title })
+				.to(descParagraph, { duration: 0.01, text: paragraph }, "<")
+				.to(desc, { duration: 2, autoAlpha: 1 })
+				.from(mockupImages[index], { duration: 2, autoAlpha: 0 }, "<");
+		});
+
+		// You can add this line to control the scaleY of the last progress bar
+		tlAi.to(progressBars, { scaleY: 1 });
 
 		//?  -------- Edit section animation ------------
 		gsap.to(".edit__animate", {
