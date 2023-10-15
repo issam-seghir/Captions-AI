@@ -2,6 +2,9 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
+            "~assets/*": [
+                "src/assets/*"
+            ],
             "~js/*": [
                 "src/js/*"
             ],
@@ -10,12 +13,6 @@
             ],
             "~/*": [
                 "src/*"
-            ],
-            "~assets/*": [
-                "src/assets/*"
-            ],
-            "~components/*": [
-                "src/scss/components/*"
             ]
         }
     }

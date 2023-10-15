@@ -1,5 +1,32 @@
 @use "../abstracts" as *;
 
+// add width to mockup if the lotties mockup not loaded yet to fill images
+.ai__mockup:not(:has(svg)) {
+	width: 27rem;
+	height: 41rem;
+
+
+	img:not(.mockup__backup) {
+		top: 5px;
+		left: 0;
+		width: 98%;
+		object-fit: contain;
+		border-radius: 4rem;
+	}
+
+	.ai__mockup-images {
+		position: absolute;
+		z-index: 2;
+		top: 10%;
+		overflow: hidden;
+		width: 68%;
+		height: 92%;
+		.mockup__backup {
+			z-index: 5;
+		}
+	}
+}
+
 .ai {
 	position: relative;
 	overflow: hidden;
@@ -71,31 +98,43 @@
 			overflow: hidden;
 			width: 63%;
 			height: 88%;
-			border-radius: 2.7rem;
 
 			img {
 				position: absolute;
 				height: 100%;
+				border-radius: 2rem;
 			}
 
 			img:nth-child(1) {
 				z-index: 1;
+
+				// top: 15px;
+				// left: 14px;
+				// border-radius: 6rem;
 			}
 
 			img:nth-child(2) {
 				z-index: 2;
+
+				// top: 15px;
+				// left: 14px;
+				// border-radius: 6rem;
 			}
 
 			img:nth-child(3) {
 				z-index: 3;
+
+				// top: 15px;
+				// left: 14px;
+				// border-radius: 6rem;
 			}
 
 			img:nth-child(4) {
 				z-index: 4;
-			}
 
-			img:nth-child(5) {
-				z-index: 5;
+				// top: 15px;
+				// left: 14px;
+				// border-radius: 6rem;
 			}
 		}
 	}
@@ -120,5 +159,4 @@
 			padding: 0.2rem;
 		}
 	}
-
 }
