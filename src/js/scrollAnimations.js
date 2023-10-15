@@ -161,7 +161,7 @@ xmdG.add(mq.xMedium, () => {
 		});
 
 		// scaleY of the last progress bar
-		tlAi.to(progressBarsAi, {duration: 12, scaleY: 1 });
+		tlAi.to(progressBarsAi, { duration: 12, scaleY: 1 });
 
 		//?  -------- Edit section animation ------------
 
@@ -209,7 +209,6 @@ xmdG.add(mq.xMedium, () => {
 		// hide all mini images
 		tlEdit.set(imagesMiniEdit, { autoAlpha: 0 });
 
-
 		// the first element animation
 		tlEdit
 			.to(".edit__animate", {
@@ -234,7 +233,7 @@ xmdG.add(mq.xMedium, () => {
 				.to(imagesEdit[index + 1], { duration: 5, autoAlpha: 0 })
 				.to(descEdit, { autoAlpha: 0 }, "<")
 				.to(imagesMiniEdit[index], { autoAlpha: 0 }, "<")
-				.to(imagesMiniEdit[index+1], { autoAlpha: 1 }, "<")
+				.to(imagesMiniEdit[index + 1], { autoAlpha: 1 }, "<")
 				.set(descIconEdit, { duration: 0.01, attr: { src: src } })
 				.to(descTitleEdit, { duration: 0.01, text: title })
 				.to(descParagraphEdit, { duration: 0.01, text: paragraph }, "<")
@@ -244,31 +243,49 @@ xmdG.add(mq.xMedium, () => {
 		// scaleY of the last progress bar
 		tlEdit.to(progressBarsEdit, { duration: 12, scaleY: 1 });
 
-
 		//?  -------- Sound section animation ------------
 		tlSound.to(".sound__card-img", { translateX: -50 });
 
 		//?  -------- Distribute section animation ------------
-		// tl3.to(".sound__card-img", {  translateX: -50 })
+
+		//  select elements
+		const descContentDistribution = [
+			{
+				title: "AI Dubbing",
+				paragraph: "Dub your video into any language while maintaining your voice",
+			},
+			{
+				title: "AI Extract Clips",
+				paragraph: "Automatically extract interesting and viral worthy short clips from longer video provided",
+			},
+		];
+		const progressBarsDistribution = document.querySelectorAll(".distribute__progress-bar");
+		const videoDistribution = document.querySelectorAll(".distribute__video");
+		const descDistribution = document.querySelector(".distribute__item-desc");
+		const descTitleDistribution = document.querySelector(".distribute__item-desc-title");
+		const descParagraphDistribution = document.querySelector(".distribute__item-desc-paragraph");
+
+
 		tlDistribution
-			.fromTo(".distribute__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".distribute__progress-bar:nth-child(2)", { height: "75%" }, { duration: 6, height: "100%" }, "<")
-			.fromTo(".distribute__progress-bar:nth-child(3)", { height: "50%" }, { duration: 6, height: "80%" }, "<")
-			.fromTo(".distribute__video:nth-child(1)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-			.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-			.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Dubbing" })
-			.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Dub your video into any language while maintaining your voice" }, "<")
-			.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".distribute__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".distribute__progress-bar:nth-child(3)", { height: "80%" }, { duration: 6, height: "35%" }, "<")
-			.fromTo(".distribute__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" })
-			.fromTo(".distribute__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "75%" }, "<")
-			.fromTo(".distribute__video:nth-child(2)", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-			.fromTo(".distribute__item-desc", { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
-			.to(".distribute__item-desc-title", { duration: 0.01, text: "AI Extract Clips" })
-			.to(".distribute__item-desc-paragraph", { duration: 0.01, text: "Automatically extract interesting and viral worthy short clips from longer video provided" }, "<")
-			.fromTo(".distribute__item-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".distribute__progress-bar:nth-child(4)", { height: "100%" }, { height: "35%" })
-			.fromTo(".distribute__progress-bar:nth-child(5)", { height: "75%" }, { height: "35%" }, "<");
+			.to(progressBarsDistribution[0], { duration: 6, scaleY: 1 })
+			.fromTo(progressBarsDistribution[1], { scaleY: 1.75 }, { duration: 6, scaleY: 2 }, "<")
+			.fromTo(progressBarsDistribution[2], { scaleY: 2 }, { duration: 6, scaleY: 2.8 }, "<")
+			.to(videoDistribution[0], { duration: 6, autoAlpha: 0 })
+			.to(descDistribution, { duration: 6, autoAlpha: 0 }, "<")
+			.to(descTitleDistribution, { duration: 0.01, text: descContentDistribution[0].title })
+			.to(descParagraphDistribution, { duration: 0.01, text: descContentDistribution[0].paragraph }, "<")
+			.fromTo(descDistribution, { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.to(progressBarsDistribution[1], { duration: 6, scaleY: 1 })
+			.to(progressBarsDistribution[3], { duration: 6, scaleY: 2 }, "<")
+			.fromTo(videoDistribution[1], { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
+			.fromTo(descDistribution, { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 }, "<")
+			.to(descTitleDistribution, { duration: 0.01, text: descContentDistribution[1].title })
+			.to(descParagraphDistribution, { duration: 0.01, text: descContentDistribution[1].paragraph }, "<")
+			.fromTo(descDistribution, { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
+			.to(progressBarsDistribution[2], { duration: 6, scaleY: 1 })
+			.to(progressBarsDistribution[3], { duration: 6, scaleY: 2.8 }, "<")
+			.to(progressBarsDistribution[4], { duration: 6, scaleY: 1.7 }, "<")
+			.to(progressBarsDistribution[3], { duration: 12, scaleY: 1 })
+			.to(progressBarsDistribution[4], { duration: 12, scaleY: 1 }, "<");
 	});
 });

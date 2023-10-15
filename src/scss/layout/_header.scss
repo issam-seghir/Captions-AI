@@ -8,6 +8,17 @@
 	transition: transform $main-transition-delay cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.logo {
+	width: 154px;
+	height: 32px;
+	background: svg-load("../assets/logo/logo.svg", fill=$text-primary-100) center no-repeat;
+	transition: background $main-transition-delay, fill $main-transition-delay;
+}
+
+.logo:hover {
+	background: svg-load("../assets/logo/logo.svg", fill=$bg-links) center no-repeat;
+}
+
 header {
 	@include loadify(1s);
 	@include adaptive(2px);
@@ -19,17 +30,6 @@ header {
 	padding-block: 2rem;
 	padding-inline: 0.75rem;
 	background-color: $bg-primary;
-
-	.logo {
-		width: 154px;
-		height: 32px;
-		background: svg-load("../assets/logo/logo.svg", fill=$text-primary-100) center no-repeat;
-		transition: background $main-transition-delay, fill $main-transition-delay;
-	}
-
-	.logo:hover {
-		background: svg-load("../assets/logo/logo.svg", fill=$bg-links) center no-repeat;
-	}
 
 	nav {
 		display: flex;
