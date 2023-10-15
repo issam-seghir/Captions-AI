@@ -117,7 +117,7 @@ xmdG.add(mq.xMedium, () => {
 		//?  -------- AI section animation ------------
 
 		//  select elements
-		const descContent = [
+		const descContentAi = [
 			{
 				title: "AI Enhance Speech",
 				paragraph: "Automatically remove background noise and enhance speech",
@@ -135,11 +135,11 @@ xmdG.add(mq.xMedium, () => {
 				paragraph: "Change your lip movement in post production to edit the content of your speech",
 			},
 		];
-		const progressBars = document.querySelectorAll(".ai__progress-bar");
-		const mockupImages = document.querySelectorAll(".ai__mockup-images img");
-		const desc = document.querySelectorAll(".ai__desc");
-		const descTitle = document.querySelectorAll(".ai__desc-title");
-		const descParagraph = document.querySelectorAll(".ai__desc-paragraph");
+		const progressBarsAi = document.querySelectorAll(".ai__progress-bar");
+		const mockupImagesAi = document.querySelectorAll(".ai__mockup-images img");
+		const descAi = document.querySelectorAll(".ai__desc");
+		const descTitleAi = document.querySelectorAll(".ai__desc-title");
+		const descParagraphAi = document.querySelectorAll(".ai__desc-paragraph");
 
 		// use Lottie's animation with scrolltrigger
 		tlAi.to(playhead, {
@@ -150,20 +150,21 @@ xmdG.add(mq.xMedium, () => {
 				mockupLottieAnimation.goToAndStop(playhead.frame, true);
 			},
 		});
-		descContent.forEach(({ title, paragraph }, index) => {
-			tlAi.to(progressBars[index], { duration: 4, scaleY: 1 })
-				.to(progressBars[index + 1], { duration: 4, scaleY: 2.8 }, "<")
-				.to(desc, { duration: 0.1, autoAlpha: 0 })
-				.to(descTitle, { duration: 0.01, text: title })
-				.to(descParagraph, { duration: 0.01, text: paragraph }, "<")
-				.to(desc, { duration: 2, autoAlpha: 1 })
-				.from(mockupImages[index], { duration: 2, autoAlpha: 0 }, "<");
+		descContentAi.forEach(({ title, paragraph }, index) => {
+			tlAi.to(progressBarsAi[index], { duration: 4, scaleY: 1 })
+				.to(progressBarsAi[index + 1], { duration: 4, scaleY: 2.8 }, "<")
+				.to(descAi, { duration: 0.1, autoAlpha: 0 })
+				.to(descTitleAi, { duration: 0.01, text: title })
+				.to(descParagraphAi, { duration: 0.01, text: paragraph }, "<")
+				.to(descAi, { duration: 2, autoAlpha: 1 })
+				.from(mockupImagesAi[index], { duration: 2, autoAlpha: 0 }, "<");
 		});
 
-		// You can add this line to control the scaleY of the last progress bar
-		tlAi.to(progressBars, { scaleY: 1 });
+		// scaleY of the last progress bar
+		tlAi.to(progressBarsAi, {duration: 12, scaleY: 1 });
 
 		//?  -------- Edit section animation ------------
+
 		gsap.to(".edit__animate", {
 			translateY: (index, element) => element.dataset.y,
 			scrollTrigger: {
@@ -174,74 +175,75 @@ xmdG.add(mq.xMedium, () => {
 				// markers: true,
 			},
 		});
+
+		//  select elements
+		const descContentEdit = [
+			{
+				title: "AI Color Grading",
+				paragraph: "Copy the color gradeof any video or generate your own with a prompt",
+				src: "src/assets/svg/edit-icon-2.svg",
+			},
+			{
+				title: "AI Color Schema",
+				paragraph: "Generate the perfect color schema with just a text prompt",
+				src: "src/assets/svg/edit-icon-3.svg",
+			},
+			{
+				title: "AI Background Removal",
+				paragraph: "Automatically remove the background of your video ",
+				src: "src/assets/svg/edit-icon-4.svg",
+			},
+			{
+				title: "AI rotoscoping",
+				paragraph: "Cut out object with one tap",
+				src: "src/assets/svg/edit-icon-5.svg",
+			},
+		];
+		const progressBarsEdit = document.querySelectorAll(".edit__progress-bar");
+		const imagesEdit = document.querySelectorAll(".edit__main-img");
+		const imagesMiniEdit = document.querySelectorAll(".edit__main-img-mini");
+		const descEdit = document.querySelector(".edit__main-desc");
+		const descTitleEdit = document.querySelector(".edit__main-desc-title");
+		const descParagraphEdit = document.querySelector(".edit__main-desc-paragraph");
+		const descIconEdit = document.querySelector(".edit__main-desc-icon");
+		// hide all mini images
+		tlEdit.set(imagesMiniEdit, { autoAlpha: 0 });
+
+
+		// the first element animation
 		tlEdit
 			.to(".edit__animate", {
 				duration: 2,
 				yPercent: -100,
 
-				opacity: 0,
+				autoAlpha: 0,
 			})
 			.to(".edit__main", { margin: "-3rem", display: "flex" }, "<")
-			.fromTo(".edit__shadow-blur-img", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.to(".edit__main-img:nth-child(2)", {
+			.from(".edit__shadow-blur-img", { autoAlpha: 0 }, "<")
+			.to(imagesEdit[0], {
 				duration: 5,
-				opacity: 0,
+				autoAlpha: 0,
 			})
-			.fromTo(".edit__main-text", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.fromTo(".edit__progress-bar:nth-child(1)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".edit__progress-bar:nth-child(2)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-			.to(".edit__main-img:nth-child(3)", {
-				duration: 5,
-				opacity: 0,
-			})
-			.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/edit-icon-2.svg" } })
-			.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Grading" })
-			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Copy the color gradeof any video or generate your own with a prompt" }, "<")
-			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".edit__progress-bar:nth-child(2)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".edit__progress-bar:nth-child(3)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-			.to(".edit__main-img:nth-child(4)", {
-				duration: 5,
-				opacity: 0,
-			})
-			.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/edit-icon-3.svg" } })
-			.to(".edit__main-desc-title", { duration: 0.01, text: "AI Color Schema" })
-			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Generate the perfect color schema with just a text prompt" })
-			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".edit__progress-bar:nth-child(3)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".edit__progress-bar:nth-child(4)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-			.to(".edit__main-img:nth-child(5)", {
-				duration: 5,
-				opacity: 0,
-			})
-			.fromTo(".edit__main-desc", { autoAlpha: 1 }, { duration: 2, autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--right", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--left", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/edit-icon-4.svg" } })
-			.to(".edit__main-desc-title", { duration: 0.01, text: "AI Background Removal" })
-			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Automatically remove the background of your video " })
-			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".edit__progress-bar:nth-child(4)", { height: "100%" }, { duration: 6, height: "35%" })
-			.fromTo(".edit__progress-bar:nth-child(5)", { height: "35%" }, { duration: 6, height: "100%" }, "<")
-			.to(".edit__main-img:nth-child(6)", {
-				duration: 5,
-				opacity: 0,
-			})
-			.fromTo(".edit__main-desc", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.fromTo(".edit__main-img--right", { autoAlpha: 0 }, { autoAlpha: 1 }, "<")
-			.fromTo(".edit__main-img--left", { autoAlpha: 1 }, { autoAlpha: 0 }, "<")
-			.set(".edit__main-desc-icon", { duration: 0.01, attr: { src: "src/assets/svg/edit-icon-5.svg" } })
-			.to(".edit__main-desc-title", { duration: 0.01, text: "AI rotoscoping" })
-			.to(".edit__main-desc-paragraph", { duration: 0.01, text: "Cut out object with one tap" })
-			.fromTo(".edit__main-desc", { autoAlpha: 0 }, { duration: 2, autoAlpha: 1 })
-			.fromTo(".edit__progress-bar:nth-child(5)", { height: "100%" }, { duration: 10, height: "35%" });
+			.from(".edit__main-text", { autoAlpha: 0 }, "<")
+			.to(imagesMiniEdit[0], { autoAlpha: 1 }, "<");
+
+		descContentEdit.forEach(({ title, paragraph, src }, index) => {
+			tlEdit
+				.to(progressBarsEdit[index], { duration: 6, scaleY: 1 })
+				.to(progressBarsEdit[index + 1], { duration: 6, scaleY: 2.8 }, "<")
+				.to(imagesEdit[index + 1], { duration: 5, autoAlpha: 0 })
+				.to(descEdit, { autoAlpha: 0 }, "<")
+				.to(imagesMiniEdit[index], { autoAlpha: 0 }, "<")
+				.to(imagesMiniEdit[index+1], { autoAlpha: 1 }, "<")
+				.set(descIconEdit, { duration: 0.01, attr: { src: src } })
+				.to(descTitleEdit, { duration: 0.01, text: title })
+				.to(descParagraphEdit, { duration: 0.01, text: paragraph }, "<")
+				.to(descEdit, { duration: 2, autoAlpha: 1 });
+		});
+
+		// scaleY of the last progress bar
+		tlEdit.to(progressBarsEdit, { duration: 12, scaleY: 1 });
+
 
 		//?  -------- Sound section animation ------------
 		tlSound.to(".sound__card-img", { translateX: -50 });

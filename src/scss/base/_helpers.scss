@@ -33,6 +33,9 @@
 		width: 1px;
 		height: 35%;
 		background-color: $bg-animation;
+		&:nth-child(1):not(.hero__progress-bar){
+		transform: scaleY(2.8);
+		}
 	}
 }
 
