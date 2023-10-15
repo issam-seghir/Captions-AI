@@ -43,9 +43,6 @@ function connectToScrollTrigger() {
 }
 connectToScrollTrigger();
 
-
-
-
 // ? ------------  GSAP on Scroll animations  ------------
 
 // the scroll animation only fires in desktop >= 991px
@@ -68,7 +65,6 @@ xmdG.add(mq.xMedium, () => {
 	// Optionally set animation speed and other properties
 	lottie.setSpeed(20);
 	// mockupLottieAnimation.addEventListener("DOMLoaded", function () {
-	console.log("w");
 	//! important : scroll triggers must be in order ,
 	//! the first section is the one which triggers the first scrollTrigger first  in this code (tlHero)
 
@@ -184,14 +180,38 @@ xmdG.add(mq.xMedium, () => {
 	const descParagraphAi = document.querySelectorAll(".ai__desc-paragraph");
 
 	// use Lottie's animation with scrolltrigger
-	tlAi.to(playhead, {
-		frame: mockupLottieAnimation.totalFrames - 1,
-		duration: lottieContainer.dataset.duration,
-		ease: "none",
-		onUpdate: () => {
-			mockupLottieAnimation.goToAndStop(playhead.frame, true);
-		},
+
+	mockupLottieAnimation.addEventListener("DOMLoaded", () => {
+		const muckupBackupAi = document.querySelector(".mockup__backup");
+		const imgBackupAi = document.querySelector(".img__backup");
+		if (muckupBackupAi && imgBackupAi) {
+			muckupBackupAi.style.opacity = "0";
+			imgBackupAi.style.opacity = "0";
+		}
+		
+		tlAi.clear(true);
+		tlAi.to(playhead, {
+			frame: mockupLottieAnimation.totalFrames - 1,
+			duration: lottieContainer.dataset.duration,
+			ease: "none",
+			onUpdate: () => {
+				mockupLottieAnimation.goToAndStop(playhead.frame, true);
+			},
+		});
+
+		descContentAi.forEach(({ title, paragraph }, index) => {
+			tlAi.to(progressBarsAi[index], { duration: 4, scaleY: 1 })
+				.to(progressBarsAi[index + 1], { duration: 4, scaleY: 2.8 }, "<")
+				.to(descAi, { duration: 0.1, autoAlpha: 0 })
+				.to(descTitleAi, { duration: 0.01, text: title })
+				.to(descParagraphAi, { duration: 0.01, text: paragraph }, "<")
+				.to(descAi, { duration: 2, autoAlpha: 1 })
+				.from(mockupImagesAi[index], { duration: 2, autoAlpha: 0 }, "<");
+		});
+		// scaleY of the last progress bar
+		tlAi.to(progressBarsAi, { duration: 12, scaleY: 1 });
 	});
+
 	descContentAi.forEach(({ title, paragraph }, index) => {
 		tlAi.to(progressBarsAi[index], { duration: 4, scaleY: 1 })
 			.to(progressBarsAi[index + 1], { duration: 4, scaleY: 2.8 }, "<")
@@ -315,11 +335,11 @@ xmdG.add(mq.xMedium, () => {
 		.to(descDistribution, { duration: 6, autoAlpha: 0 }, "<")
 		.to(descTitleDistribution, { duration: 0.01, text: descContentDistribution[0].title })
 		.to(descParagraphDistribution, { duration: 0.01, text: descContentDistribution[0].paragraph }, "<")
-		.to(descDistribution,  { duration: 2, autoAlpha: 1 })
+		.to(descDistribution, { duration: 2, autoAlpha: 1 })
 		.to(progressBarsDistribution[1], { duration: 6, scaleY: 1 })
 		.to(progressBarsDistribution[3], { duration: 6, scaleY: 2 }, "<")
 		.fromTo(videoDistribution[1], { autoAlpha: 1 }, { duration: 6, autoAlpha: 0 })
-		.to(descDistribution,  { duration: 6, autoAlpha: 0 }, "<")
+		.to(descDistribution, { duration: 6, autoAlpha: 0 }, "<")
 		.to(descTitleDistribution, { duration: 0.01, text: descContentDistribution[1].title })
 		.to(descParagraphDistribution, { duration: 0.01, text: descContentDistribution[1].paragraph }, "<")
 		.to(descDistribution, { duration: 2, autoAlpha: 1 })
