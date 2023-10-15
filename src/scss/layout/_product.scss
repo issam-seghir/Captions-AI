@@ -68,7 +68,7 @@
 			position: relative;
 			overflow: hidden;
 			padding: 0.5rem;
-			background-color: #403054;
+			background-color: $bg-button;
 			border-radius: 50%;
 
 			img {
@@ -96,11 +96,11 @@
 			}
 
 			&-button {
-				background-color: #933aff;
+				background-color: $bg-animation;
 			}
 
 			&-title {
-				color: #f7f1ff75;
+				color: $text-secondary-200;
 			}
 		}
 	}

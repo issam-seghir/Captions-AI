@@ -170,6 +170,7 @@ $text-primary-100: #fff;
 $text-primary-200: #d6d0e0;
 $text-primary-300: #e8e0ff;
 $text-secondary-100: #ab88fb;
+$text-secondary-200: rgba(#ffffff, 0.4);
 
 // other colors
 $bg-primary: #11091a;
@@ -178,6 +179,7 @@ $bg-cards: #050308;
 $bg-links: rgb(204 0 255);
 $bg-animation: #a652fa;
 $bg-animation-2: #8c20f8;
+$bg-button:  #403054;
 
 /* Media query for dark color scheme */
 // @media (prefers-color-scheme: dark) {
