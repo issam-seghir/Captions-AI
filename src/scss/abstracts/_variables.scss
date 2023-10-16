@@ -25,35 +25,35 @@ $font-bold: 700;
 $font-black: 900;
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Black", $font-black) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Heavy", $font-black) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Bold", $font-bold) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-SemiBold", $font-semi-bold) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Regular", $font-normal) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Light", $font-light) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-UltraLight", $font-extra-light) {
-	font-display: swap;
+ font-display: swap;
 }
 
 @include font-face("Aileron", "../../../src/assets/fonts/aileron/Aileron-Thin", $font-thin) {
-	font-display: swap;
+ font-display: swap;
 }
 
 // ? Font Families
@@ -79,19 +79,6 @@ $text-7xl: rfs(4.5rem);
 $text-8xl: rfs(6rem);
 $text-9xl: rfs(8rem);
 
-// ? Letter spacing
-$tracking-heading: 0.75rem;
-$tracking-paragraph: 1.75rem;
-$rounded: 1rem;
-$box-shadow: rfs(0 0 2rem rgb(0 0 0 / 25%));
-
-
-// ? page padding container
-    $page-width: 89rem;
-    $page-width-range: 89vw;
-    $page-padding-x:
-    calc((var($page-width-range) - min(80vw, var(--page-width))) / 2);
-
 // It's also possible to pass multiple values
 // padding: rfs(3rem 4rem);
 
@@ -104,10 +91,41 @@ $box-shadow: rfs(0 0 2rem rgb(0 0 0 / 25%));
 // To combine it with !important, use
 // box-shadow: rfs(0 3px 4rem red) !important;
 
-// Custom properties (css variables):
-// --border-radius: rfs(4rem);
-
+// ? spacing
+$rounded: 1rem;
 $margin-section: rfs(15rem);
+
+// ? page padding container
+$page-width: 89rem;
+$page-width-range: 89vw;
+$page-padding-x: calc((var($page-width-range) - min(80vw, var(--page-width))) / 2);
+
+/** others */
+$box-shadow: rfs(0 0 2rem rgb(0 0 0 / 25%));
+$main-transition-delay: 0.8s;
+
+// ? Color palate
+// @for $i from 100 through 300 {
+//   $text-primary-#{$i}: adjust-hue($base-color-primary, 12 * ($i - 100));
+//   $text-secondary-#{$i}: mix($base-color-secondary, hsl(266, 47%, 7%), $i / 300 * 100%);
+// }
+
+// typography colors
+$text-primary-100: #fff;
+$text-primary-200: #d6d0e0;
+$text-primary-300: #e8e0ff;
+$text-secondary-100: #ab88fb;
+$text-secondary-200: rgba(#fff, 0.4);
+
+// other colors
+$bg-primary: #11091a;
+$bg-selection: rgba(#8c20f8, 0.2);
+$bg-cards: #050308;
+$bg-links: rgb(204 0 255);
+$bg-animation: #a652fa;
+$bg-animation-2: #8c20f8;
+$bg-button: #403054;
+
 
 @mixin text-rgd-primary-100() {
 	$rgd-100: #c592fc;
@@ -162,264 +180,3 @@ $margin-section: rfs(15rem);
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
-
-// Color palate
-
-// typography colors
-$text-primary-100: #fff;
-$text-primary-200: #d6d0e0;
-$text-primary-300: #e8e0ff;
-$text-secondary-100: #ab88fb;
-$text-secondary-200: rgba(#ffffff, 0.4);
-
-// other colors
-$bg-primary: #11091a;
-$bg-selection: rgba(#8c20f8, 0.2);
-$bg-cards: #050308;
-$bg-links: rgb(204 0 255);
-$bg-animation: #a652fa;
-$bg-animation-2: #8c20f8;
-$bg-button:  #403054;
-
-/* Media query for dark color scheme */
-// @media (prefers-color-scheme: dark) {
-//   body {
-//     background-color: black !important;
-//     color: rgb(255, 21, 21) !important;
-//   }
-// }
-
-// @for $i from 100 through 300 {
-//   $text-primary-#{$i}: adjust-hue($base-color-primary, 12 * ($i - 100));
-//   $text-secondary-#{$i}: mix($base-color-secondary, hsl(266, 47%, 7%), $i / 300 * 100%);
-// }
-
-/* ? page width container */
-$page-width: 75rem;
-
-/* ? space */
-
-
-/* ? Style  */
-
-/** others */
-$main-transition-delay: 0.8s;
-
-// Animations
-$duration: 150ms;
-$timing: ease;
-
-//* *********************** TABLES *******************************
-
-/*
-table {
-	border-collapse: collapse;
-	margin: var(--spacing) 0;
-	table-layout: fixed;
-	text-align: left;
-	width: 100%;
-}
-
-thead {
-	line-height: var(--line-height--heading);
-	vertical-align: bottom;
-}
-
-tbody {
-	vertical-align: top;
-}
-
-tr {
-	border-bottom: var(--border);
-}
-
-th {
-	font-weight: 600;
-}
-
-th,
-td {
-	padding: var(--spacing--small) var(--spacing--small) var(--spacing--small) 0;
-}
-
-// form
-
-fieldset {
-	background-color: transparent;
-	border: 0;
-	margin: 0;
-	padding: 0;
-}
-
-legend {
-	font-weight: 600;
-	margin-bottom: var(--spacing--small);
-	padding: 0;
-}
-
-label {
-	display: block;
-	font-weight: 600;
-	margin-bottom: var(--spacing--small);
-}
-
-input,
-select,
-textarea {
-	display: block;
-	font-family: var(--font-family);
-	font-size: 1rem;
-}
-
-[type="color"],
-[type="date"],
-[type="datetime"],
-[type="datetime-local"],
-[type="email"],
-[type="month"],
-[type="number"],
-[type="password"],
-[type="search"],
-[type="tel"],
-[type="text"],
-[type="time"],
-[type="url"],
-[type="week"],
-input:not([type]),
-textarea {
-	appearance: none;
-	background-color: transparent;
-	border: var(--border);
-	border-radius: var(--border-radius);
-	box-shadow: var(--form-box-shadow);
-	box-sizing: border-box;
-	margin-bottom: var(--spacing--small);
-	padding: calc(var(--spacing) / 3);
-	transition: border-color var(--duration) var(--timing);
-	width: 100%;
-
-	&:focus {
-		box-shadow: var(--form-box-shadow-focus);
-	}
-
-	&:disabled {
-		cursor: not-allowed;
-
-		&:hover {
-			border: var(--border);
-		}
-	}
-
-	&::placeholder {
-		color: $text-primary-100;
-		opacity: 0.25;
-	}
-}
-
-[type="search"] {
-	-webkit-appearance: textfield;
-}
-
-textarea {
-	resize: vertical;
-}
-
-[type="checkbox"],
-[type="radio"] {
-	display: inline;
-	margin-right: var(--spacing--small);
-}
-
-[type="file"] {
-	margin-bottom: var(--spacing--small);
-	width: 100%;
-}
-
-select {
-	margin-bottom: var(--spacing--small);
-	width: 100%;
-}
-
-[type="checkbox"],
-[type="radio"],
-[type="file"],
-select {
-	&:focus {
-		outline: var(--focus-outline);
-		outline-offset: var(--focus-outline-offset);
-	}
-}
-
-//* *********************** BUTTONS *******************************
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-	appearance: none;
-	background-color: $action-color;
-	border: 0;
-	border-radius: var(--border-radius);
-	color: $action-color--contrast;
-	cursor: pointer;
-	display: inline-block;
-	font-family: var(--font-family-base);
-	font-size: 1rem;
-	-webkit-font-smoothing: antialiased;
-	font-weight: 600;
-	line-height: 1;
-	padding: var(--spacing--small) var(--spacing);
-	text-align: center;
-	text-decoration: none;
-	transition: background-color var(--duration) var(--timing);
-	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
-
-	&:hover {
-		background-color: $action-color--alt;
-	}
-
-	&:focus {
-		outline: var(--focus-outline);
-		outline-offset: var(--focus-outline-offset);
-	}
-
-	&:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
-}
- */
-
-/* breakpoints */
-$breakpoints: (
-	sm: 640px,
-	md: 768px,
-	lg: 1024px,
-	xl: 1280px,
-	"2xl": 1536px,
-) !default;
-
-/* breakpoints */
-$mq-sm: 480px;
-$mq-xsm: 640px;
-$mq-md: 768px;
-$mq-xmd: 991px;
-$mq-lg: 1024px;
-$mq-xl: 1280px;
-$mq-2xl: 1536px;
-
-
-
-/* --------------------------------------------------------------------------------------------- */
-
-// // visual breakpoints
-// @include breakpointer {
-// 	position: fixed;
-// 	z-index: 10;
-// 	top: 0;
-// 	left: 0;
-// 	padding: 5px 10px;
-// 	color: white;
-// }
