@@ -28,7 +28,7 @@ module.exports = {
 			customSyntax: "postcss-markdown",
 		},
 	],
-	ignoreFiles: ["**/_reset.scss", "**/index.html"],
+	ignoreFiles: ["**/_reset.scss", "**/index.html", "**/LICENSE"],
 	rules: {
 		// Don't add empty lines between order groups.
 		"order/properties-order": [

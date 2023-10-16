@@ -3,7 +3,34 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Caption AI</title>
+		<title>Captions | Your AI-powered creative studio</title>
+		<meta content="Meet Captions. The next generation of storytelling - at your fingertips. Discover the power of AI and create studio-grade videos in just a few taps." name="description" />
+		<meta content="Captions | Your AI-powered creative studio" property="og:title" />
+		<meta content="Meet Captions. The next generation of storytelling - at your fingertips. Discover the power of AI and create studio-grade videos in just a few taps." property="og:description" />
+		<meta content="https://assets-global.website-files.com/60d0c29c2e1261708dd228ea/6486fe19efc3a938db31b701_OPG.png" property="og:image" />
+		<meta content="Captions | Your AI-powered creative studio" property="twitter:title" />
+		<meta content="Meet Captions. The next generation of storytelling - at your fingertips. Discover the power of AI and create studio-grade videos in just a few taps." property="twitter:description" />
+		<meta content="https://assets-global.website-files.com/60d0c29c2e1261708dd228ea/6486fe19efc3a938db31b701_OPG.png" property="twitter:image" />
+		<meta property="og:type" content="website" />
+		<meta content="summary_large_image" name="twitter:card" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<!-- five icon -->
+		<link href="src/assets/logo/fiveicon.png" rel="shortcut icon" type="image/x-icon" />
+		<!-- "apple-touch-icon." use this icon when a user adds the website to their home screen -->
+		<link href="src/assets/logo/apple-touch-icon.png" rel="apple-touch-icon" />
+		<!-- Preload Fonts -->
+		<link rel="preload" href="/fonts/aileron/Aileron-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" href="/fonts/aileron/Aileron-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" href="/fonts/aileron/Aileron-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+		<!-- Preload Images -->
+		<link rel="preload" as="image" href="src/assets/images/mockup.webp" />
+		<link rel="preload" as="image" href="src/assets/images/hero-mockup-img.webp" />
+		<link rel="preload" as="image" href="src/assets/images/mockup.webp" />
+		<link rel="preload" as="image" href="src/assets/svg/gradient-blur.svg" />
+		<link rel="preload" as="image" href="src/assets/svg/gradient-blur-med.svg" />
+		<link rel="preload" as="image" href="src/assets/svg/gradient-blur-big.svg" />
+		<link rel="preload" as="image" href="src/assets/svg/lines.svg" />
+
 		<!-- container query polyfill -->
 		<script defer src="https://cdn.jsdelivr.net/npm/container-query-polyfill@1/dist/container-query-polyfill.modern.js"></script>
 		<!-- :has selector polyfill -->
@@ -87,10 +114,7 @@
 			<div class="hero__mockup-container">
 				<img importance="high" height="100%" width="100%" class="hero__mockup" src="src/assets/images/mockup.webp" alt="phone mockup" srcset="" />
 				<img importance="high" class="hero__mockup-img" src="src/assets/images/hero-mockup-img.webp" alt="app feature screenshot for the phone mockup" srcset="" />
-				<video height="100%" width="100%" loading="lazy" playsinline autoplay muted loop poster="src/assets/images/hero-video-poster.jpeg" title="recording" aria-describedby="black man recording video">
-					<source src="src/assets/videos/recording.webm" />
-					Your browser does not support the video tag.
-				</video>
+				<video height="100%" width="100%" loading="lazy" playsinline autoplay muted loop src="src/assets/videos/recording.webm" poster="src/assets/images/hero-video-poster.jpeg" title="recording" aria-describedby="black man recording video"></video>
 			</div>
 			<div class="hero__video-desc">
 				<p class="hero__video-desc-tag tag tag--lg">AI Script writer</p>
@@ -134,10 +158,7 @@
 					</h3>
 				</div>
 				<div class="record__card">
-					<video loading="lazy" playsinline autoplay muted loop poster="src/assets/images/person.png">
-						<source src="src/assets/videos/camera.webm" />
-						Your browser does not support the video tag.
-					</video>
+					<video loading="lazy" playsinline autoplay muted loop src="src/assets/videos/camera.webm" poster="src/assets/images/person.png"></video>
 					<h3 class="record__card-title">
 						Camera & <br />
 						Teleprompter
@@ -542,7 +563,7 @@
 			</div>
 			<div class="products__cards">
 				<div class="products__card">
-					<div class="products__card-img"><img src="src/assets/images/card-img-1.jpg" alt="" srcset="" /></div>
+					<div class="products__card-img"><img loading="lazy" src="src/assets/images/card-img-1.jpg" alt="" srcset="" /></div>
 					<div class="products__action">
 						<div class="products__card-desc">
 							<h4 class="products__card-title">Compress videos</h4>
@@ -555,7 +576,7 @@
 					</div>
 				</div>
 				<div class="products__card">
-					<div class="products__card-img"><img src="src/assets/images/card-img-2.jpg" alt="" srcset="" /></div>
+					<div class="products__card-img"><img loading="lazy" src="src/assets/images/card-img-2.jpg" alt="" srcset="" /></div>
 					<div class="products__action">
 						<div class="products__card-desc">
 							<h4 class="products__card-title">AI Eye Contact</h4>
@@ -568,7 +589,7 @@
 					</div>
 				</div>
 				<div class="products__card">
-					<div class="products__card-img"><img src="src/assets/images/card-img-3.webp" alt="" srcset="" /></div>
+					<div class="products__card-img"><img loading="lazy" src="src/assets/images/card-img-3.webp" alt="" srcset="" /></div>
 					<div class="products__action">
 						<div class="products__card-desc">
 							<h4 class="products__card-title">Add Subtitles</h4>
