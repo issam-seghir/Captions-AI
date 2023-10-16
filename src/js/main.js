@@ -178,38 +178,31 @@ xmdG.add(mq.xMedium, () => {
 	const descAi = document.querySelectorAll(".ai__desc");
 	const descTitleAi = document.querySelectorAll(".ai__desc-title");
 	const descParagraphAi = document.querySelectorAll(".ai__desc-paragraph");
+	const muckupBackupAi = document.querySelector(".mockup__backup");
+	const imgBackupAi = document.querySelector(".img__backup");
 
 	// use Lottie's animation with scrolltrigger
 
+	// add lottie's animation in the first second of the timeline when its loaded
 	mockupLottieAnimation.addEventListener("DOMLoaded", () => {
-		const muckupBackupAi = document.querySelector(".mockup__backup");
-		const imgBackupAi = document.querySelector(".img__backup");
 		if (muckupBackupAi && imgBackupAi) {
 			muckupBackupAi.style.opacity = "0";
+			muckupBackupAi.style.visibility = "hidden";
 			imgBackupAi.style.opacity = "0";
+			imgBackupAi.style.visibility = "hidden";
 		}
-		
-		tlAi.clear(true);
-		tlAi.to(playhead, {
-			frame: mockupLottieAnimation.totalFrames - 1,
-			duration: lottieContainer.dataset.duration,
-			ease: "none",
-			onUpdate: () => {
-				mockupLottieAnimation.goToAndStop(playhead.frame, true);
+		tlAi.to(
+			playhead,
+			{
+				frame: mockupLottieAnimation.totalFrames - 1,
+				duration: lottieContainer.dataset.duration,
+				ease: "none",
+				onUpdate: () => {
+					mockupLottieAnimation.goToAndStop(playhead.frame, true);
+				},
 			},
-		});
-
-		descContentAi.forEach(({ title, paragraph }, index) => {
-			tlAi.to(progressBarsAi[index], { duration: 4, scaleY: 1 })
-				.to(progressBarsAi[index + 1], { duration: 4, scaleY: 2.8 }, "<")
-				.to(descAi, { duration: 0.1, autoAlpha: 0 })
-				.to(descTitleAi, { duration: 0.01, text: title })
-				.to(descParagraphAi, { duration: 0.01, text: paragraph }, "<")
-				.to(descAi, { duration: 2, autoAlpha: 1 })
-				.from(mockupImagesAi[index], { duration: 2, autoAlpha: 0 }, "<");
-		});
-		// scaleY of the last progress bar
-		tlAi.to(progressBarsAi, { duration: 12, scaleY: 1 });
+			1
+		);
 	});
 
 	descContentAi.forEach(({ title, paragraph }, index) => {
