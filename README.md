@@ -1,28 +1,30 @@
 
 <div align="center">
 
-<h1 align="center" >Caption AI</h1>
+<h1 align="center" >Captions AI</h1>
 
-![cntr](https://img.shields.io/github/contributors/Issam-seghir/Elzero-Template-2?color=pink&style=for-the-badge)
-![pullreQ](https://img.shields.io/github/issues-pr/Issam-seghir/Elzero-Template-2?color=orange&style=for-the-badge)
-![comt](https://img.shields.io/github/last-commit/Issam-seghir/Elzero-Template-2?style=for-the-badge)
+![cntr](https://img.shields.io/github/contributors/Issam-seghir/Captions-AI?color=pink&style=for-the-badge)
+![pullreQ](https://img.shields.io/github/issues-pr/Issam-seghir/Captions-AI?color=orange&style=for-the-badge)
+![comt](https://img.shields.io/github/last-commit/Issam-seghir/Captions-AI?style=for-the-badge)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
 
-![frk](https://img.shields.io/github/forks/Issam-seghir/Elzero-Template-2?style=flat-square)
-![str](https://img.shields.io/github/stars/Issam-seghir/Elzero-Template-2?style=flat-square)
-![deploy](https://img.shields.io/website?down_color=red&down_message=down&style=flat-square&up_color=succes&up_message=up&url=https%3A%2F%2Fissam-seghir.github.io%2FElzero-Template-2%2F)
+![frk](https://img.shields.io/github/forks/Issam-seghir/Captions-AI?style=flat-square)
+![str](https://img.shields.io/github/stars/Issam-seghir/Captions-AI?style=flat-square)
+![deploy](https://img.shields.io/website?down_color=red&down_message=down&style=flat-square&up_color=succes&up_message=up&url=https%3A%2F%2Fissam-seghir.github.io%2FCaptions-AI%2F)
 
   <p align="center">
-This is a clone of the caption ai website , which introduce all the features of the mobile app
-based on Gsap / Lotties for amazing  scroll animations
+  Captions | Your AI-powered creative studio
+
+  This is a clone of the caption ai website ,
+based on Gsap / Lotties scroll animations
 
   <br />
   <br />
-  <a href="https://issam-seghir.github.io/Elzero-Template-2/">View Demo</a>
+  <a href="https://issam-seghir.github.io/Captions-AI/">View Demo</a>
   .
-  <a href="https://github.com/Issam-seghir/Elzero-Template-2/issues">Report Bug</a>
+  <a href="https://github.com/Issam-seghir/Captions-AI/issues">Report Bug</a>
   .
-  <a href="https://github.com/Issam-seghir/Elzero-Template-2/issues">Request Feature</a>
+  <a href="https://github.com/Issam-seghir/Captions-AI/issues">Request Feature</a>
   </p>
 
 <br>
@@ -44,22 +46,12 @@ Created with [Lighthouse-Badger](https://github.com/myactionway/lighthouse-badge
 <!-- ![link](https://i.imgur.com/8qQeqSJ.gif) -->
 ![link](./assets/mockup/mockup.png)
 
-## About The Project
-
-I invested a considerable amount of time in building this template, from extensive research to learning new tools and harnessing the power of SVG.
-
-The stark contrast and remarkable progress compared to elzero template 1 are clearly visible.
-
-Therefore I can confidently say that you can expect great improvement from my next template project , Stay tuned for what's to come! 🔥  ...
-
-> I inspire  this template structur form [Elzero front-end course](https://elzero.org/tracks/front-end/) .
-
 ### Built With
 
 - Langauge
 
   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![SASS](https://img.shields.io/badge/sass-%231572B6.svg?style=for-the-badge&logo=sass&logoColor=ff577b)
   ![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 - illustration
 
