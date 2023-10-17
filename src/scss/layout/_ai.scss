@@ -2,13 +2,17 @@
 
 // add width to mockup if the lotties mockup not loaded yet to fill images
 .ai__mockup:not(:has(svg)) {
-	width: 27rem;
-	height: 41rem;
+	aspect-ratio: 301 / 669;
 
+	// width: 27rem;
+	// height: 41rem;
+	width: 29.3rem;
 
 	img:not(.mockup__backup) {
+		// top: 5px;
+		// left: 0;
 		top: 5px;
-		left: 0;
+		left: 2px;
 		width: 98%;
 		object-fit: contain;
 		border-radius: 4rem;
@@ -17,12 +21,16 @@
 	.ai__mockup-images {
 		position: absolute;
 		z-index: 2;
-		top: 10%;
+		top: 3%;
 		overflow: hidden;
+		aspect-ratio: 301 / 669;
 		width: 68%;
 		height: 92%;
+
 		.mockup__backup {
 			z-index: 5;
+			width: 100%;
+			object-fit: fill;
 		}
 	}
 }
@@ -46,6 +54,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
+		gap: 5rem;
 		height: 100vh;
 		height: 100svh;
 
