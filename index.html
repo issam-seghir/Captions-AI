@@ -46,6 +46,24 @@
 			console.log("has polyfill loaded correctly : " + typeof cssHasPseudo);
 		</script>
 		<script defer type="module" src="src/js/main.js"></script>
+
+		<script>
+			(function (d, t) {
+				var BASE_URL = "https://app.chatwoot.com";
+				var g = d.createElement(t),
+					s = d.getElementsByTagName(t)[0];
+				g.src = BASE_URL + "/packs/js/sdk.js";
+				g.defer = true;
+				g.async = true;
+				s.parentNode.insertBefore(g, s);
+				g.addEventListener("load", function () {
+					window.chatwootSDK.run({
+						websiteToken: "AgxGviH1qYuDZ2GqzYQtMyxa",
+						baseUrl: BASE_URL,
+					});
+				});
+			})(document, "script");
+		</script>
 	</head>
 	<body>
 		<div class="wrapper header">
