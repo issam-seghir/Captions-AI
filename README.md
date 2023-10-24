@@ -15,8 +15,10 @@
   <p align="center">
   "Captions | Your AI-powered creative studio"
 
-  This is a **clone** of the [Captions ai](captions.ai) Landing page  website ,
+  This is a **clone** of the [Captions ai](https://www.captions.ai) Landing page  website ,
 based on **Gsap** / **Lotties**  animations
+
+its even more  **performance** and **Accessible** then the original website , see [original website score](https://i.imgur.com/fCqSHnk.png)
 
 If you appreciate it, please consider giving it a star ⭐
  <br />
