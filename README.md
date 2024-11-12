@@ -38,7 +38,9 @@ If you appreciate it, please consider giving it a star ⭐
 
 </div>
 
-![link](https://i.imgur.com/ZvvOUzQ.png)
+<!-- ![link](https://i.imgur.com/ZvvOUzQ.png) -->
+![alt text](mockup-desktop.png)
+![alt text](mockup-mobile.png)
 
 ### Built With
 
