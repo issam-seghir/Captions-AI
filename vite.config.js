@@ -1,6 +1,7 @@
 // import Icons from "unplugin-icons/vite";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
-import { ViteAliases } from "vite-aliases";
 
 export default defineConfig(({ command, mode, ssrBuild }) => ({
 	base: "/Captions-AI/",
@@ -24,23 +25,11 @@ export default defineConfig(({ command, mode, ssrBuild }) => ({
 		// open the server with google chrome browser
 		open: (process.env.BROWSER = "E:\\Apps\\scoop\\apps\\googlechrome-dev\\current\\chrome.exe"),
 	},
-	/* 	resolve: {
+	resolve: {
 		alias: {
-			// "~gerillass": path.resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
-			// "@" -> "/User/project-root/src/views"
-    		//   '@': path.join(__dirname, 'src/views'),
+			"@": resolve(__dirname, "src"),
+			"~gerillass": resolve(__dirname, "node_modules/gerillass/scss/gerillass.scss"),
 		},
-	}, */
-	plugins: [
-		ViteAliases({
-			dir: "src",
-			prefix: "@",
-			deep: true,
-			depth: 1,
-			/**
-			 * Disables any terminal output
-			 */
-			silent: false,
-		}),
-	],
+	},
+	plugins: [],
 }));
