@@ -1,11 +1,11 @@
 @use "sass:meta";
 
+// * Third party mixins
+@use "gerillass" as *;
+
 // * abstracts < base < ...
 // ! "!important" is in reverse order (just avoid to use it )
 @layer abstracts,base ,layout ,utilities,utilities-override;
-
-// * Third party mixins
-@import "gerillass";
 
 @layer abstracts {
 	@include meta.load-css("abstracts");

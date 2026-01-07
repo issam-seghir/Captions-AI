@@ -4,6 +4,9 @@
 @use "variables" as *;
 @use "functions" as *;
 
+// Global variables for burger mixin
+$burger-height: null;
+$burger-gutter: null;
 
 @mixin on-event($self: false) {
 	@if $self {
@@ -47,18 +50,16 @@
 //* -------------- Custom Mixins ---------------------
 
 ///?  Mixin: rdg-text
-@mixin rdg-text( $direction: center,$colors...) {
-  background: radial-gradient(at #{$direction}, $colors);
-background-clip: text;
--webkit-background-clip: text;
-color: transparent;
--webkit-text-fill-color: transparent;
+@mixin rdg-text($direction: center, $colors...) {
+	background: radial-gradient(at #{$direction}, $colors);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
 }
 .element {
-  @include rdg-text(top-left, red, orange);
+	@include rdg-text(top-left, red, orange);
 }
-
-
 
 ///?  Mixin: pseudo
 ///? Create a CSS pseudo-element with custom properties.
@@ -83,30 +84,20 @@ color: transparent;
 ///   }
 ///
 /// @access public
-@mixin pseudo(
-  $content: '',
-  $top: 0,
-  $bottom: 0,
-  $left: 0,
-  $right: 0,
-  $loc: 'before',
-  $pos: 'absolute'
-) {
-  position: relative;
+@mixin pseudo($content: "", $top: 0, $bottom: 0, $left: 0, $right: 0, $loc: "before", $pos: "absolute") {
+	position: relative;
 
-  &::#{$loc} {
-    content: $content;
-    position: #{$pos};
-    top: $top;
-    bottom: $bottom;
-    left: $left;
-    right: $right;
+	&::#{$loc} {
+		content: $content;
+		position: #{$pos};
+		top: $top;
+		bottom: $bottom;
+		left: $left;
+		right: $right;
 
-    @content; // Additional CSS properties can be added here.
-  }
+		@content; // Additional CSS properties can be added here.
+	}
 }
-
-
 
 /// ------------------------------------------------------------------
 ///?  Mixin: mq
@@ -146,21 +137,18 @@ color: transparent;
 /// @access public
 
 @mixin mq($breakpoint) {
-  // Check if the specified breakpoint exists in the $breakpoints map.
-  @if map-has-key($breakpoints, $breakpoint) {
-    $min-width: map-get($breakpoints, $breakpoint);
+	// Check if the specified breakpoint exists in the $breakpoints map.
+	@if map-has-key($breakpoints, $breakpoint) {
+		$min-width: map-get($breakpoints, $breakpoint);
 
-    // Apply the styles within a media query based on the breakpoint.
-    @media (min-width: $min-width) {
-      @content;
-    }
-  } @else {
-    @warn "Invalid breakpoint: #{$breakpoint}.";
-  }
+		// Apply the styles within a media query based on the breakpoint.
+		@media (min-width: $min-width) {
+			@content;
+		}
+	} @else {
+		@warn "Invalid breakpoint: #{$breakpoint}.";
+	}
 }
-
-
-
 
 //* -------------- bourbon Mixins ---------------------
 
@@ -177,19 +165,16 @@ color: transparent;
 ///
 /// @access private
 
-@function _assign-inputs(
-  $inputs,
-  $pseudo: null
-) {
-  $list: ();
+@function _assign-inputs($inputs, $pseudo: null) {
+	$list: ();
 
-  @each $input in $inputs {
-    $input: unquote($input);
-    $input: if($pseudo, $input + ":" + $pseudo, $input);
-    $list: append($list, $input, comma);
-  }
+	@each $input in $inputs {
+		$input: unquote($input);
+		$input: if($pseudo, $input + ":" + $pseudo, $input);
+		$list: append($list, $input, comma);
+	}
 
-  @return $list;
+	@return $list;
 }
 
 ///?  Mixin:  style all buttons types
@@ -226,7 +211,6 @@ color: transparent;
 ///     background-color: #00f;
 ///   }
 
-
 ///* A list of all HTML button elements with the `:focus` pseudo-class applied.
 /// Please note that you must interpolate the variable (`#{}`) to use it as a
 /// selector.
@@ -261,19 +245,12 @@ color: transparent;
 ///     background-color: #0f0;
 ///   }
 
-$_buttons-list: (
-  "button",
-  "[type='button']",
-  "[type='reset']",
-  "[type='submit']",
-);
+$_buttons-list: ("button", "[type='button']", "[type='reset']", "[type='submit']");
 
 $all-buttons: _assign-inputs($_buttons-list);
 $all-buttons-active: _assign-inputs($_buttons-list, active);
 $all-buttons-focus: _assign-inputs($_buttons-list, focus);
 $all-buttons-hover: _assign-inputs($_buttons-list, hover);
-
-
 
 /// ------------------------------------------------------------------
 ///?  Mixin:  style all input types
@@ -334,7 +311,6 @@ $all-buttons-hover: _assign-inputs($_buttons-list, hover);
 ///     border: 1px solid #aaa;
 ///   }
 
-
 ///* A list of all _text-based_ HTML inputs with the `:focus` pseudo-class
 /// applied. Please note that you must interpolate the variable (`#{}`) to use
 /// it as a selector.
@@ -364,7 +340,6 @@ $all-buttons-hover: _assign-inputs($_buttons-list, hover);
 ///     border: 1px solid #1565c0;
 ///   }
 
-
 ///* A list of all _text-based_ HTML inputs with the `:hover` pseudo-class
 /// applied. Please note that you must interpolate the variable (`#{}`) to use
 /// it as a selector.
@@ -393,7 +368,6 @@ $all-buttons-hover: _assign-inputs($_buttons-list, hover);
 ///   textarea:hover {
 ///     border: 1px solid #aaa;
 ///   }
-
 
 ///* A list of all _text-based_ HTML inputs with the `:invalid` pseudo-class
 /// applied. Please note that you must interpolate the variable (`#{}`) to use
@@ -425,22 +399,22 @@ $all-buttons-hover: _assign-inputs($_buttons-list, hover);
 ///   }
 
 $_text-inputs-list: (
-  "[type='color']",
-  "[type='date']",
-  "[type='datetime']",
-  "[type='datetime-local']",
-  "[type='email']",
-  "[type='month']",
-  "[type='number']",
-  "[type='password']",
-  "[type='search']",
-  "[type='tel']",
-  "[type='text']",
-  "[type='time']",
-  "[type='url']",
-  "[type='week']",
-  "input:not([type])",
-  "textarea",
+	"[type='color']",
+	"[type='date']",
+	"[type='datetime']",
+	"[type='datetime-local']",
+	"[type='email']",
+	"[type='month']",
+	"[type='number']",
+	"[type='password']",
+	"[type='search']",
+	"[type='tel']",
+	"[type='text']",
+	"[type='time']",
+	"[type='url']",
+	"[type='week']",
+	"input:not([type])",
+	"textarea"
 );
 
 $all-text-inputs: _assign-inputs($_text-inputs-list);
@@ -448,9 +422,6 @@ $all-text-inputs-active: _assign-inputs($_text-inputs-list, active);
 $all-text-inputs-focus: _assign-inputs($_text-inputs-list, focus);
 $all-text-inputs-hover: _assign-inputs($_text-inputs-list, hover);
 $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
-
-
-
 
 /// ------------------------------------------------------------------
 ///? Mixin: ellipsis
@@ -488,8 +459,6 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
   white-space: nowrap;
   word-wrap: normal;
 } */
-
-
 
 /// ------------------------------------------------------------------
 ///? Mixin: triangle
@@ -575,9 +544,7 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 }
  */
 
-
 //* -------------- scut mixins ---------------------
-
 
 ///? Mixin: scut-strip-unit
 ///? Remove the unit from a numeric value : scut-strip-unit(10px) => 10
@@ -604,7 +571,6 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 	@return math.div($num, $num * 0 + 1);
 }
 
-
 /// ------------------------------------------------------------------
 ///? Mixin: scut-size
 ///? Set both the width and height of an element.
@@ -628,17 +594,14 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///
 /// @access public
 @mixin scut-size($size) {
-  @if length($size) == 1 {
-    width:  $size;
-    height: $size;
-  }
-  @else if length($size) == 2 {
-    width:  list.nth($size, 1);
-    height: list.nth($size, 2);
-  }
+	@if length($size) == 1 {
+		width: $size;
+		height: $size;
+	} @else if length($size) == 2 {
+		width: list.nth($size, 1);
+		height: list.nth($size, 2);
+	}
 }
-
-
 
 /// ------------------------------------------------------------------
 ///? Mixin: scut-circle
@@ -690,7 +653,6 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 	}
 }
 
-
 /// ------------------------------------------------------------------
 ///? Custom Mixin: swap-color
 ///? Swap text color on hover or focus.
@@ -723,8 +685,6 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 	}
 }
 
-
-
 /// ------------------------------------------------------------------
 ///? Custom Mixin: swap-bg-color
 ///? Swap background color on hover or focus.
@@ -756,8 +716,6 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 		background-color: $to;
 	}
 }
-
-
 
 /// ------------------------------------------------------------------
 //? Sass burger (https://github.com/jorenvanhee/sass-burger)
@@ -808,47 +766,47 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///   top: 8px;
 /// }
 /// @author Joren Van Hee
-@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
-    $burger-height: $height !global;
-    $burger-gutter: $gutter !global;
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: 0.3s) {
+	$burger-height: $height !global;
+	$burger-gutter: $gutter !global;
 
-    position: relative;
-    margin-top: $height + $gutter;
-    margin-bottom: $height + $gutter;
+	position: relative;
+	margin-top: $height + $gutter;
+	margin-bottom: $height + $gutter;
 
-    user-select: none;
+	user-select: none;
 
-    // 1. Fixes jagged edges in Firefox, see issue #10.
-    &,
-    &::before,
-    &::after {
-        display: block;
-        width: $width;
-        height: $height;
-        background-color: $color;
-        outline: 1px solid transparent; // 1
-        @if $border-radius != 0 {
-            border-radius: $border-radius;
-        }
+	// 1. Fixes jagged edges in Firefox, see issue #10.
+	&,
+	&::before,
+	&::after {
+		display: block;
+		width: $width;
+		height: $height;
+		background-color: $color;
+		outline: 1px solid transparent; // 1
+		@if $border-radius != 0 {
+			border-radius: $border-radius;
+		}
 
-        transition-property: background-color, transform;
-        transition-duration: $transition-duration;
-    }
+		transition-property: background-color, transform;
+		transition-duration: $transition-duration;
+	}
 
-    &::before, &::after {
-        position: absolute;
-        content: "";
-    }
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+	}
 
-    &::before {
-        top: -($height + $gutter);
-    }
+	&::before {
+		top: -($height + $gutter);
+	}
 
-    &::after {
-        top: $height + $gutter;
-    }
+	&::after {
+		top: $height + $gutter;
+	}
 }
-
 
 /// Select parts of the burger
 /// @example
@@ -865,11 +823,11 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///  background-color: red;
 /// }
 @mixin burger-parts {
-    &,
-    &::before,
-    &::after {
-        @content;
-    }
+	&,
+	&::before,
+	&::after {
+		@content;
+	}
 }
 
 /// @example
@@ -884,9 +842,9 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///  background-color: red;
 /// }
 @mixin burger-top {
-    &::before {
-        @content;
-    }
+	&::before {
+		@content;
+	}
 }
 /// @example
 /// //SCSS
@@ -900,9 +858,9 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///  background-color: red;
 /// }
 @mixin burger-middle {
-    & {
-        @content;
-    }
+	& {
+		@content;
+	}
 }
 /// @example
 /// //SCSS
@@ -916,29 +874,27 @@ $all-text-inputs-invalid: _assign-inputs($_text-inputs-list, invalid);
 ///  background-color: red;
 /// }
 @mixin burger-bottom {
-    &::after {
-        @content;
-    }
+	&::after {
+		@content;
+	}
 }
-
 
 /// Burger animations
 /// @param {String} $color - auto
 @mixin burger-to-cross($color: auto) {
-    & {
-        background-color: transparent;
-    }
-    @if ($color != auto) {
-        &::before, &::after {
-            background-color: $color;
-        }
-    }
-    &::before {
-        transform: translateY($burger-gutter + $burger-height) rotate(45deg);
-    }
-    &::after {
-        transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
-    }
+	& {
+		background-color: transparent;
+	}
+	@if ($color != auto) {
+		&::before,
+		&::after {
+			background-color: $color;
+		}
+	}
+	&::before {
+		transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+	}
+	&::after {
+		transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+	}
 }
-
-
